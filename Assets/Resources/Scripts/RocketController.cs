@@ -48,6 +48,7 @@ public class RocketController : MonoBehaviour {
 					launchParticles.transform.parent = gameObject.transform;
 					Globals.playerObj.GetComponent<PlayerController>().enabled = false;
 					Globals.playerObj.GetComponent<Renderer>().enabled = false;
+					GameObject.Find("ShipPrompt").GetComponent<Text>().color = new Color(0, 0, 0, 0);
 				}
 			}
 		}
@@ -99,7 +100,10 @@ public class RocketController : MonoBehaviour {
 		if(col.gameObject.name.Equals("RocketTrigger"))
 		{
 			flyable = true;
-			GameObject.Find("ShipPrompt").GetComponent<Text>().color = Color.white;
+			if(!launching && !flying)
+			{
+				GameObject.Find("ShipPrompt").GetComponent<Text>().color = Color.white;
+			}
 		}
 	}
 
