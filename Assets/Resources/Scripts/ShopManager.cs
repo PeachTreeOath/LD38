@@ -29,4 +29,9 @@ public class ShopManager : Singleton<ShopManager>
         shopPanel.ToggleShow(isActive);
     }
 
+    public bool IsActive()
+    {
+        return isActive;
+    }
+
 }
