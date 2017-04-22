@@ -18,7 +18,6 @@ public class AudioManager : Singleton<AudioManager>
 
 	protected override void Init ()
 	{
-		Debug.Log(Time.time + " audio start");
 		soundMap = new Dictionary<string, AudioClip>();
 
 		musicChannel = new GameObject().AddComponent<AudioSource>();
