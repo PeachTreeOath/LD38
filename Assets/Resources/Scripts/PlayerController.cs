@@ -7,6 +7,7 @@ public class PlayerController : MonoBehaviour
 
     public float runSpeed;
     public float jumpForce;
+    public float hitForce;
     public int allowedJumps;
     public int maxHealth;
 
@@ -14,6 +15,7 @@ public class PlayerController : MonoBehaviour
     private int usedJumps;
     private int currentHealth;
     private bool invincible;
+    private bool isFacingLeft;
 
     private SpriteRenderer sprite;
     private Material origMat;
@@ -33,7 +35,23 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // Player in hitstun
+        if(invincible)
+        {
+            return;
+        }
+
         float hSpeed = Input.GetAxisRaw("Horizontal") * runSpeed * Time.deltaTime;
+        if (hSpeed > 0)
+        {
+            isFacingLeft = false;
+            sprite.flipX = false;
+        }
+        else if (hSpeed < 0)
+        {
+            isFacingLeft = true;
+            sprite.flipX = true;
+        }
         transform.Translate(new Vector2(hSpeed, 0));
 
         if (Input.GetButtonDown("Jump") && allowedJumps > usedJumps)
@@ -63,6 +81,18 @@ public class PlayerController : MonoBehaviour
     private void TakeDamage()
     {
         StartCoroutine(FlashWhite(.05f, .5f));
+        Vector2 hitDir = Vector2.zero;
+        if (isFacingLeft)
+        {
+            hitDir = new Vector2(hitForce, hitForce);
+        }
+        else
+        {
+            hitDir = new Vector2(-hitForce, hitForce);
+        }
+        body.velocity = Vector2.zero;
+        body.AddForce(hitDir, ForceMode2D.Impulse);
+        usedJumps = allowedJumps;
         invincible = true;
     }
 

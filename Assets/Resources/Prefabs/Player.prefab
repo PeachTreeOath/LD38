@@ -101,7 +101,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   runSpeed: 3
   jumpForce: 7
+  hitForce: 3
   allowedJumps: 2
+  maxHealth: 0
 --- !u!212 &212591641417016346
 SpriteRenderer:
   m_ObjectHideFlags: 1
