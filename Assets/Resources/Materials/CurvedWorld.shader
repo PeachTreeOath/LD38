@@ -12,7 +12,7 @@
 		CGPROGRAM
 		// Surface shader function is called surf, and vertex preprocessor function is called vert
 		// addshadow used to add shadow collector and caster passes following vertex modification
-#pragma surface surf Lambert vertex:vert addshadow
+#pragma surface surf Unlit Lambert vertex:vert addshadow
 
 		// Access the shaderlab properties
 		uniform sampler2D _MainTex;
@@ -47,6 +47,11 @@
 
 		// Now apply the offset back to the vertices in model space
 		v.vertex += mul(unity_WorldToObject, vv);
+	}
+
+	half4 LightingUnlit(SurfaceOutput s, half3 lightDir, half atten)
+	{
+		return half4(s.Albedo, s.Alpha);
 	}
 
 	// This is just a default surface shader
