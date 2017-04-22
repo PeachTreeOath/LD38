@@ -7,6 +7,7 @@ public class Meteor : MonoBehaviour {
 	public Vector2 moveDir;
 	public float moveSpeed;
 	public float torque;
+    public GameObject Explosion;
 
 	Rigidbody2D rBody;
 
@@ -28,6 +29,8 @@ public class Meteor : MonoBehaviour {
             other.GetComponent<Block>().TakeDamage();
             //Destroy(other.gameObject);
         }
+        GameObject go = Instantiate<GameObject>(Explosion, transform.position, transform.rotation);
+        
         Destroy(gameObject);
     
     }
