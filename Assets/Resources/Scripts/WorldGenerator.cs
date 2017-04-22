@@ -124,7 +124,6 @@ public class WorldGenerator : MonoBehaviour {
 			{
 				onDeck[i].transform.parent = temp.transform;
 			}
-			//temp.transform.localScale = new Vector3(-1, 1, 1);
 
 			if(!left)
 			{
@@ -141,8 +140,6 @@ public class WorldGenerator : MonoBehaviour {
 				float leftDist = temp.transform.position.x - worldLeftMost.transform.position.x;
 				temp.transform.position += Vector3.left * (leftDist + onDeckRadius);
 			}
-
-			onDeck = onDeck.OrderBy(go => go.transform.position.x).ToList();
 
 			for(int i = 0; i < onDeck.Count; i++)
 			{
