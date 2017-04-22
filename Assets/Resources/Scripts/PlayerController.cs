@@ -10,6 +10,7 @@ public class PlayerController : MonoBehaviour
     public float hitForce;
     public int allowedJumps;
     public int maxHealth;
+    public int metal;
 
     public GameObject shopText;
 
@@ -24,6 +25,8 @@ public class PlayerController : MonoBehaviour
     private Material origMat;
     private Material flashMat;
     private HeartCanvas heartCanvas;
+
+
 
     private bool shopAllowed;
 
@@ -206,5 +209,7 @@ public class PlayerController : MonoBehaviour
             shop.ToggleShop();
         }
     }
+
+    
 
 }
