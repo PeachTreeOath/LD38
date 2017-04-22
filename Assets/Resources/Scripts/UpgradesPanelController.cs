@@ -9,7 +9,6 @@ public class UpgradesPanelController : MonoBehaviour {
     void Start()
     {
         group = GetComponent<CanvasGroup>();
-		Debug.Log(Time.time + " Set group to " + group);
     }
 
     public void ToggleShow(bool show)

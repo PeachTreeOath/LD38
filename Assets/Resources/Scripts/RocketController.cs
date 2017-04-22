@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class RocketController : MonoBehaviour {
 
@@ -38,7 +39,7 @@ public class RocketController : MonoBehaviour {
 		{
 			if(!launching)
 			{
-				if(Input.GetAxisRaw("Submit") > 0)
+				if(Input.GetAxisRaw("Activate") > 0)
 				{
 					launching = true;
 					launchTimer = Time.time;
@@ -98,6 +99,7 @@ public class RocketController : MonoBehaviour {
 		if(col.gameObject.name.Equals("RocketTrigger"))
 		{
 			flyable = true;
+			GameObject.Find("ShipPrompt").GetComponent<Text>().color = Color.white;
 		}
 	}
 
@@ -106,6 +108,7 @@ public class RocketController : MonoBehaviour {
 		if(col.gameObject.name.Equals("RocketTrigger"))
 		{
 			flyable = false;
+			GameObject.Find("ShipPrompt").GetComponent<Text>().color = new Color(0, 0, 0, 0);
 		}
 	}
 }
