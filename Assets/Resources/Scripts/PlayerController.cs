@@ -72,6 +72,12 @@ public class PlayerController : MonoBehaviour
             body.AddForce(new Vector2(0, jumpForce), ForceMode2D.Impulse);
             animator.SetBool("isJumping", true);
         }
+
+        // TODO: Make sure you're by the workstation before allowing this
+        if (Input.GetButtonDown("Activate"))
+        {
+            ShopManager.instance.ToggleShop();
+        }
     }
 
     void OnCollisionEnter2D(Collision2D col)
