@@ -10,6 +10,7 @@ public class PostEffect : MonoBehaviour {
 	void OnRenderImage(RenderTexture src, RenderTexture dest)
 	{
 		mat.SetFloat("_ScreenWidth", Screen.width);
+		mat.SetFloat("_ScreenHeight", Screen.height);
 		mat.SetFloat("_CurveIntensity", curveIntensity);
 		Graphics.Blit(src, dest, mat);
 	}
