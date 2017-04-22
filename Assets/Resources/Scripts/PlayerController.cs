@@ -76,7 +76,7 @@ public class PlayerController : MonoBehaviour
         // TODO: Make sure you're by the workstation before allowing this
         if (Input.GetButtonDown("Activate"))
         {
-            ShopManager.instance.ToggleShop();
+            ShopManager.Instance.ToggleShop();
         }
     }
 
@@ -123,7 +123,7 @@ public class PlayerController : MonoBehaviour
 
         // Update "listeners"
         heartCanvas.SetHealth(currentHealth);
-        GameManager.instance.SetHealth(currentHealth);
+        GameManager.Instance.SetHealth(currentHealth);
     }
 
     private IEnumerator FlashWhite(float flashSpeed, float duration)

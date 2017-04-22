@@ -16,9 +16,9 @@ public class AudioManager : Singleton<AudioManager>
     private AudioSource soundChannel;
     private Dictionary<string, AudioClip> soundMap;
 
-    protected override void Awake()
+    void Awake()
     {
-        base.Awake();
+        //base.Awake();
 
         soundMap = new Dictionary<string, AudioClip>();
 
