@@ -15,6 +15,7 @@ public class GameManager : Singleton<GameManager> {
     private void GameOver()
     {
         // Show upgrade menu
+        PlayerInventoryManager.Instance.ResetGame();
         SceneTransitionManager.Instance.ResetGame();
     }
 }

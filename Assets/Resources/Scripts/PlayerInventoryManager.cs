@@ -13,26 +13,32 @@ public class PlayerInventoryManager : Singleton<PlayerInventoryManager> {
     [HideInInspector]
     public int PlayerResources { get; set; }
 
-    private List<GameObject> AvailablePickups;
-
-    private void Awake()
-    {
-        AvailablePickups = new List<GameObject>();
-    }
+    private int TotalSpawnedPickups = 0;
 
     public bool CanSpawnNewPickup()
     {
-        if (AvailablePickups.Count < MaximumAllowedPickups)
+        if (TotalSpawnedPickups < MaximumAllowedPickups)
             return true;
         else
             return false;
     }
 
-    public void AddTrackedPickup(GameObject go)
+    public void SpawnedNewPickup()
     {
-        if (!AvailablePickups.Contains(go))
-            AvailablePickups.Add(go);
+        TotalSpawnedPickups++;
     }
 
+    public void CollectedPickup()
+    {
+        if (TotalSpawnedPickups > 0)
+            TotalSpawnedPickups--;
+        PlayerResources++;
+    } 
+
+    public void ResetGame()
+    {
+        TotalSpawnedPickups = 0;
+        PlayerResources = 0;
+    }
 
 }
