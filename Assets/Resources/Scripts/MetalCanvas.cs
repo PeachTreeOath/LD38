@@ -28,7 +28,8 @@ public class MetalCanvas : MonoBehaviour {
 
     public void UpdateMetalCount(int metal)
     {
-
+        MetalText.text = "x " + metal;
+        PlayScaleAnimation();
     }
 
     void UpdateScaleAnaimation()

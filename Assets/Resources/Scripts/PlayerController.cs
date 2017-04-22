@@ -25,7 +25,7 @@ public class PlayerController : MonoBehaviour
     private Material origMat;
     private Material flashMat;
     private HeartCanvas heartCanvas;
-
+    private MetalCanvas metalCanvas;
 
 
     private bool shopAllowed;
@@ -54,6 +54,7 @@ public class PlayerController : MonoBehaviour
         sprite = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
         heartCanvas = GameObject.Find("UICanvas").GetComponent<HeartCanvas>();
+        metalCanvas = GameObject.Find("UICanvas").transform.FindChild("MetalImage").GetComponent<MetalCanvas>();
         origMat = sprite.material;
         flashMat = Resources.Load<Material>("Materials/WhiteFlashMat");
 
