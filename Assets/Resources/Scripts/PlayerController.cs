@@ -88,6 +88,7 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetButtonDown("Jump") && allowedJumps > usedJumps)
         {
+            AudioManager.Instance.PlaySound("Jump", 0.3f);
             usedJumps++;
             body.velocity = Vector2.zero;
             body.AddForce(new Vector2(0, jumpForce), ForceMode2D.Impulse);
