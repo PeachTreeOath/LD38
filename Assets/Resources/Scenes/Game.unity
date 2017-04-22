@@ -283,7 +283,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   meteorFab: {fileID: 1465577769175938, guid: 399e128a01af846419b78d2162cb2e4f, type: 2}
-  seconds_per_meteor: 2
+  seconds_per_meteor: 1000
   speed_min: 5
   speed_max: 15
   torque_min: 4
@@ -470,6 +470,10 @@ Prefab:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+    - target: {fileID: 1557328819300782, guid: 79298b3baf4e73a4c83af24f0a162d06, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 79298b3baf4e73a4c83af24f0a162d06, type: 2}
   m_IsPrefabParent: 0

@@ -14,16 +14,26 @@ public class Singleton<T> : MonoBehaviour where T : MonoBehaviour
 	{
 		get
 		{
-			if(instance == null)
-			{
-				GameObject foo = new GameObject();
-				foo.name = typeof(T).ToString();
-				instance = foo.AddComponent<T>();
-				instance.SendMessage("Start", SendMessageOptions.DontRequireReceiver);
-				DontDestroyOnLoad(foo);
-			}
+			MakeSingletone();
 
 			return instance;
+		}
+	}
+
+	void Start()
+	{
+		MakeSingletone();
+	}
+
+	static void MakeSingletone()
+	{
+		if(instance == null)
+		{
+			GameObject foo = new GameObject();
+			foo.name = typeof(T).ToString();
+			instance = foo.AddComponent<T>();
+			instance.SendMessage("Start", SendMessageOptions.DontRequireReceiver);
+			DontDestroyOnLoad(foo);
 		}
 	}
 }

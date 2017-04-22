@@ -23,9 +23,23 @@ public class PlayerController : MonoBehaviour
     private Material flashMat;
     private HeartCanvas heartCanvas;
 
+	public enum FacingEnum { LEFT, RIGHT };
+
+	public FacingEnum GetFacing()
+	{
+		if(isFacingLeft)
+		{
+			return FacingEnum.LEFT;
+		}else
+		{
+			return FacingEnum.RIGHT;
+		}
+	}
+
     // Use this for initialization
     void Start()
     {
+		Globals.playerObj = gameObject;
         body = GetComponent<Rigidbody2D>();
         sprite = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
