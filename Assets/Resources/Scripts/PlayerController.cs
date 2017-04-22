@@ -73,7 +73,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    void OnTriggerStay2D(Collider2D col)
+    void OnTriggerEnter2D(Collider2D col)
     {
         if (!invincible && col.gameObject.tag.Equals("Meteor"))
         {
@@ -97,6 +97,7 @@ public class PlayerController : MonoBehaviour
         body.AddForce(hitDir, ForceMode2D.Impulse);
         usedJumps = allowedJumps;
         invincible = true;
+        currentHealth--;
 
         // Update "listeners"
         heartCanvas.SetHealth(currentHealth);
