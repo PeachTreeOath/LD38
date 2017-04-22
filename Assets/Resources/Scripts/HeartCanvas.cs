@@ -16,7 +16,7 @@ public class HeartCanvas : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        firstHeartLocation = transform.Find("FirstHeartLocation");
+		firstHeartLocation = GameObject.Find("FirstHeartLocation").transform;
         heartList = new List<GameObject>();
     }
 
@@ -25,9 +25,9 @@ public class HeartCanvas : MonoBehaviour
         for (int i = 0; i < maxHealth; i++)
         {
             GameObject heart = Instantiate(heartFab);
-            //heart.transform.position = firstHeartLocation.position + new Vector3(i * heartSpacing, 0, 0);
+            heart.transform.position = firstHeartLocation.position + new Vector3(i * heartSpacing, 0, 0);
             heart.transform.SetParent(transform);
-            //heartList.Add(heart);
+            heartList.Add(heart);
         }
     }
 

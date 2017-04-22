@@ -4,10 +4,13 @@ using UnityEngine;
 
 public class PostEffect : MonoBehaviour {
 
+	public float curveIntensity;
 	public Material mat;
 
 	void OnRenderImage(RenderTexture src, RenderTexture dest)
 	{
+		mat.SetFloat("_ScreenWidth", Screen.width);
+		mat.SetFloat("_CurveIntensity", curveIntensity);
 		Graphics.Blit(src, dest, mat);
 	}
 }
