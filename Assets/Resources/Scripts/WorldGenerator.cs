@@ -9,11 +9,12 @@ public class WorldGenerator : MonoBehaviour {
     public int radius;
     public float scale;
     public float swissCheeseDensity;
-    public float swissCheeseHoleSizes;
+    public float swissCheeseHoleWidth;
+    public float swissCheeseHoleHeight;
 
     private bool swissCheeseXGenning = false;
     private bool swissCheeseYGenning = false;
-    private int swissCheeseYValue = -1;
+    private HashSet<int> swissCheeseYValues = new HashSet<int>();
 
     public GameObject dirt;
     public List<Sprite> BlockTypes;
@@ -42,18 +43,21 @@ public class WorldGenerator : MonoBehaviour {
 		worldTiles = new List<GameObject>();
         for (int y = 0; y < depth; y++)
         {
+            
             for (int x = 0; x < radius; x++)
             {
-                if (Random.Range(0f, 1f) < swissCheeseDensity)
+                if (swissCheeseYValues.Contains(x) || Random.Range(0f, 1f) < swissCheeseDensity)
                 {
+                    swissCheeseYValues.Remove(x);
                     //gen holes
                     swissCheeseXGenning = true;
                     swissCheeseYGenning = true;
-                    swissCheeseYValue = y;
+                    if (Random.Range(0f, 1f) < swissCheeseHoleHeight)
+                        swissCheeseYValues.Add(x);
                 }
 
                 bool genTile = true;
-                if (swissCheeseXGenning && Random.Range(0f, 1f) < swissCheeseHoleSizes)
+                if (swissCheeseXGenning && Random.Range(0f, 1f) < swissCheeseHoleWidth)
                 {
                     genTile = false;
                 }
@@ -61,7 +65,7 @@ public class WorldGenerator : MonoBehaviour {
                 {
                     swissCheeseYGenning = false;
                     swissCheeseXGenning = false;
-                    swissCheeseYValue = -1;
+                    
                 }
 
                 if (genTile == true || y < 3)
@@ -96,6 +100,7 @@ public class WorldGenerator : MonoBehaviour {
             //Lava
             sprite = BlockTypes[0];
             go.GetComponent<Block>().isIndestructable = true;
+            go.GetComponent<Block>().Type = Block.BlockType.Damage;
             go.GetComponent<Block>().Health = 1;
         }
         else if(index < 15)

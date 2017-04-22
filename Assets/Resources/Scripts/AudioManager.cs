@@ -16,10 +16,8 @@ public class AudioManager : Singleton<AudioManager>
     private AudioSource soundChannel;
     private Dictionary<string, AudioClip> soundMap;
 
-    void Awake()
+    void Start()
     {
-        //base.Awake();
-
         soundMap = new Dictionary<string, AudioClip>();
 
         musicChannel = new GameObject().AddComponent<AudioSource>();

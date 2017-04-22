@@ -439,8 +439,9 @@ MonoBehaviour:
   depth: 20
   radius: 100
   scale: 0.5
-  swissCheeseDensity: 0.07
-  swissCheeseHoleSizes: 0.85
+  swissCheeseDensity: 0.05
+  swissCheeseHoleWidth: 0.8
+  swissCheeseHoleHeight: 0.5
   dirt: {fileID: 1375242716300212}
   BlockTypes:
   - {fileID: 21300000, guid: be5b10acbc19410478c46ae2d08b3e4b, type: 3}
@@ -459,6 +460,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Health: 1
+  isIndestructable: 0
 --- !u!114 &114792165855664202
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -473,6 +475,7 @@ MonoBehaviour:
   moveDir: {x: 0, y: 0}
   moveSpeed: 0
   torque: 0
+  Explosion: {fileID: 0}
 --- !u!212 &212084370371768320
 SpriteRenderer:
   m_ObjectHideFlags: 1

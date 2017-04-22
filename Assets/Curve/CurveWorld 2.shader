@@ -7,7 +7,8 @@ Shader "Curve/CurveWorld2"
 	Properties {
         // Diffuse texture
         _MainTex ("Base (RGB)", 2D) = "white" {}
-        _ScreenWidth("_ScreenWidth", float) = 1080
+        _ScreenWidth("_ScreenWidth", float) = 1920
+        _ScreenHeight("_ScreenHeight", float) = 1080
         _CurveIntensity("_CurveIntensity", float) = .001
     }
     SubShader {
@@ -43,6 +44,7 @@ Shader "Curve/CurveWorld2"
 
         	sampler2D _MainTex;
         	uniform float _ScreenWidth;
+        	uniform float _ScreenHeight;
         	uniform float _CurveIntensity;
 
         	fixed4 frag (v2f i) : SV_Target
@@ -51,7 +53,9 @@ Shader "Curve/CurveWorld2"
         		float xPerc = i.vertex.x/(_ScreenWidth);
 				float rescaleXperc = (xPerc - 0.5f) * 2;
         		float diff = pi * (rescaleXperc);
-        		fixed4 col = tex2D(_MainTex, i.uv + float2(0, (diff*diff)/_CurveIntensity));
+        		float yOffset = (diff*diff)/_CurveIntensity;
+        		yOffset *= min(1, i.vertex.y/(_ScreenHeight*.3f));
+        		fixed4 col = tex2D(_MainTex, i.uv + float2(0, yOffset));
         		return col;
         	}
         	ENDCG
