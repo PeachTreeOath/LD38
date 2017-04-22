@@ -46,6 +46,7 @@ public class RocketController : MonoBehaviour {
 					launchParticles.transform.position = gameObject.transform.position;
 					launchParticles.transform.parent = gameObject.transform;
 					Globals.playerObj.GetComponent<PlayerController>().enabled = false;
+					Globals.playerObj.GetComponent<Renderer>().enabled = false;
 				}
 			}
 		}
