@@ -78,8 +78,7 @@ public class PlayerController : MonoBehaviour
     {
         if (col.gameObject.tag.Equals("Ground"))
         {
-            animator.SetBool("isJumping", false);
-            usedJumps = 0;
+         
         }
     }
 
@@ -89,6 +88,12 @@ public class PlayerController : MonoBehaviour
         {
             TakeDamage();
         }
+    }
+
+    public void ResetJump()
+    {
+        animator.SetBool("isJumping", false);
+        usedJumps = 0;
     }
 
     private void TakeDamage()
