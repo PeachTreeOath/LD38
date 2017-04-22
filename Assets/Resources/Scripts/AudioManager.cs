@@ -4,8 +4,8 @@ using UnityEngine;
 
 /// <summary>
 /// Audio manager that loads in all sounds from the Audio folder. Use the file names as arguments to play.
-/// Requires an AudioChannel prefab with an audio source component in it.
 /// </summary>
+[RequireComponent(typeof(AudioListener))]
 public class AudioManager : Singleton<AudioManager>
 {
 
@@ -22,11 +22,13 @@ public class AudioManager : Singleton<AudioManager>
 
         soundMap = new Dictionary<string, AudioClip>();
 
-        musicChannel = Instantiate(Resources.Load<GameObject>("Prefabs/AudioChannel")).GetComponent<AudioSource>();
+        musicChannel = new GameObject().AddComponent<AudioSource>();
         musicChannel.transform.SetParent(transform);
+        musicChannel.name = "MusicChannel";
         musicChannel.loop = true;
-        soundChannel = Instantiate(Resources.Load<GameObject>("Prefabs/AudioChannel")).GetComponent<AudioSource>();
+        soundChannel = new GameObject().AddComponent<AudioSource>();
         soundChannel.transform.SetParent(transform);
+        soundChannel.name = "SoundChannel";
 
         AudioClip[] clips = Resources.LoadAll<AudioClip>("Audio");
         foreach (AudioClip clip in clips)
