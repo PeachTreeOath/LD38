@@ -135,7 +135,7 @@ public class PlayerController : MonoBehaviour
     {
         if (col.gameObject.tag.Equals("Ground"))
         {
-         
+           
         }
 
     }
@@ -144,12 +144,14 @@ public class PlayerController : MonoBehaviour
     {
         if (!invincible && col.gameObject.tag.Equals("Meteor"))
         {
+            
             TakeDamage();
         }
         
         if(col.gameObject.tag.Equals("Backpack") &&
            col.GetType() == typeof(CircleCollider2D))
         {
+            
             NearBackpack(true);
         }
     }

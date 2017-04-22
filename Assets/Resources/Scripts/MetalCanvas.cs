@@ -39,10 +39,10 @@ public class MetalCanvas : MonoBehaviour {
             if (_reverse)
             {
 
-                if (Time.time / (_timeSinceAnimationStart + _duration) >= 1.0f)
+                if (Time.time / (_timeSinceAnimationStart + _duration) <= 1.0f)
                 {
-                    float normalizedTime = _timeSinceAnimationStart + _duration;
-                    Vector2 scale = Vector2.Lerp(originalScale, tempScale, normalizedTime);
+                    float normalizedTime = Time.time / (_timeSinceAnimationStart + _duration);
+                    Vector2 scale = Vector2.Lerp(tempScale, originalScale, normalizedTime);
                     transform.localScale = scale;
                 }
                 else
@@ -50,14 +50,13 @@ public class MetalCanvas : MonoBehaviour {
                     _reverse = false;
                     _animatingScale = false;
                     transform.localScale = originalScale;
-                    transform.localScale = tempScale;
                 }
             }
             else
             {
-                if ( Time.time / (_timeSinceAnimationStart + _duration) >= 1.0f)
+                if ( Time.time / (_timeSinceAnimationStart + _duration) <= 1.0f)
                 {
-                    float normalizedTime =  _timeSinceAnimationStart + _duration;
+                    float normalizedTime = Time.time / (_timeSinceAnimationStart + _duration);
                     Vector2 scale = Vector2.Lerp(originalScale, tempScale, normalizedTime);
                     transform.localScale = scale;
                 }
@@ -76,6 +75,7 @@ public class MetalCanvas : MonoBehaviour {
         _animatingScale = true;
         _reverse = false;
         _timeSinceAnimationStart = Time.time;
+        transform.localScale = originalScale;
         tempScale = new Vector2(_scale, _scale);
     }
 }
