@@ -10,6 +10,7 @@ public class MeteorSpawner : MonoBehaviour {
 	public float speed_max;
 	public float torque_min;
 	public float torque_max;
+    public int max_blastSize;
 
 	private float prev_time;
 
@@ -39,6 +40,7 @@ public class MeteorSpawner : MonoBehaviour {
 		float x_angle = -x_offset;
 		meteor.transform.position = new Vector3(cam_pos.x + x_offset, cam_pos.y + 10, 1);
 		Meteor m = meteor.GetComponent<Meteor>();
+        m.blastRadius = Random.Range(0, max_blastSize);
 		m.moveDir = new Vector3(x_angle, -1).normalized;
 		m.moveSpeed = Random.Range(speed_min, speed_max);
 		m.torque = Random.Range(torque_min, torque_max);
