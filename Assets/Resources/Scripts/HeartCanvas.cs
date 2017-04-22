@@ -25,9 +25,9 @@ public class HeartCanvas : MonoBehaviour
         for (int i = 0; i < maxHealth; i++)
         {
             GameObject heart = Instantiate(heartFab);
-            heart.transform.position = firstHeartLocation.position + new Vector3(i * heartSpacing, 0, 0);
+            //heart.transform.position = firstHeartLocation.position + new Vector3(i * heartSpacing, 0, 0);
             heart.transform.SetParent(transform);
-            heartList.Add(heart);
+            //heartList.Add(heart);
         }
     }
 
