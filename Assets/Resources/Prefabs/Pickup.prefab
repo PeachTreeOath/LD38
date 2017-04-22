@@ -24,8 +24,8 @@ GameObject:
   - component: {fileID: 61069994479737006}
   - component: {fileID: 58031773150581420}
   m_Layer: 0
-  m_Name: PickupTest
-  m_TagString: Backpack
+  m_Name: Pickup
+  m_TagString: Pickup
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -58,7 +58,7 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: dd1df0d25bf264b4ca9b4a8c9a5813c6, type: 2}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
@@ -71,7 +71,7 @@ CircleCollider2D:
   m_GameObject: {fileID: 1726125879128090}
   m_Enabled: 0
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: dd1df0d25bf264b4ca9b4a8c9a5813c6, type: 2}
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -86,7 +86,7 @@ BoxCollider2D:
   m_GameObject: {fileID: 1726125879128090}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: dd1df0d25bf264b4ca9b4a8c9a5813c6, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0

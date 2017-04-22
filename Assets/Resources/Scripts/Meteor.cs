@@ -75,9 +75,8 @@ public class Meteor : MonoBehaviour {
                 Rigidbody2D rb = go.GetComponent<Rigidbody2D>();
 
                 PlayerInventoryManager.Instance.AddTrackedPickup(go);
-                //Vector2 randomDirection = new Vector2(Random.Range(0, 2), Random.Range(0, 2));
-                //rb.AddForce(randomDirection * moveSpeed, ForceMode2D.Force);
-                //rb.AddTorque(torque);
+                Vector2 randomDirection = new Vector2(Random.Range(0, 2), Random.Range(0, 2));
+                rb.AddForce(randomDirection * moveSpeed, ForceMode2D.Force);
             }
         }
     }
