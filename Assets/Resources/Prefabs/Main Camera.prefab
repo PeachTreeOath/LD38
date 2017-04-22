@@ -117,7 +117,7 @@ AudioListener:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1566027372119680}
-  m_Enabled: 1
+  m_Enabled: 0
 --- !u!92 &92982255086295112
 Behaviour:
   m_ObjectHideFlags: 1
@@ -138,6 +138,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   curveIntensity: 50
   mat: {fileID: 2100000, guid: 87b9aace05211b64a901f586b99e5824, type: 2}
+  vignettePower: 1.65
 --- !u!114 &114775654550498990
 MonoBehaviour:
   m_ObjectHideFlags: 1
