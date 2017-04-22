@@ -10,6 +10,8 @@ public class MeteorSpawner : MonoBehaviour {
 	public float speed_max;
 	public float torque_min;
 	public float torque_max;
+    public float spawnerWidth;
+    public float spawnerAngleVariance;
     public int max_blastSize;
 
 	private float prev_time;
@@ -36,8 +38,8 @@ public class MeteorSpawner : MonoBehaviour {
 		Vector3 cam_pos = Camera.main.gameObject.transform.position;
 
 		GameObject meteor = Instantiate<GameObject>(meteorFab);
-		float x_offset = UnityEngine.Random.Range(-2f, 2f);
-		float x_angle = -x_offset;
+		float x_offset = UnityEngine.Random.Range(-spawnerWidth, spawnerWidth);
+		float x_angle = Random.Range(-spawnerAngleVariance, spawnerAngleVariance);
 		meteor.transform.position = new Vector3(cam_pos.x + x_offset, cam_pos.y + 10, 1);
 		Meteor m = meteor.GetComponent<Meteor>();
        
