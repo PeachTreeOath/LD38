@@ -43,7 +43,7 @@ public class Meteor : MonoBehaviour {
         }
         
         GameObject go = Instantiate<GameObject>(Explosion, transform.position, transform.rotation);
-        go.GetComponent<AudioSource>().PlayOneShot(go.GetComponent<AudioSource>().clip);
+        AudioManager.Instance.PlaySound("Explosion", .15f);
         if (blastRadius > 1.0f)
         {
             go.transform.localScale = new Vector3(blastRadius, blastRadius, 1.0f);

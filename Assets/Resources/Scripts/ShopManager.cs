@@ -8,6 +8,8 @@ public class ShopManager : Singleton<ShopManager>
     private bool isActive;
     private UpgradesPanelController shopPanel;
 
+
+
     void Start()
     {
         
