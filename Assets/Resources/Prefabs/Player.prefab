@@ -123,7 +123,7 @@ Rigidbody2D:
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 4
 --- !u!61 &61186547289159550
 BoxCollider2D:
@@ -223,6 +223,7 @@ MonoBehaviour:
   hitForce: 3
   allowedJumps: 2
   maxHealth: 3
+  shopText: {fileID: 0}
 --- !u!114 &114766738809615600
 MonoBehaviour:
   m_ObjectHideFlags: 1
