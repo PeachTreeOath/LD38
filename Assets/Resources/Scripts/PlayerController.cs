@@ -11,6 +11,8 @@ public class PlayerController : MonoBehaviour
     public int allowedJumps;
     public int maxHealth;
 
+    public GameObject shopText;
+
     private Rigidbody2D body;
     private int usedJumps;
     private int currentHealth;
@@ -22,6 +24,8 @@ public class PlayerController : MonoBehaviour
     private Material origMat;
     private Material flashMat;
     private HeartCanvas heartCanvas;
+
+    private bool shopAllowed;
 
 	public enum FacingEnum { LEFT, RIGHT };
 
@@ -40,6 +44,9 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
 		Globals.playerObj = gameObject;
+
+        DisallowShop();
+
         body = GetComponent<Rigidbody2D>();
         sprite = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
@@ -88,7 +95,7 @@ public class PlayerController : MonoBehaviour
         }
 
         // TODO: Make sure you're by the workstation before allowing this
-        if (Input.GetButtonDown("Activate"))
+        if (shopAllowed && Input.GetButtonDown("Activate"))
         {
             ShopManager.Instance.ToggleShop();
         }
@@ -100,6 +107,7 @@ public class PlayerController : MonoBehaviour
         {
          
         }
+
     }
 
     void OnTriggerEnter2D(Collider2D col)
@@ -108,6 +116,21 @@ public class PlayerController : MonoBehaviour
         {
             TakeDamage();
         }
+        
+        if(col.gameObject.tag.Equals("Backpack") &&
+           col.GetType() == typeof(CircleCollider2D))
+        {
+            AllowShop();
+        }
+    }
+
+    void OnTriggerExit2D(Collider2D col)
+    {
+        if(col.gameObject.tag.Equals("Backpack") &&
+           col.GetType() == typeof(CircleCollider2D))
+        {
+            DisallowShop();
+        }        
     }
 
     public void ResetJump()
@@ -161,6 +184,25 @@ public class PlayerController : MonoBehaviour
         animator.SetBool("isJumping", false);
         sprite.material = origMat;
         invincible = false;
+    }
+
+    private void AllowShop()
+    {
+        shopText.SetActive(true);
+        shopAllowed = true;
+    }
+
+    private void DisallowShop()
+    {
+        ShopManager shop = ShopManager.Instance;
+
+        shopText.SetActive(false);
+        shopAllowed = false;
+
+        if(shop.IsActive())
+        {
+            shop.ToggleShop();
+        }
     }
 
 }
