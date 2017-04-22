@@ -1,6 +1,4 @@
 ﻿
-
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerInventoryManager : Singleton<PlayerInventoryManager> {
@@ -14,6 +12,10 @@ public class PlayerInventoryManager : Singleton<PlayerInventoryManager> {
     public int PlayerResources { get; set; }
 
     private int TotalSpawnedPickups = 0;
+
+    protected override void Init()
+    {
+    }
 
     public bool CanSpawnNewPickup()
     {
@@ -40,5 +42,4 @@ public class PlayerInventoryManager : Singleton<PlayerInventoryManager> {
         TotalSpawnedPickups = 0;
         PlayerResources = 0;
     }
-
 }

@@ -41,6 +41,7 @@ public class WorldGenerator : MonoBehaviour {
     void GenerateWorld()
     {
 		worldTiles = new List<GameObject>();
+		worldTiles.Add(GameObject.Find("Backpack"));
         for (int y = 0; y < depth; y++)
         {
             
