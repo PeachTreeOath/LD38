@@ -141,6 +141,7 @@ public class PlayerController : MonoBehaviour
 
     public void TakeDamage()
     {
+        AudioManager.Instance.PlaySound("Damage",0.5f);
         StartCoroutine(FlashWhite(.05f, .5f));
         Vector2 hitDir = Vector2.zero;
         if (isFacingLeft)
