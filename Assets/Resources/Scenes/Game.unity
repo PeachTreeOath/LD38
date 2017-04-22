@@ -262,6 +262,16 @@ Prefab:
       propertyPath: shopText
       value: 
       objectReference: {fileID: 1957464621}
+    - target: {fileID: 114637630213776266, guid: 9a7486ec6c5601e40ab592ada7f2fe7f,
+        type: 2}
+      propertyPath: carryingRunSpeed
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114637630213776266, guid: 9a7486ec6c5601e40ab592ada7f2fe7f,
+        type: 2}
+      propertyPath: backpack
+      value: 
+      objectReference: {fileID: 1095587073}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9a7486ec6c5601e40ab592ada7f2fe7f, type: 2}
   m_IsPrefabParent: 0
@@ -451,6 +461,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1095587073 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1128935228007050, guid: 5230d2008a0ed2c4aa6ff681c8ef0fa6,
+    type: 2}
+  m_PrefabInternal: {fileID: 1440996998}
 --- !u!1001 &1433074484
 Prefab:
   m_ObjectHideFlags: 0
