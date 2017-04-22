@@ -15,6 +15,6 @@ public class GameManager : Singleton<GameManager> {
     private void GameOver()
     {
         // Show upgrade menu
-        Debug.Log("you died~");
+        SceneTransitionManager.Instance.ResetGame();
     }
 }

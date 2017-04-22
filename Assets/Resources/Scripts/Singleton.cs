@@ -5,25 +5,35 @@ using System.Collections;
 /// Unity singleton implementation. Call SetDontDestroy() to persist objects between scenes. 
 /// </summary>
 /// <typeparam name="T">Class to singleton</typeparam>
-public class Singleton<T> : MonoBehaviour where T : Singleton<T>
+public class Singleton<T> : MonoBehaviour where T : MonoBehaviour
 {
 
-    public static T instance;
+	static T instance;
 
-    protected virtual void Awake()
-    {
-        if (instance == null)
-        {
-            instance = (T)this;
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
-    }
+	public static T Instance
+	{
+		get
+		{
+			MakeSingletone();
 
-    protected void SetDontDestroy()
-    {
-        DontDestroyOnLoad(gameObject);
-    }
+			return instance;
+		}
+	}
+
+	void Start()
+	{
+		MakeSingletone();
+	}
+
+	static void MakeSingletone()
+	{
+		if(instance == null)
+		{
+			GameObject foo = new GameObject();
+			foo.name = typeof(T).ToString();
+			instance = foo.AddComponent<T>();
+			instance.SendMessage("Start", SendMessageOptions.DontRequireReceiver);
+			DontDestroyOnLoad(foo);
+		}
+	}
 }

@@ -20,6 +20,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4956281294479136}
   - component: {fileID: 114847453307434936}
+  - component: {fileID: 114321211854964306}
+  - component: {fileID: 114822807228493738}
   m_Layer: 0
   m_Name: Managers
   m_TagString: Untagged
@@ -40,6 +42,34 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114321211854964306
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1037287271186516}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c0236e08bf361ab4fa0c3d77f5dbcf7b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &114822807228493738
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1037287271186516}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57860345214523043b1744afac3f930a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  meteorFab: {fileID: 1465577769175938, guid: 399e128a01af846419b78d2162cb2e4f, type: 2}
+  seconds_per_meteor: 1
+  speed_min: 30
+  speed_max: 50
+  torque_min: -10
+  torque_max: 10
 --- !u!114 &114847453307434936
 MonoBehaviour:
   m_ObjectHideFlags: 1

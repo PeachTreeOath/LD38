@@ -31,14 +31,16 @@ public class SceneTransitionManager : Singleton<SceneTransitionManager>
     }
 
     public void ResetGame()
-    {
+    {/*
         string nextSceneName = "Game";
         SceneManager.UnloadSceneAsync("Game");
 
         tempScene = SceneManager.CreateScene(tempSceneName);
         SceneManager.SetActiveScene(tempScene);
         SceneManager.LoadScene(nextSceneName, LoadSceneMode.Additive);
-        StartCoroutine(SetActive(SceneManager.GetSceneByName(nextSceneName), true));
+        StartCoroutine(SetActive(SceneManager.GetSceneByName(nextSceneName), true));*/
+
+		Application.LoadLevel(Application.loadedLevel);
     }
 
     // You only need to use mergeTempScene if you are potentially

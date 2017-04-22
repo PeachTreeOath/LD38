@@ -7,6 +7,8 @@ Shader "Curve/CurveWorld"
 	Properties {
         // Diffuse texture
         _MainTex ("Base (RGB)", 2D) = "white" {}
+        _ScreenWidth("_ScreenWidth", float) = 1080
+        _CurveIntensity("_CurveIntensity", float) = .001
     }
     SubShader {
         Cull off ZWrite Off ZTest Always
@@ -40,10 +42,15 @@ Shader "Curve/CurveWorld"
         	}
 
         	sampler2D _MainTex;
+        	uniform float _ScreenWidth;
+        	uniform float _CurveIntensity;
 
         	fixed4 frag (v2f i) : SV_Target
         	{
-        		fixed4 col = tex2D(_MainTex, i.uv + float2(0, (1-sin(i.vertex.x/475))/5));
+        		float pi = 3.14159;
+        		float xPerc = i.vertex.x/_ScreenWidth;
+        		float diff = pi * xPerc;
+        		fixed4 col = tex2D(_MainTex, i.uv + float2(0, sin(diff)*_CurveIntensity));
         		return col;
         	}
         	ENDCG
