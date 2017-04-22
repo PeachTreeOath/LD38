@@ -371,6 +371,16 @@ Prefab:
       propertyPath: m_RootOrder
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 114635882027118418, guid: b7551f6a5e6912d4899c0e2623e792d5,
+        type: 2}
+      propertyPath: spawnerWidth
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 114635882027118418, guid: b7551f6a5e6912d4899c0e2623e792d5,
+        type: 2}
+      propertyPath: spawnerAngleVariance
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b7551f6a5e6912d4899c0e2623e792d5, type: 2}
   m_IsPrefabParent: 0
@@ -474,6 +484,21 @@ Prefab:
     - target: {fileID: 4341946587499418, guid: 79298b3baf4e73a4c83af24f0a162d06, type: 2}
       propertyPath: m_RootOrder
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114273795356543962, guid: 79298b3baf4e73a4c83af24f0a162d06,
+        type: 2}
+      propertyPath: swissCheeseHoleHeight
+      value: 0.97
+      objectReference: {fileID: 0}
+    - target: {fileID: 114273795356543962, guid: 79298b3baf4e73a4c83af24f0a162d06,
+        type: 2}
+      propertyPath: swissCheeseHoleWidth
+      value: 0.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 114273795356543962, guid: 79298b3baf4e73a4c83af24f0a162d06,
+        type: 2}
+      propertyPath: swissCheeseDensity
+      value: 0.01
       objectReference: {fileID: 0}
     - target: {fileID: 212084370371768320, guid: 79298b3baf4e73a4c83af24f0a162d06,
         type: 2}
