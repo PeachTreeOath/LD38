@@ -25,7 +25,8 @@ public class Meteor : MonoBehaviour {
     {
         if (other.tag.Equals("Ground"))
         {
-            Destroy(other.gameObject);
+            other.GetComponent<Block>().TakeDamage();
+            //Destroy(other.gameObject);
         }
         Destroy(gameObject);
     

@@ -75,14 +75,14 @@ public class WorldGenerator : MonoBehaviour {
 					worldTiles.Add(goLeft);
 
                     //Changes the texture ultilized based on hieght: Lava, dirt, rock, etc.
-                    goRight.GetComponent<SpriteRenderer>().sprite = GetWorldSprite(y);
-                    goLeft.GetComponent<SpriteRenderer>().sprite = GetWorldSprite(y);
+                    AssignBlockType(y, goRight);
+                    AssignBlockType(y, goLeft);
                 }
             }
         }
     }
 
-    Sprite GetWorldSprite(int index)
+    Sprite AssignBlockType(int index, GameObject go)
     {
         //Add y variation
         if (index != 0 && index < 18)
@@ -95,23 +95,29 @@ public class WorldGenerator : MonoBehaviour {
         {
             //Lava
             sprite = BlockTypes[0];
+            go.GetComponent<Block>().isIndestructable = true;
+            go.GetComponent<Block>().Health = 1;
         }
         else if(index < 15)
         {
             //Stone
             sprite = BlockTypes[1];
+            go.GetComponent<Block>().Health = 3;
         }
         else if(index < 19)
         {
             //Dirt
             sprite = BlockTypes[2];
+            go.GetComponent<Block>().Health = 1;
         }
         else 
         {
             //Grass
             sprite = BlockTypes[3];
+            go.GetComponent<Block>().Health = 1;
         }
 
+        go.GetComponent<SpriteRenderer>().sprite = sprite;
         return sprite;
     }
 
