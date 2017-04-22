@@ -37,7 +37,7 @@ public class AudioManager : Singleton<AudioManager>
         ToggleMute(mute);
 
         //Kick off initial theme here
-        //PlayMusicWithIntro("exampleIntro", "exampleLoop", .25f);
+        PlayMusic( "ItsASmallWorld", .50f);
     }
 
 	public void UpdateMusicVolume()
