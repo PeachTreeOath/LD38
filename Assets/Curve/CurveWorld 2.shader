@@ -10,6 +10,7 @@ Shader "Curve/CurveWorld2"
         _ScreenWidth("_ScreenWidth", float) = 1920
         _ScreenHeight("_ScreenHeight", float) = 1080
         _CurveIntensity("_CurveIntensity", float) = .001
+        _VignettePower ("VignettePower", Range(0.0,6.0)) = 1.5
     }
     SubShader {
         Cull off ZWrite Off ZTest Always
@@ -46,6 +47,8 @@ Shader "Curve/CurveWorld2"
         	uniform float _ScreenWidth;
         	uniform float _ScreenHeight;
         	uniform float _CurveIntensity;
+        	uniform float _VignettePower;
+
 
         	fixed4 frag (v2f i) : SV_Target
         	{
@@ -56,6 +59,12 @@ Shader "Curve/CurveWorld2"
         		float yOffset = (diff*diff)/_CurveIntensity;
         		yOffset *= min(1, i.vertex.y/(_ScreenHeight*.3f));
         		fixed4 col = tex2D(_MainTex, i.uv + float2(0, yOffset));
+
+        		float4 renderTex = tex2D(_MainTex, i.uv);
+		        float2 dist = (i.uv - 0.5f) * 1.25f;
+		        dist.x = 1 - dot(dist, dist)  * _VignettePower;
+		        col *= dist.x; 
+
         		return col;
         	}
         	ENDCG
