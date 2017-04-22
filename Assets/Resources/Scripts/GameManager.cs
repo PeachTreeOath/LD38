@@ -2,15 +2,19 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameManager : MonoBehaviour {
+public class GameManager : Singleton<GameManager> {
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+	public void SetHealth(int health)
+    {
+        if(health <= 0)
+        {
+            GameOver();
+        }
+    }
+
+    private void GameOver()
+    {
+        // Show upgrade menu
+        Debug.Log("you died~");
+    }
 }

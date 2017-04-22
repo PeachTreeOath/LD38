@@ -20,16 +20,19 @@ public class PlayerController : MonoBehaviour
     private SpriteRenderer sprite;
     private Material origMat;
     private Material flashMat;
+    private HeartCanvas heartCanvas;
 
     // Use this for initialization
     void Start()
     {
         body = GetComponent<Rigidbody2D>();
         sprite = GetComponent<SpriteRenderer>();
+        heartCanvas = GameObject.Find("UICanvas").GetComponent<HeartCanvas>();
         origMat = sprite.material;
         flashMat = Resources.Load<Material>("Materials/WhiteFlashMat");
 
         currentHealth = maxHealth;
+        heartCanvas.SetMaxHealth(maxHealth);
     }
 
     // Update is called once per frame
@@ -94,6 +97,10 @@ public class PlayerController : MonoBehaviour
         body.AddForce(hitDir, ForceMode2D.Impulse);
         usedJumps = allowedJumps;
         invincible = true;
+
+        // Update "listeners"
+        heartCanvas.SetHealth(currentHealth);
+        GameManager.instance.SetHealth(currentHealth);
     }
 
     private IEnumerator FlashWhite(float flashSpeed, float duration)
@@ -117,4 +124,5 @@ public class PlayerController : MonoBehaviour
         sprite.material = origMat;
         invincible = false;
     }
+
 }
