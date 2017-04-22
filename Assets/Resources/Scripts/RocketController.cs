@@ -38,7 +38,7 @@ public class RocketController : MonoBehaviour {
 		{
 			if(!launching)
 			{
-				if(Input.GetAxisRaw("Activate") > 0)
+				if(Input.GetAxisRaw("Submit") > 0)
 				{
 					launching = true;
 					launchTimer = Time.time;
