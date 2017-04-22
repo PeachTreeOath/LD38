@@ -6,7 +6,11 @@ public class Meteor : MonoBehaviour {
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        Destroy(other.gameObject);
+        if (other.tag.Equals("Ground"))
+        {
+            Destroy(other.gameObject);
+        }
         Destroy(gameObject);
+    
     }
 }
