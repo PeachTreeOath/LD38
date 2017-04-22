@@ -215,6 +215,12 @@ Prefab:
       propertyPath: m_AnchoredPosition.y
       value: 75.3
       objectReference: {fileID: 0}
+    - target: {fileID: 114458540931588156, guid: a2abcd712b1d7554886845985dc14efa,
+        type: 2}
+      propertyPath: heartFab
+      value: 
+      objectReference: {fileID: 1885956845158522, guid: 1acba631c96d03248b92995df6dabaee,
+        type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a2abcd712b1d7554886845985dc14efa, type: 2}
   m_IsPrefabParent: 0
