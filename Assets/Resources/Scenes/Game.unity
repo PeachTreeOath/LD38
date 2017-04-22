@@ -293,6 +293,7 @@ MonoBehaviour:
   speed_max: 15
   torque_min: 4
   torque_max: 60
+  max_blastSize: 0
 --- !u!4 &395296715
 Transform:
   m_ObjectHideFlags: 0
