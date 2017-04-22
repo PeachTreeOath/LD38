@@ -16,6 +16,7 @@ public class WorldGenerator : MonoBehaviour {
     private int swissCheeseYValue = -1;
 
     public GameObject dirt;
+    public List<Sprite> BlockTypes;
 	List<GameObject> worldTiles;
 	Vector3 lastPos;
 	PlayerController pController;
@@ -63,18 +64,55 @@ public class WorldGenerator : MonoBehaviour {
                     swissCheeseYValue = -1;
                 }
 
-                if (genTile == true)
+                if (genTile == true || y < 3)
                 {
                     GameObject goRight = Instantiate<GameObject>(dirt, transform);
                     goRight.transform.position = new Vector3(dirt.transform.position.x + (x * scale), dirt.transform.position.y + (y * scale));
-					worldTiles.Add(goRight);
+                    worldTiles.Add(goRight);
 
                     GameObject goLeft = Instantiate<GameObject>(dirt, transform);
                     goLeft.transform.position = new Vector3(dirt.transform.position.x - (x * scale), dirt.transform.position.y + (y * scale));
 					worldTiles.Add(goLeft);
+
+                    //Changes the texture ultilized based on hieght: Lava, dirt, rock, etc.
+                    goRight.GetComponent<SpriteRenderer>().sprite = GetWorldSprite(y);
+                    goLeft.GetComponent<SpriteRenderer>().sprite = GetWorldSprite(y);
                 }
             }
         }
+    }
+
+    Sprite GetWorldSprite(int index)
+    {
+        //Add y variation
+        if (index != 0 && index < 18)
+        {
+            index += Random.Range(0, 5);
+        }
+
+        Sprite sprite = new Sprite();
+        if(index < 5)
+        {
+            //Lava
+            sprite = BlockTypes[0];
+        }
+        else if(index < 15)
+        {
+            //Stone
+            sprite = BlockTypes[1];
+        }
+        else if(index < 19)
+        {
+            //Dirt
+            sprite = BlockTypes[2];
+        }
+        else 
+        {
+            //Grass
+            sprite = BlockTypes[3];
+        }
+
+        return sprite;
     }
 
 	void WrapWorld()
