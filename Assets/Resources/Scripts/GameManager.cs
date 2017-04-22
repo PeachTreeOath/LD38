@@ -15,6 +15,13 @@ public class GameManager : Singleton<GameManager> {
     private void GameOver()
     {
         // Show upgrade menu
-        Debug.Log("you died~");
+        if(SceneTransitionManager.instance != null)
+        {
+            SceneTransitionManager.instance.ResetGame();
+        }
+        else
+        {
+            Debug.LogError("You forgot to load the persistence scene");
+        }
     }
 }
