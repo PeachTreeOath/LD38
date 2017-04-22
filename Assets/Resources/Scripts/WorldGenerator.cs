@@ -93,7 +93,6 @@ public class WorldGenerator : MonoBehaviour {
 					float dist = worldTiles[i].transform.position.x - Globals.playerObj.transform.position.x;
 					if(Mathf.Abs(dist) > wrapDist)
 					{
-						float factor = 1;
 						if((pController.GetFacing() == PlayerController.FacingEnum.LEFT && dist > 0))
 						{
 							onDeck.Add(worldTiles[i]);

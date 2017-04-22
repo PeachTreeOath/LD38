@@ -10,7 +10,7 @@ public class ShopManager : Singleton<ShopManager>
 
     void Start()
     {
-        shopPanel = GameObject.Find("UpgradesPanel").GetComponent<UpgradesPanelController>();
+        
     }
 
     void Update()
@@ -25,6 +25,7 @@ public class ShopManager : Singleton<ShopManager>
     public void ToggleShop()
     { 
         isActive = !isActive;
+		shopPanel = GameObject.Find("UpgradesPanel").GetComponent<UpgradesPanelController>();
         shopPanel.ToggleShow(isActive);
     }
 

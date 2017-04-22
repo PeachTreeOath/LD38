@@ -72,7 +72,7 @@ public class RocketController : MonoBehaviour {
 			Time.time - transitionTimer >= transitionTime)
 		{
 			GameObject nextLevelPrompt = Instantiate(nextLevelPromptFab) as GameObject;
-			nextLevelPrompt.transform.parent = GameObject.Find("UICanvas").transform;
+			nextLevelPrompt.transform.SetParent(GameObject.Find("UICanvas").transform);
 			nextLevelPrompt.transform.localPosition = Vector3.zero;
 			Time.timeScale = 0;
 			Destroy(this);
