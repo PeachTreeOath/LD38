@@ -41,6 +41,7 @@ public class RocketController : MonoBehaviour {
 			{
 				if(Input.GetAxisRaw("Activate") > 0)
 				{
+                    AudioManager.Instance.PlaySound("Door_Sound",0.5f);
 					launching = true;
 					launchTimer = Time.time;
 					launchParticles = Instantiate(launchParticlesFab) as GameObject;
