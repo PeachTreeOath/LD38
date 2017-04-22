@@ -34,7 +34,7 @@
 		vv.xyz -= _WorldSpaceCameraPos.xyz;
 
 		// Modify the Y coordinate to warp the world space.
-		vv = float4(0.0f, ((vv.x*-vv.x) / 5) / (10), 0.0f, 0.0f);
+		vv = float4(0.0f, ((vv.x*-vv.x) / _Curvature) / (10), 0.0f, 0.0f);
 		/*if (vv.x >= 0.0f)
 		{
 			vv = float4(0.0f, ((vv.x*-vv.x) / 5) / (vv.y + 10), 0.0f, 0.0f);
