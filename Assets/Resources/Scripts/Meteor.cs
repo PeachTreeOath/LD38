@@ -41,7 +41,10 @@ public class Meteor : MonoBehaviour {
         }
         
         GameObject go = Instantiate<GameObject>(Explosion, transform.position, transform.rotation);
-        
+        if (blastRadius > 1.0f)
+        {
+            go.transform.localScale = new Vector3(blastRadius, blastRadius, 1.0f);
+        }
         Destroy(gameObject);
     
     }
