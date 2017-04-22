@@ -20,7 +20,7 @@ public class MeteorSpawner : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		prev_time = 0;
+		prev_time = Time.time;
 	}
 	
 	// Update is called once per frame
