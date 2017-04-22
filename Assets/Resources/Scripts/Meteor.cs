@@ -11,16 +11,18 @@ public class Meteor : MonoBehaviour {
     public GameObject Explosion;
 
 	Rigidbody2D rBody;
+    CameraFollow mainCameraScript;
 
-	void Start()
+    void Start()
 	{
 		rBody = gameObject.GetComponent<Rigidbody2D>();
+        mainCameraScript = GameObject.FindWithTag("MainCamera").GetComponent<CameraFollow>();
 	}
 
 	void FixedUpdate()
 	{
 		rBody.AddForce(moveDir * moveSpeed, ForceMode2D.Force);
-		rBody.AddTorque(torque);
+        rBody.AddTorque(torque);
 	}
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -46,6 +48,8 @@ public class Meteor : MonoBehaviour {
             go.transform.localScale = new Vector3(blastRadius, blastRadius, 1.0f);
         }
         Destroy(gameObject);
-    
+
+        mainCameraScript.shakeCycles = 5;
+        mainCameraScript.shakeIntensity = 0.2f;
     }
 }
