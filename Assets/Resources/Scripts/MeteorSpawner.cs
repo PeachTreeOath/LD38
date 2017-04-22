@@ -32,10 +32,12 @@ public class MeteorSpawner : MonoBehaviour {
 
 	void genMeteor()
 	{
+		Vector3 cam_pos = Camera.main.gameObject.transform.position;
+
 		GameObject meteor = Instantiate<GameObject>(meteorFab);
-		meteor.transform.position = new Vector3(0, 10, 1);
+		meteor.transform.position = new Vector3(cam_pos.x, cam_pos.y + 10, 1);
 		rb2d = meteor.GetComponent<Rigidbody2D>();
-		rb2d.AddForce(new Vector3(0, -1) * 10, ForceMode2D.Impulse);
+		rb2d.AddForce(new Vector3(0, -1) * UnityEngine.Random.Range(speed_min, speed_max), ForceMode2D.Impulse);
 		rb2d.AddTorque(UnityEngine.Random.Range(torque_min, torque_max));			
 	}
 }

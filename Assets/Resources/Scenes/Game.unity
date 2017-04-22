@@ -469,3 +469,25 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 79298b3baf4e73a4c83af24f0a162d06, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &1438954854 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1037287271186516, guid: a3a195454079b30409ff3e59a660d07b,
+    type: 2}
+  m_PrefabInternal: {fileID: 1081919212}
+--- !u!114 &1438954857
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1438954854}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57860345214523043b1744afac3f930a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  meteorFab: {fileID: 1465577769175938, guid: 399e128a01af846419b78d2162cb2e4f, type: 2}
+  seconds_per_meteor: 1
+  speed_min: 30
+  speed_max: 50
+  torque_min: -10
+  torque_max: 10
