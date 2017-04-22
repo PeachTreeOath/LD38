@@ -13,7 +13,8 @@ public class GroundCheck : MonoBehaviour {
 
 	void OnTriggerEnter2D(Collider2D col)
     {
-        if (col.gameObject.tag.Equals("Ground"))
+        if (col.gameObject.tag.Equals("Ground") ||
+            col.gameObject.tag.Equals("Backpack"))
         {
             player.ResetJump();
         }
