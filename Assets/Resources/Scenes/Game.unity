@@ -307,7 +307,7 @@ Prefab:
     - target: {fileID: 114006984428803984, guid: 20b1801696b62f34c97f822e92dbc41e,
         type: 2}
       propertyPath: curveIntensity
-      value: 10
+      value: 50
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 20b1801696b62f34c97f822e92dbc41e, type: 2}
