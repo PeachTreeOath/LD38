@@ -118,8 +118,6 @@ public class WorldGenerator : MonoBehaviour {
 			GameObject leftMost = GetLeftMost(onDeck);
 			GameObject rightMost = GetRightMost(onDeck);
 
-			//onDeck = onDeck.OrderBy(go => go.transform.position.x).ToList();
-
 			float xPos = leftMost.transform.position.x + (rightMost.transform.position.x - leftMost.transform.position.x)/2f;
 			temp.transform.position = new Vector3( xPos, 0, leftMost.transform.position.z );
 			for(int i = 0; i < onDeck.Count; i++)
@@ -143,11 +141,15 @@ public class WorldGenerator : MonoBehaviour {
 				float leftDist = temp.transform.position.x - worldLeftMost.transform.position.x;
 				temp.transform.position += Vector3.left * (leftDist + onDeckRadius);
 			}
-			/*
+
+			onDeck = onDeck.OrderBy(go => go.transform.position.x).ToList();
+
 			for(int i = 0; i < onDeck.Count; i++)
 			{
 				onDeck[i].transform.parent = oldParent.transform;
-			}*/
+			}
+
+			Destroy(temp);
 
 			lastPos = Globals.playerObj.transform.position;
 		}
