@@ -35,9 +35,11 @@ public class MeteorSpawner : MonoBehaviour {
 		Vector3 cam_pos = Camera.main.gameObject.transform.position;
 
 		GameObject meteor = Instantiate<GameObject>(meteorFab);
-		meteor.transform.position = new Vector3(cam_pos.x, cam_pos.y + 10, 1);
+		float x_offset = UnityEngine.Random.Range(-2f, 2f);
+		float x_angle = -x_offset;
+		meteor.transform.position = new Vector3(cam_pos.x + x_offset, cam_pos.y + 10, 1);
 		rb2d = meteor.GetComponent<Rigidbody2D>();
-		rb2d.AddForce(new Vector3(0, -1) * UnityEngine.Random.Range(speed_min, speed_max), ForceMode2D.Impulse);
+		rb2d.AddForce(new Vector3(x_angle, -1) * UnityEngine.Random.Range(speed_min, speed_max), ForceMode2D.Impulse);
 		rb2d.AddTorque(UnityEngine.Random.Range(torque_min, torque_max));			
 	}
 }
