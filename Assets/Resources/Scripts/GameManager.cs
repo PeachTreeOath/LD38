@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class GameManager : Singleton<GameManager> {
 
+	protected override void Init()
+	{
+
+	}
+
 	public void SetHealth(int health)
     {
         if(health <= 0)

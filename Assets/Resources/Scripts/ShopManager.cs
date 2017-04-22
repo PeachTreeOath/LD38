@@ -8,12 +8,10 @@ public class ShopManager : Singleton<ShopManager>
     private bool isActive;
     private UpgradesPanelController shopPanel;
 
+	protected override void Init()
+	{
 
-
-    void Start()
-    {
-        
-    }
+	}
 
     void Update()
     {
