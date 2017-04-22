@@ -65,14 +65,20 @@ public class Meteor : MonoBehaviour {
     /// <param name="amountSpawned"></param>
     private void SpawnResources(int amountSpawned)
     {
-        for (int i = 0; i <= amountSpawned; i++)
+        for (int i = 0; i < amountSpawned; i++)
         {
-            GameObject go = Instantiate(PickupItem);
-            go.transform.position = this.transform.position;
-            Rigidbody2D rb = go.GetComponent<Rigidbody2D>();
-            Vector2 randomDirection = new Vector2(Random.Range(0, 2), Random.Range(0, 2));
-            rb.AddForce(randomDirection * moveSpeed, ForceMode2D.Force);
-            rb.AddTorque(torque);
+            if (PlayerInventoryManager.Instance.CanSpawnNewPickup())
+            {
+                GameObject go = Instantiate(PickupItem);
+                go.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
+                go.transform.position = this.transform.position;
+                Rigidbody2D rb = go.GetComponent<Rigidbody2D>();
+
+                PlayerInventoryManager.Instance.AddTrackedPickup(go);
+                //Vector2 randomDirection = new Vector2(Random.Range(0, 2), Random.Range(0, 2));
+                //rb.AddForce(randomDirection * moveSpeed, ForceMode2D.Force);
+                //rb.AddTorque(torque);
+            }
         }
     }
 }
