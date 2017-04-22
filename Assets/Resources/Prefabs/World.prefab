@@ -438,8 +438,8 @@ MonoBehaviour:
   depth: 20
   radius: 100
   scale: 0.5
-  swissCheeseDensity: 0.4
-  swissCheeseHoleSizes: 0.4
+  swissCheeseDensity: 0.07
+  swissCheeseHoleSizes: 0.85
   dirt: {fileID: 1375242716300212}
 --- !u!114 &114792165855664202
 MonoBehaviour:
