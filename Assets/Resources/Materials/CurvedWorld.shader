@@ -34,14 +34,15 @@
 		vv.xyz -= _WorldSpaceCameraPos.xyz;
 
 		// Modify the Y coordinate to warp the world space.
-		if (vv.x >= 0.0f)
+		vv = float4(0.0f, ((vv.x*-vv.x) / 5) / (10), 0.0f, 0.0f);
+		/*if (vv.x >= 0.0f)
 		{
 			vv = float4(0.0f, ((vv.x*-vv.x) / 5) / (vv.y + 10), 0.0f, 0.0f);
 		}
 		else
 		{
-			vv = float4(0.0f, -(((vv.x*vv.x) / 5) / (vv.y + 10)), 0.0f, 0.0f);
-		}
+			vv = float4(0.0f, (((vv.x*vv.x) / 5) / (vv.y + 10)), 0.0f, 0.0f);
+		}*/
 
 
 		// Now apply the offset back to the vertices in model space
