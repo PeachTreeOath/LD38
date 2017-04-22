@@ -16,9 +16,11 @@ public class NextLevelPoller : MonoBehaviour {
 		if(!loadingLevel &&
 			Input.GetAxisRaw("Activate") > 0)
 		{
+			Time.timeScale = 1;
 			loadingLevel = true;
 			Debug.Log(Time.time + " go to next level");
 			//TODO: Load next level
+			SceneTransitionManager.Instance.ResetGame();
 		}
 	}
 }
