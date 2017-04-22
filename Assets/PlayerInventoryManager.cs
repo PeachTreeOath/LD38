@@ -15,10 +15,10 @@ public class PlayerInventoryManager : Singleton<PlayerInventoryManager> {
 
     private List<GameObject> AvailablePickups;
 
-    private void Awake()
-    {
-        AvailablePickups = new List<GameObject>();
-    }
+	protected override void Init ()
+	{
+		AvailablePickups = new List<GameObject>();
+	}
 
     public bool CanSpawnNewPickup()
     {

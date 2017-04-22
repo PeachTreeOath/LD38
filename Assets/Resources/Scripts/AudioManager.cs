@@ -16,28 +16,33 @@ public class AudioManager : Singleton<AudioManager>
     private AudioSource soundChannel;
     private Dictionary<string, AudioClip> soundMap;
 
+	protected override void Init ()
+	{
+		soundMap = new Dictionary<string, AudioClip>();
+
+		musicChannel = new GameObject().AddComponent<AudioSource>();
+		musicChannel.transform.SetParent(transform);
+		musicChannel.name = "MusicChannel";
+		musicChannel.loop = true;
+		soundChannel = new GameObject().AddComponent<AudioSource>();
+		soundChannel.transform.SetParent(transform);
+		soundChannel.name = "SoundChannel";
+
+		AudioClip[] clips = Resources.LoadAll<AudioClip>("Audio");
+		foreach (AudioClip clip in clips)
+		{
+			soundMap.Add(clip.name, clip);
+		}
+
+		ToggleMute(mute);
+
+		//Kick off initial theme here
+		PlayMusic( "ItsASmallWorld", .50f);
+	}
+
     void Start()
     {
-        soundMap = new Dictionary<string, AudioClip>();
-
-        musicChannel = new GameObject().AddComponent<AudioSource>();
-        musicChannel.transform.SetParent(transform);
-        musicChannel.name = "MusicChannel";
-        musicChannel.loop = true;
-        soundChannel = new GameObject().AddComponent<AudioSource>();
-        soundChannel.transform.SetParent(transform);
-        soundChannel.name = "SoundChannel";
-
-        AudioClip[] clips = Resources.LoadAll<AudioClip>("Audio");
-        foreach (AudioClip clip in clips)
-        {
-            soundMap.Add(clip.name, clip);
-        }
-
-        ToggleMute(mute);
-
-        //Kick off initial theme here
-        PlayMusic( "ItsASmallWorld", .50f);
+		
     }
 
 	public void UpdateMusicVolume()

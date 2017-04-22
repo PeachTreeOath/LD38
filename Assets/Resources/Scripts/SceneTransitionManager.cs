@@ -13,6 +13,11 @@ public class SceneTransitionManager : Singleton<SceneTransitionManager>
     private Scene tempScene;
     private string tempSceneName = "TempScene";
 
+	protected override void Init()
+	{
+		
+	}
+
     public void ShowTitleScreen()
     {
         string nextSceneName = "Title";

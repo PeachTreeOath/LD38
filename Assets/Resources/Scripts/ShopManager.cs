@@ -14,6 +14,11 @@ public class ShopManager : Singleton<ShopManager>
         player = GameObject.Find("Player").GetComponent<PlayerController>();
     }
 
+	protected override void Init()
+	{
+
+	}
+
     void Update()
     {
         if (!isActive)
