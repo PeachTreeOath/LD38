@@ -469,8 +469,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MetalText: {fileID: 114935498869853566}
-  _duration: 1
-  _scale: 1.5
+  _duration: 0.5
+  _scale: 1.25
 --- !u!114 &114935498869853566
 MonoBehaviour:
   m_ObjectHideFlags: 1
