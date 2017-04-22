@@ -7,6 +7,7 @@ public class Meteor : MonoBehaviour {
 	public Vector2 moveDir;
 	public float moveSpeed;
 	public float torque;
+    public float blastRadius;
     public GameObject Explosion;
 
 	Rigidbody2D rBody;
@@ -29,8 +30,21 @@ public class Meteor : MonoBehaviour {
             other.GetComponent<Block>().TakeDamage();
             //Destroy(other.gameObject);
         }
-        GameObject go = Instantiate<GameObject>(Explosion, transform.position, transform.rotation);
+        RaycastHit2D[] hit2dList = Physics2D.CircleCastAll(transform.position, blastRadius, new Vector2(0.0f, 0.0f));
+        for(int i = 0; i < hit2dList.Length; i++)
+        {
+            if (hit2dList[i].collider.tag.Equals("Ground"))
+            {
+                hit2dList[i].collider.GetComponent<Block>().TakeDamage();
+                //Destroy(other.gameObject);
+            }
+        }
         
+        GameObject go = Instantiate<GameObject>(Explosion, transform.position, transform.rotation);
+        if (blastRadius > 1.0f)
+        {
+            go.transform.localScale = new Vector3(blastRadius, blastRadius, 1.0f);
+        }
         Destroy(gameObject);
     
     }
