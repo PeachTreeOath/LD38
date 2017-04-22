@@ -42,7 +42,7 @@ public class AudioManager : Singleton<AudioManager>
 
 	public void UpdateMusicVolume()
 	{
-		musicChannel.volume *= VolumeListener.volumeLevel;
+		musicChannel.volume = VolumeListener.volumeLevel;
 	}
 
     public void PlayMusic(string name, float volume)
