@@ -435,8 +435,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aec6a7575c84fab49a11662f35aa5361, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  depth: 10
+  depth: 20
   radius: 100
+  scale: 0.5
+  swissCheeseDensity: 0.4
+  swissCheeseHoleSizes: 0.4
   dirt: {fileID: 1375242716300212}
 --- !u!114 &114792165855664202
 MonoBehaviour:
