@@ -6,6 +6,7 @@ public class PlayerController : MonoBehaviour
 {
 
     public float runSpeed;
+    public float carryingRunSpeed;
     public float jumpForce;
     public float hitForce;
     public int allowedJumps;
@@ -13,6 +14,7 @@ public class PlayerController : MonoBehaviour
     public int metal;
 
     public GameObject shopText;
+    public GameObject backpack;
 
     private Rigidbody2D body;
     private int usedJumps;
@@ -28,9 +30,12 @@ public class PlayerController : MonoBehaviour
     private MetalCanvas metalCanvas;
 
 
-    private bool shopAllowed;
+    private bool nearBackpack;
+    private bool wearingBackpack;
 
 	public enum FacingEnum { LEFT, RIGHT };
+
+    private ShopManager shop;
 
 	public FacingEnum GetFacing()
 	{
@@ -47,8 +52,9 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
 		Globals.playerObj = gameObject;
+        shop = ShopManager.Instance;
 
-        DisallowShop();
+        NearBackpack(false);
 
         body = GetComponent<Rigidbody2D>();
         sprite = GetComponent<SpriteRenderer>();
@@ -71,7 +77,17 @@ public class PlayerController : MonoBehaviour
             return;
         }
 
-        float hSpeed = Input.GetAxisRaw("Horizontal") * runSpeed * Time.deltaTime;
+        float hSpeed;
+
+        if (wearingBackpack)
+        {
+            hSpeed = Input.GetAxisRaw("Horizontal") * carryingRunSpeed * Time.deltaTime;
+        }
+        else
+        {
+            hSpeed = Input.GetAxisRaw("Horizontal") * runSpeed * Time.deltaTime;
+        }
+
         if (hSpeed > 0)
         {
             isFacingLeft = false;
@@ -99,11 +115,20 @@ public class PlayerController : MonoBehaviour
             animator.SetBool("isJumping", true);
         }
 
-        // TODO: Make sure you're by the workstation before allowing this
-        if (shopAllowed && Input.GetButtonDown("Activate"))
+        if (nearBackpack && Input.GetButtonDown("Activate"))
         {
-            ShopManager.Instance.ToggleShop();
+            shop.ToggleShop();
         }
+
+        if (nearBackpack && !wearingBackpack && Input.GetButtonDown("Fire2"))
+        {
+            WearBackpack(true);
+        }
+        else if (wearingBackpack && Input.GetButtonDown("Fire2"))
+        {
+            WearBackpack(false);
+        }
+
     }
 
     void OnCollisionEnter2D(Collision2D col)
@@ -125,7 +150,7 @@ public class PlayerController : MonoBehaviour
         if(col.gameObject.tag.Equals("Backpack") &&
            col.GetType() == typeof(CircleCollider2D))
         {
-            AllowShop();
+            NearBackpack(true);
         }
     }
 
@@ -134,7 +159,7 @@ public class PlayerController : MonoBehaviour
         if(col.gameObject.tag.Equals("Backpack") &&
            col.GetType() == typeof(CircleCollider2D))
         {
-            DisallowShop();
+            NearBackpack(false);
         }        
     }
 
@@ -192,23 +217,39 @@ public class PlayerController : MonoBehaviour
         invincible = false;
     }
 
-    private void AllowShop()
+    private void NearBackpack(bool near)
     {
-        shopText.SetActive(true);
-        shopAllowed = true;
+        shopText.SetActive(near);
+        nearBackpack = near;
+
+        if(!near && shop.IsActive())
+        {
+            shop.ToggleShop();
+        }
     }
 
-    private void DisallowShop()
+    private void WearBackpack(bool wear)
     {
-        ShopManager shop = ShopManager.Instance;
+        wearingBackpack = wear;
 
-        shopText.SetActive(false);
-        shopAllowed = false;
+        if(!wear)
+        {
+            if(GetFacing() == FacingEnum.LEFT)
+            {
+                backpack.transform.position = new Vector3(transform.position.x + .5f, transform.position.y);
+            }
+            else
+            {
+                backpack.transform.position = new Vector3(transform.position.x - .5f, transform.position.y);
+            }
+        }
 
         if(shop.IsActive())
         {
             shop.ToggleShop();
         }
+
+        backpack.SetActive(!wear);
     }
 
     
