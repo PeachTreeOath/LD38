@@ -19,14 +19,6 @@ public class SceneTransitionManager : Singleton<SceneTransitionManager>
         SceneManager.LoadScene(nextSceneName, LoadSceneMode.Additive);
     }
 
-    public void ResetGame()
-    {
-        string nextSceneName = "Game";
-        SceneManager.UnloadSceneAsync("Game");
-        SceneManager.LoadScene(nextSceneName, LoadSceneMode.Additive);
-    }
-
-    /*
     public void StartGame()
     {
         string nextSceneName = "Game";
@@ -47,7 +39,7 @@ public class SceneTransitionManager : Singleton<SceneTransitionManager>
         SceneManager.SetActiveScene(tempScene);
         SceneManager.LoadScene(nextSceneName, LoadSceneMode.Additive);
         StartCoroutine(SetActive(SceneManager.GetSceneByName(nextSceneName), true));
-    }*/
+    }
 
     // You only need to use mergeTempScene if you are potentially
     // instantiating objects on the first frame of scene startup
