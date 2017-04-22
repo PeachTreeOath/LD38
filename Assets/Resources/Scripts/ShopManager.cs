@@ -7,6 +7,12 @@ public class ShopManager : Singleton<ShopManager>
 
     private bool isActive;
     private UpgradesPanelController shopPanel;
+    private PlayerController player;
+
+    void Start()
+    {
+        player = GameObject.Find("Player").GetComponent<PlayerController>();
+    }
 
 	protected override void Init()
 	{

@@ -16,6 +16,13 @@ public class PlayerController : MonoBehaviour
     public GameObject shopText;
     public GameObject backpack;
 
+    public int radarStat;
+    public int speedStat;
+    public int armorStat;
+    public int jumpStat;
+    public int magnetStat;
+    public int resourceStat;
+
     private Rigidbody2D body;
     private int usedJumps;
     private int currentHealth;
@@ -28,8 +35,7 @@ public class PlayerController : MonoBehaviour
     private Material flashMat;
     private HeartCanvas heartCanvas;
     private MetalCanvas metalCanvas;
-
-
+    
     private bool nearBackpack;
     private bool wearingBackpack;
 
