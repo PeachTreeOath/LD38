@@ -100,6 +100,7 @@ public class WorldGenerator : MonoBehaviour {
             //Lava
             sprite = BlockTypes[0];
             go.GetComponent<Block>().isIndestructable = true;
+            go.GetComponent<Block>().Type = Block.BlockType.Damage;
             go.GetComponent<Block>().Health = 1;
         }
         else if(index < 15)

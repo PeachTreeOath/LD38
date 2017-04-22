@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Block : MonoBehaviour {
 
+    public enum BlockType { Normal, Damage}
+    public BlockType Type = BlockType.Normal;
    public int Health = 0;
    public bool isIndestructable = false;
 
@@ -27,6 +29,17 @@ public class Block : MonoBehaviour {
                 Destroy(gameObject);
             }
         }
+    }
+
+    void OnCollisionEnter2D(Collision2D collision)
+    {
         
+        if (Type == BlockType.Damage)
+        {
+            if (collision.collider.tag == "Player")
+            {
+                collision.collider.GetComponent<PlayerController>().TakeDamage();
+            }
+        }
     }
 }
