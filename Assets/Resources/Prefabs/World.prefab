@@ -436,12 +436,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aec6a7575c84fab49a11662f35aa5361, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  depth: 20
+  depth: 40
   radius: 100
   scale: 0.5
-  swissCheeseDensity: 0.05
-  swissCheeseHoleWidth: 0.8
-  swissCheeseHoleHeight: 0.5
+  swissCheeseDensity: 0.01
+  swissCheeseHoleWidth: 0.6
+  swissCheeseHoleHeight: 0.97
   dirt: {fileID: 1375242716300212}
   BlockTypes:
   - {fileID: 21300000, guid: be5b10acbc19410478c46ae2d08b3e4b, type: 3}
@@ -459,7 +459,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e7e2b49627858b42bede97b8101ea71, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Health: 1
+  Type: 0
   isIndestructable: 0
 --- !u!114 &114792165855664202
 MonoBehaviour:
@@ -475,7 +475,10 @@ MonoBehaviour:
   moveDir: {x: 0, y: 0}
   moveSpeed: 0
   torque: 0
+  blastRadius: 0
   Explosion: {fileID: 0}
+  PickupItem: {fileID: 0}
+  radarArrow: {fileID: 0}
 --- !u!212 &212084370371768320
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -489,7 +492,7 @@ SpriteRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 6fc8580b701311744b3c11296cf2ae55, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
