@@ -20,6 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4444635849685958}
   - component: {fileID: 58761452625403236}
+  - component: {fileID: 114325063581464154}
   m_Layer: 0
   m_Name: MineralTrigger
   m_TagString: Untagged
@@ -252,6 +253,17 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &114325063581464154
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1151747125869182}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e455bb803cc6a9e42913f5133a4c82b2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114637630213776266
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -272,6 +284,7 @@ MonoBehaviour:
   metal: 0
   shopText: {fileID: 0}
   backpack: {fileID: 0}
+  rocket: {fileID: 0}
   radarStat: 0
   speedStat: 0
   armorStat: 0
@@ -320,7 +333,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 2
   m_Sprite: {fileID: 21300004, guid: 9740112cb844e634cace8ee23b6b09b3, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
