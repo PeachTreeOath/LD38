@@ -322,11 +322,6 @@ Prefab:
       objectReference: {fileID: 1957464621}
     - target: {fileID: 114637630213776266, guid: 9a7486ec6c5601e40ab592ada7f2fe7f,
         type: 2}
-      propertyPath: carryingRunSpeed
-      value: 1.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 114637630213776266, guid: 9a7486ec6c5601e40ab592ada7f2fe7f,
-        type: 2}
       propertyPath: backpack
       value: 
       objectReference: {fileID: 1095587073}

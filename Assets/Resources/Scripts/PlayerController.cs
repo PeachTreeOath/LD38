@@ -57,6 +57,7 @@ public class PlayerController : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+		Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("Player"), LayerMask.NameToLayer("Pickup"));
 		Globals.playerObj = gameObject;
         shop = ShopManager.Instance;
 
@@ -71,7 +72,7 @@ public class PlayerController : MonoBehaviour
         flashMat = Resources.Load<Material>("Materials/WhiteFlashMat");
 
         currentHealth = maxHealth;
-        heartCanvas.SetMaxHealth(maxHealth);
+        heartCanvas.SetHealth(currentHealth);
     }
 
     // Update is called once per frame

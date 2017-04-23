@@ -14,7 +14,7 @@ public class CraftButton : MonoBehaviour {
 		
 	}
 
-    void OnMouseDown()
+    public void OnClick()
     {
         Debug.Log("OWIEJR");
     }
