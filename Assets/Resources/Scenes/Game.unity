@@ -263,6 +263,9 @@ MonoBehaviour:
   - {fileID: 21300000, guid: c09253a798305804fbf4141c92c736df, type: 3}
   - {fileID: 21300000, guid: fce9d6074da7fe54ca0c88a5b38a370a, type: 3}
   - {fileID: 21300000, guid: e0d2381c9bad0cb43a19215a0391e727, type: 3}
+  JupitorBlockTypes: []
+  worldTiles: []
+  worldEntities: []
 --- !u!4 &262384568
 Transform:
   m_ObjectHideFlags: 0
@@ -821,6 +824,11 @@ Prefab:
     - target: {fileID: 4082641877537070, guid: 908b290969b5c284086a9ca7a756e77c, type: 2}
       propertyPath: m_RootOrder
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114448414922990346, guid: 908b290969b5c284086a9ca7a756e77c,
+        type: 2}
+      propertyPath: minY
+      value: -50
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 908b290969b5c284086a9ca7a756e77c, type: 2}

@@ -251,7 +251,7 @@ public class WorldGenerator : MonoBehaviour {
 		}
 	}
 
-	GameObject GetRightMost(List<GameObject> tiles)
+	public GameObject GetRightMost(List<GameObject> tiles)
 	{
 		GameObject rMost = Globals.playerObj;
 		for(int  i = 0; i < tiles.Count; i++)
@@ -268,7 +268,7 @@ public class WorldGenerator : MonoBehaviour {
 		return rMost;
 	}
 
-	GameObject GetLeftMost(List<GameObject> tiles)
+	public GameObject GetLeftMost(List<GameObject> tiles)
 	{
 		GameObject lMost = Globals.playerObj;
 		for(int  i = 0; i < tiles.Count; i++)
