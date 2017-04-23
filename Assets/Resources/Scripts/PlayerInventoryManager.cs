@@ -30,6 +30,11 @@ public class PlayerInventoryManager : Singleton<PlayerInventoryManager> {
         TotalSpawnedPickups++;
     }
 
+    public void DespawnedPickup()
+    {
+        TotalSpawnedPickups--;
+    }
+
     public void CollectedPickup()
     {
         if (TotalSpawnedPickups > 0)
