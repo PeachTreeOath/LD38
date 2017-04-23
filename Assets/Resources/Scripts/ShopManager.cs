@@ -39,9 +39,11 @@ public class ShopManager : NonPersistentSingleton<ShopManager>
     public bool hasBoosters;
 
     public bool debugOn;
+    private Material defaultMat;
 
     protected override void Init()
     {
+        defaultMat = Resources.Load<Material>("Materials/DefaultMaterial");
         player = GameObject.Find("Player").GetComponent<PlayerController>();
         rocket = GameObject.Find("RocketTest").GetComponent<RocketController>();
         costMap = new Dictionary<string, int[]>();
@@ -120,6 +122,7 @@ public class ShopManager : NonPersistentSingleton<ShopManager>
                 if (!debugOn)
                     PlayerInventoryManager.Instance.PlayerResources -= shipPartCost;
                 buttonCaller.SetOrbs(1);
+                GameObject.Find("EngineSilhouette").GetComponent<Image>().material = defaultMat;
             }
             return;
         }
@@ -132,6 +135,7 @@ public class ShopManager : NonPersistentSingleton<ShopManager>
                 if (!debugOn)
                     PlayerInventoryManager.Instance.PlayerResources -= shipPartCost;
                 buttonCaller.SetOrbs(1);
+                GameObject.Find("ShuttleSilhouette").GetComponent<Image>().material = defaultMat;
             }
             return;
         }
@@ -144,6 +148,7 @@ public class ShopManager : NonPersistentSingleton<ShopManager>
                 if (!debugOn)
                     PlayerInventoryManager.Instance.PlayerResources -= shipPartCost;
                 buttonCaller.SetOrbs(1);
+                GameObject.Find("BoostersSilhouette").GetComponent<Image>().material = defaultMat;
             }
             return;
         }

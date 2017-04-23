@@ -16,8 +16,11 @@ public class PlayerController : MonoBehaviour
     public int metal;
 
     public GameObject shopText;
+    public GameObject shipText;
     public GameObject backpack;
     public GameObject rocket;
+    public RocketController rocketController;
+
 
     private int radarStat;
     private int speedStat;
@@ -164,6 +167,16 @@ public class PlayerController : MonoBehaviour
             WearBackpack(false);
         }
 
+        //Refresh the text on every frame
+        NearBackpack(nearBackpack);
+
+    }
+
+    void OnDisable()
+    {
+        Debug.Log("Deactivate");
+        shipText.SetActive(false);
+        shopText.SetActive(false);
     }
 
     public void SetStat(string itemName, int newLevel)
@@ -217,7 +230,7 @@ public class PlayerController : MonoBehaviour
         }
 
         if (col.gameObject.tag.Equals("Backpack") &&
-           col.GetType() == typeof(CircleCollider2D))
+           col.GetType() == typeof(CapsuleCollider2D))
         {
             NearBackpack(true);
         }
@@ -226,7 +239,7 @@ public class PlayerController : MonoBehaviour
     void OnTriggerExit2D(Collider2D col)
     {
         if (col.gameObject.tag.Equals("Backpack") &&
-           col.GetType() == typeof(CircleCollider2D))
+           col.GetType() == typeof(CapsuleCollider2D))
         {
             NearBackpack(false);
         }
@@ -300,7 +313,21 @@ public class PlayerController : MonoBehaviour
     {
         shopText.SetActive(near);
         textHandler.SetNearCraft(near);
+
         nearBackpack = near;
+
+        if (near && !rocketController.launching && !rocketController.flying && rocketController.CheckIfAllPartsBuilt())
+        {
+            textHandler.SetNearShip(true);
+            shipText.SetActive(true);
+            rocketController.flyable = true;
+        }
+        else
+        {
+            textHandler.SetNearShip(false);
+            shipText.SetActive(false);
+            rocketController.flyable = false;
+        }
 
         if (!near && shop.IsActive())
         {

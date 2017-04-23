@@ -204,6 +204,16 @@ Prefab:
       propertyPath: rocket
       value: 
       objectReference: {fileID: 1492915126}
+    - target: {fileID: 114637630213776266, guid: 9a7486ec6c5601e40ab592ada7f2fe7f,
+        type: 2}
+      propertyPath: shipText
+      value: 
+      objectReference: {fileID: 322192159}
+    - target: {fileID: 114637630213776266, guid: 9a7486ec6c5601e40ab592ada7f2fe7f,
+        type: 2}
+      propertyPath: rocketController
+      value: 
+      objectReference: {fileID: 1492915127}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9a7486ec6c5601e40ab592ada7f2fe7f, type: 2}
   m_IsPrefabParent: 0
@@ -254,6 +264,11 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b7551f6a5e6912d4899c0e2623e792d5, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &322192159 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1971215656430992, guid: a2abcd712b1d7554886845985dc14efa,
+    type: 2}
+  m_PrefabInternal: {fileID: 1717544940}
 --- !u!1001 &670517459
 Prefab:
   m_ObjectHideFlags: 0
@@ -409,6 +424,21 @@ GameObject:
   m_PrefabParentObject: {fileID: 1521753897692980, guid: 908b290969b5c284086a9ca7a756e77c,
     type: 2}
   m_PrefabInternal: {fileID: 1825434945}
+--- !u!70 &1095587079
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1095587073}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -4.4, y: 5.84}
+  m_Size: {x: 17.2, y: 26.3}
+  m_Direction: 0
 --- !u!1 &1129676162 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 1094045775181042, guid: a2abcd712b1d7554886845985dc14efa,
@@ -503,6 +533,12 @@ GameObject:
   m_PrefabParentObject: {fileID: 1607717865388584, guid: 908b290969b5c284086a9ca7a756e77c,
     type: 2}
   m_PrefabInternal: {fileID: 1825434945}
+--- !u!114 &1492915127 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114448414922990346, guid: 908b290969b5c284086a9ca7a756e77c,
+    type: 2}
+  m_PrefabInternal: {fileID: 1825434945}
+  m_Script: {fileID: 11500000, guid: 8a17d96acb62ec1458ef31274ddc7fc6, type: 3}
 --- !u!1001 &1717544940
 Prefab:
   m_ObjectHideFlags: 0
@@ -625,6 +661,48 @@ Prefab:
       propertyPath: m_AnchorMax.y
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114424260116301010, guid: a2abcd712b1d7554886845985dc14efa,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114432858030002288, guid: a2abcd712b1d7554886845985dc14efa,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224040294590279742, guid: a2abcd712b1d7554886845985dc14efa,
+        type: 2}
+      propertyPath: m_AnchoredPosition.y
+      value: 23.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 224040294590279742, guid: a2abcd712b1d7554886845985dc14efa,
+        type: 2}
+      propertyPath: m_AnchoredPosition.x
+      value: 396.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 114424260116301010, guid: a2abcd712b1d7554886845985dc14efa,
+        type: 2}
+      propertyPath: m_Text
+      value: R to enter ship
+      objectReference: {fileID: 0}
+    - target: {fileID: 114432858030002288, guid: a2abcd712b1d7554886845985dc14efa,
+        type: 2}
+      propertyPath: m_Text
+      value: 'E to craft
+
+        F to pick up'
+      objectReference: {fileID: 0}
+    - target: {fileID: 114424260116301010, guid: a2abcd712b1d7554886845985dc14efa,
+        type: 2}
+      propertyPath: m_Color.r
+      value: 0.013793112
+      objectReference: {fileID: 0}
+    - target: {fileID: 114424260116301010, guid: a2abcd712b1d7554886845985dc14efa,
+        type: 2}
+      propertyPath: m_Color.b
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a2abcd712b1d7554886845985dc14efa, type: 2}
   m_IsPrefabParent: 0
@@ -666,6 +744,16 @@ Prefab:
     - target: {fileID: 4082641877537070, guid: 908b290969b5c284086a9ca7a756e77c, type: 2}
       propertyPath: m_RootOrder
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 58614393973016902, guid: 908b290969b5c284086a9ca7a756e77c,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 61705122551385848, guid: 908b290969b5c284086a9ca7a756e77c,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 908b290969b5c284086a9ca7a756e77c, type: 2}
