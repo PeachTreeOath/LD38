@@ -11,6 +11,8 @@ public class Pickup : MonoBehaviour
     {
         if (other.tag.Equals("Player"))
         {
+            
+            AudioManager.Instance.PlaySound("Item_Pickup_Sound", 8.0f);
             PlayerInventoryManager.Instance.CollectedPickup();
             Destroy(this.gameObject);
         }
