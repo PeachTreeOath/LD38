@@ -66,13 +66,13 @@ Material:
     - _Mode: 0
     - _OcclusionStrength: 1
     - _Parallax: 0.02
-    - _ScreenHeight: 849
-    - _ScreenWidth: 1483
+    - _ScreenHeight: 591
+    - _ScreenWidth: 1050
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
     - _UVSec: 0
-    - _VignettePower: 1.63
+    - _VignettePower: 1.65
     - _ZWrite: 1
     - _vR: 0.75
     - _vX: 0.8

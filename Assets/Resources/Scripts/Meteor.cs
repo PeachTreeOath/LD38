@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿
 using UnityEngine;
 
 public class Meteor : MonoBehaviour {
@@ -9,6 +8,11 @@ public class Meteor : MonoBehaviour {
 	public float torque;
     public float blastRadius;
     public GameObject Explosion;
+
+    /// <summary>
+    /// Prefab for the resource pickup item dropped by the meteor.
+    /// </summary>
+    public GameObject PickupItem;
 
 	Rigidbody2D rBody;
     CameraFollow mainCameraScript;
@@ -43,14 +47,37 @@ public class Meteor : MonoBehaviour {
         }
         
         GameObject go = Instantiate<GameObject>(Explosion, transform.position, transform.rotation);
-        go.GetComponent<AudioSource>().PlayOneShot(go.GetComponent<AudioSource>().clip);
+        AudioManager.Instance.PlaySound("Explosion", .075f);
         if (blastRadius > 1.0f)
         {
             go.transform.localScale = new Vector3(blastRadius, blastRadius, 1.0f);
         }
+        SpawnResources(1);
         Destroy(gameObject);
 
         mainCameraScript.shakeCycles = 5;
         mainCameraScript.shakeIntensity = 0.2f;
+    }
+    
+    /// <summary>
+    /// Handles creation of meteor resouce pickup items.
+    /// </summary>
+    /// <param name="amountSpawned"></param>
+    private void SpawnResources(int amountSpawned)
+    {
+        for (int i = 0; i < amountSpawned; i++)
+        {
+            if (PlayerInventoryManager.Instance.CanSpawnNewPickup())
+            {
+                GameObject go = Instantiate(PickupItem);
+                go.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
+                go.transform.position = this.transform.position;
+                Rigidbody2D rb = go.GetComponent<Rigidbody2D>();
+                PlayerInventoryManager.Instance.SpawnedNewPickup();
+
+                Vector2 randomDirection = new Vector2(Random.Range(0, 2), Random.Range(0, 2));
+                rb.AddForce(randomDirection * moveSpeed, ForceMode2D.Impulse);
+            }
+        }
     }
 }

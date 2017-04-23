@@ -9,54 +9,46 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1038049073076206}
+  m_RootGameObject: {fileID: 1481140846582100}
   m_IsPrefabParent: 1
---- !u!1 &1038049073076206
+--- !u!1 &1481140846582100
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 5
   m_Component:
-  - component: {fileID: 4858312243965670}
-  - component: {fileID: 114635882027118418}
+  - component: {fileID: 4413271802380720}
+  - component: {fileID: 114291386509875986}
   m_Layer: 0
-  m_Name: MeteorSpawner
+  m_Name: Singletons
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4858312243965670
+--- !u!4 &4413271802380720
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1038049073076206}
+  m_GameObject: {fileID: 1481140846582100}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.142406, y: 3.6905165, z: 0}
+  m_LocalPosition: {x: 284.5, y: 248.90625, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &114635882027118418
+--- !u!114 &114291386509875986
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1038049073076206}
+  m_GameObject: {fileID: 1481140846582100}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 57860345214523043b1744afac3f930a, type: 3}
+  m_Script: {fileID: 11500000, guid: 2e1d4aea8ffec8b4b97c7c8da2f74508, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  meteorFab: {fileID: 1465577769175938, guid: 399e128a01af846419b78d2162cb2e4f, type: 2}
-  seconds_per_meteor: 0.2
-  speed_min: 2
-  speed_max: 6
-  torque_min: 4
-  torque_max: 60
-  spawnerWidth: 10
-  spawnerAngleVariance: 1
-  max_blastSize: 3
+  MaximumAllowedPickups: 6

@@ -11,9 +11,17 @@ public class PlayerController : MonoBehaviour
     public float hitForce;
     public int allowedJumps;
     public int maxHealth;
+    public int metal;
 
     public GameObject shopText;
     public GameObject backpack;
+
+    public int radarStat;
+    public int speedStat;
+    public int armorStat;
+    public int jumpStat;
+    public int magnetStat;
+    public int resourceStat;
 
     private Rigidbody2D body;
     private int usedJumps;
@@ -26,7 +34,8 @@ public class PlayerController : MonoBehaviour
     private Material origMat;
     private Material flashMat;
     private HeartCanvas heartCanvas;
-
+    private MetalCanvas metalCanvas;
+    
     private bool nearBackpack;
     private bool wearingBackpack;
 
@@ -57,6 +66,7 @@ public class PlayerController : MonoBehaviour
         sprite = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
         heartCanvas = GameObject.Find("UICanvas").GetComponent<HeartCanvas>();
+        metalCanvas = GameObject.Find("UICanvas").transform.FindChild("MetalImage").GetComponent<MetalCanvas>();
         origMat = sprite.material;
         flashMat = Resources.Load<Material>("Materials/WhiteFlashMat");
 
@@ -131,7 +141,7 @@ public class PlayerController : MonoBehaviour
     {
         if (col.gameObject.tag.Equals("Ground"))
         {
-         
+           
         }
 
     }
@@ -140,12 +150,14 @@ public class PlayerController : MonoBehaviour
     {
         if (!invincible && col.gameObject.tag.Equals("Meteor"))
         {
+            
             TakeDamage();
         }
         
         if(col.gameObject.tag.Equals("Backpack") &&
            col.GetType() == typeof(CircleCollider2D))
         {
+            
             NearBackpack(true);
         }
     }
@@ -247,5 +259,7 @@ public class PlayerController : MonoBehaviour
 
         backpack.SetActive(!wear);
     }
+
+    
 
 }

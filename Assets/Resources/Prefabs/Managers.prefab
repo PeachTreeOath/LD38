@@ -70,6 +70,9 @@ MonoBehaviour:
   speed_max: 50
   torque_min: -10
   torque_max: 10
+  spawnerWidth: 0
+  spawnerAngleVariance: 0
+  max_blastSize: 3
 --- !u!114 &114847453307434936
 MonoBehaviour:
   m_ObjectHideFlags: 1

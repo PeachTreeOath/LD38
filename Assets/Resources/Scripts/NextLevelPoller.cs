@@ -14,7 +14,7 @@ public class NextLevelPoller : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if(!loadingLevel &&
-			Input.GetAxisRaw("Activate") > 0)
+			Input.GetAxisRaw("Submit") > 0)
 		{
 			Time.timeScale = 1;
 			loadingLevel = true;

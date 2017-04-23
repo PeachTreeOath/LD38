@@ -16,47 +16,57 @@ public class AudioManager : Singleton<AudioManager>
     private AudioSource soundChannel;
     private Dictionary<string, AudioClip> soundMap;
 
+	protected override void Init ()
+	{
+		soundMap = new Dictionary<string, AudioClip>();
+
+		musicChannel = new GameObject().AddComponent<AudioSource>();
+		musicChannel.transform.SetParent(transform);
+		musicChannel.name = "MusicChannel";
+		musicChannel.loop = true;
+		soundChannel = new GameObject().AddComponent<AudioSource>();
+		soundChannel.transform.SetParent(transform);
+		soundChannel.name = "SoundChannel";
+
+		AudioClip[] clips = Resources.LoadAll<AudioClip>("Audio");
+		foreach (AudioClip clip in clips)
+		{
+			soundMap.Add(clip.name, clip);
+		}
+
+		ToggleMute(mute);
+
+		//Kick off initial theme here
+		PlayMusic( "ItsASmallWorld", .50f);
+	}
+
     void Start()
     {
-        soundMap = new Dictionary<string, AudioClip>();
-
-        musicChannel = new GameObject().AddComponent<AudioSource>();
-        musicChannel.transform.SetParent(transform);
-        musicChannel.name = "MusicChannel";
-        musicChannel.loop = true;
-        soundChannel = new GameObject().AddComponent<AudioSource>();
-        soundChannel.transform.SetParent(transform);
-        soundChannel.name = "SoundChannel";
-
-        AudioClip[] clips = Resources.LoadAll<AudioClip>("Audio");
-        foreach (AudioClip clip in clips)
-        {
-            soundMap.Add(clip.name, clip);
-        }
-
-        ToggleMute(mute);
-
-        //Kick off initial theme here
-        //PlayMusicWithIntro("exampleIntro", "exampleLoop", .25f);
+		
     }
+
+	public void UpdateMusicVolume()
+	{
+		musicChannel.volume = VolumeListener.volumeLevel;
+	}
 
     public void PlayMusic(string name, float volume)
     {
         musicChannel.clip = soundMap[name];
-        musicChannel.volume = volume;
+		musicChannel.volume = volume * VolumeListener.volumeLevel;
         musicChannel.Play();
     }
 
     public void PlayMusicWithIntro(string introName, string loopName, float volume)
     {
-        PlayMusic(introName, volume);
+		PlayMusic(introName, volume * VolumeListener.volumeLevel);
         StartCoroutine(PlayMusicDelayed(loopName, volume, musicChannel.clip.length));
     }
 
     private IEnumerator PlayMusicDelayed(string name, float volume, float delayTime)
     {
         yield return new WaitForSeconds(delayTime);
-        PlayMusic(name, volume);
+		PlayMusic(name, volume * VolumeListener.volumeLevel);
     }
 
     public void PlaySound(string name)
@@ -67,7 +77,7 @@ public class AudioManager : Singleton<AudioManager>
 
     public void PlaySound(string name, float volume)
     {
-        soundChannel.PlayOneShot(soundMap[name], volume);
+		soundChannel.PlayOneShot(soundMap[name], volume * VolumeListener.volumeLevel);
     }
 
     public void ToggleMute(bool mute)
