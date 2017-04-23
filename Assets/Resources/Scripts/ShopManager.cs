@@ -60,6 +60,9 @@ public class ShopManager : NonPersistentSingleton<ShopManager>
         levelMap.Add(radarString, 0);
         levelMap.Add(magnetString, 0);
         levelMap.Add(resourceString, 0);
+
+        //Kick off initial theme here since there are no other scene singletons..
+        AudioManager.Instance.PlayMusic("ItsASmallWorld", .50f);
     }
 
     public void ToggleShop()
