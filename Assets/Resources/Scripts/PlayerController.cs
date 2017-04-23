@@ -7,9 +7,9 @@ public class PlayerController : MonoBehaviour
 {
 
     public float runSpeed;
-    public float carryingRunSpeed;
+    public float carryingSpeedFactor;
     public float jumpForce;
-    public float jumpTime;
+    public float carryingJumpForce;
     public float hitForce;
     public int maxHealth;
     public int metal;
@@ -29,6 +29,7 @@ public class PlayerController : MonoBehaviour
     private int allowedJumps;
     private int usedJumps;
     private int currentHealth;
+    private float origRunSpeed;
     private bool invincible;
     private bool isFacingLeft;
 
@@ -41,8 +42,6 @@ public class PlayerController : MonoBehaviour
 
     private bool nearBackpack;
     private bool wearingBackpack;
-
-    private float jumpStartTime;
     
 	public enum FacingEnum { LEFT, RIGHT };
 
@@ -77,6 +76,7 @@ public class PlayerController : MonoBehaviour
         origMat = sprite.material;
         flashMat = Resources.Load<Material>("Materials/WhiteFlashMat");
 
+        origRunSpeed = runSpeed;
         currentHealth = maxHealth;
         heartCanvas.SetHealth(currentHealth);
         allowedJumps = 1;
@@ -95,7 +95,7 @@ public class PlayerController : MonoBehaviour
 
         if (wearingBackpack)
         {
-            hSpeed = Input.GetAxisRaw("Horizontal") * carryingRunSpeed * Time.deltaTime;
+            hSpeed = Input.GetAxisRaw("Horizontal") * runSpeed * carryingSpeedFactor * Time.deltaTime;
         }
         else
         {
@@ -125,22 +125,17 @@ public class PlayerController : MonoBehaviour
             AudioManager.Instance.PlaySound("Jump", 0.3f);
             usedJumps++;
             body.velocity = Vector2.zero;
-            body.AddForce(new Vector2(0, jumpForce), ForceMode2D.Force);
-            animator.SetBool("isJumping", true);
-            jumpStartTime = Time.time;
-        }
 
-        if (Input.GetButton("Jump"))
-        {
-            if(jumpStartTime != 0 && Time.time - jumpStartTime < jumpTime)
+            if (wearingBackpack)
             {
-                body.AddForce(new Vector2(0, jumpForce), ForceMode2D.Force);
-            }   
-        }
-
-        if (Input.GetButtonUp("Jump"))
-        {
-            jumpStartTime = 0;
+                body.AddForce(new Vector2(0, carryingJumpForce), ForceMode2D.Impulse);
+            }
+            else
+            {
+                body.AddForce(new Vector2(0, jumpForce), ForceMode2D.Impulse);
+            }
+            
+            animator.SetBool("isJumping", true);
         }
 
         if (nearBackpack && Input.GetButtonDown("Activate"))
@@ -165,6 +160,7 @@ public class PlayerController : MonoBehaviour
         {
             case ShopManager.speedString:
                 speedStat = newLevel;
+                runSpeed = origRunSpeed + 1.5f;
                 break;
             case ShopManager.jumpString:
                 jumpStat = newLevel;
@@ -210,12 +206,8 @@ public class PlayerController : MonoBehaviour
 
     public void ResetJump()
     {
-        if (!Input.GetButton("Jump"))
-        {
-            Debug.Log("reset");
-            animator.SetBool("isJumping", false);
-            usedJumps = 0;
-        }
+        animator.SetBool("isJumping", false);
+        usedJumps = 0;
     }
 
     public void TakeDamage()
