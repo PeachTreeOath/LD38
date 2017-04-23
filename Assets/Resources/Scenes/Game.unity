@@ -325,6 +325,11 @@ Prefab:
       propertyPath: backpack
       value: 
       objectReference: {fileID: 1095587073}
+    - target: {fileID: 212591641417016346, guid: 9a7486ec6c5601e40ab592ada7f2fe7f,
+        type: 2}
+      propertyPath: m_SortingOrder
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9a7486ec6c5601e40ab592ada7f2fe7f, type: 2}
   m_IsPrefabParent: 0

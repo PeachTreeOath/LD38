@@ -65,14 +65,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   meteorFab: {fileID: 1465577769175938, guid: 399e128a01af846419b78d2162cb2e4f, type: 2}
-  seconds_per_meteor: 1
-  speed_min: 30
-  speed_max: 50
-  torque_min: -10
-  torque_max: 10
+  speedMin: 0
+  speedMax: 0
+  secondsPerMeteor: 0
+  torqueRange: 0
   spawnerWidth: 0
-  spawnerAngleVariance: 0
-  max_blastSize: 3
+  spawnerAngleRange: 0
+  maxBlastSize: 1
 --- !u!114 &114847453307434936
 MonoBehaviour:
   m_ObjectHideFlags: 1
