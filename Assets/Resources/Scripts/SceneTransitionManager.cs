@@ -27,7 +27,7 @@ public class SceneTransitionManager : Singleton<SceneTransitionManager>
     public void StartGame()
     {
         string nextSceneName = "Game";
-        SceneManager.UnloadSceneAsync("Title");
+        SceneManager.UnloadSceneAsync("Start");
 
         tempScene = SceneManager.CreateScene(tempSceneName);
         SceneManager.SetActiveScene(tempScene);
