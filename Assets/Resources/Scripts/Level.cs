@@ -22,7 +22,7 @@ public class Level : MonoBehaviour {
     public float speedMax = 8;
     public float secondsPerMeteor = 0.5f;
     public float torqueRange = 25;
-    public float spawnerWidth = 80;
+    //public float spawnerWidth = 80; // Doing equation now
     public float spawnerAngleRange = 45;
     public float maxBlastRadius = 3;
 
