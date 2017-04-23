@@ -115,6 +115,8 @@ public class RocketController : MonoBehaviour {
 		}
         if (col.gameObject.tag.Equals("Meteor"))
         {
+            gameObject.GetComponent<Rigidbody2D>().AddForce(col.GetComponent<Rigidbody2D>().velocity, ForceMode2D.Impulse);
+
             startWobble = false;
             //StartCoroutine(Wobble());
         }
