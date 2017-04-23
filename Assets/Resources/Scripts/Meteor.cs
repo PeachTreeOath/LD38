@@ -39,7 +39,7 @@ public class Meteor : MonoBehaviour {
 
         if (transform.position.y <= -10.0f)
         {
-            Destroy(arrow);
+            arrow.GetComponent<MeteorRadar>().DestroyRadar();
             Destroy(gameObject);
         }
 	}
@@ -68,7 +68,7 @@ public class Meteor : MonoBehaviour {
             go.transform.localScale = new Vector3(blastRadius, blastRadius, 1.0f);
         }
         SpawnResources(1);
-        Destroy(arrow);
+        arrow.GetComponent<MeteorRadar>().DestroyRadar();
         Destroy(gameObject);
 
         mainCameraScript.shakeCycles = 5;
