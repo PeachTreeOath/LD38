@@ -12,7 +12,8 @@ public class BackgroundController : MonoBehaviour {
 		float camX = Camera.main.gameObject.transform.position.x;
 		float camY = Camera.main.gameObject.transform.position.y;
 
-		xPosition = camX - Mathf.Repeat((camX * scrollSpeed), gameObject.GetComponent<SpriteRenderer>().size.x / 2);
+		xPosition = camX + gameObject.GetComponent<SpriteRenderer>().size.x
+            - Mathf.Repeat((camX * scrollSpeed), gameObject.GetComponent<SpriteRenderer>().size.x * 2);
 		transform.position = new Vector3(xPosition, camY, zIndex);
 	}
 }
