@@ -2829,7 +2829,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: F to deploy
+  m_Text: '
+
+    F to deploy'
 --- !u!114 &114445548837856830
 MonoBehaviour:
   m_ObjectHideFlags: 1

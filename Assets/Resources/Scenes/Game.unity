@@ -221,6 +221,16 @@ Prefab:
         type: 2}
       propertyPath: shopText
       value: 
+      objectReference: {fileID: 397992792}
+    - target: {fileID: 114637630213776266, guid: 9a7486ec6c5601e40ab592ada7f2fe7f,
+        type: 2}
+      propertyPath: shipText
+      value: 
+      objectReference: {fileID: 322192159}
+    - target: {fileID: 114637630213776266, guid: 9a7486ec6c5601e40ab592ada7f2fe7f,
+        type: 2}
+      propertyPath: deployText
+      value: 
       objectReference: {fileID: 1129676162}
     - target: {fileID: 114637630213776266, guid: 9a7486ec6c5601e40ab592ada7f2fe7f,
         type: 2}
@@ -234,19 +244,9 @@ Prefab:
       objectReference: {fileID: 1492915126}
     - target: {fileID: 114637630213776266, guid: 9a7486ec6c5601e40ab592ada7f2fe7f,
         type: 2}
-      propertyPath: shipText
-      value: 
-      objectReference: {fileID: 322192159}
-    - target: {fileID: 114637630213776266, guid: 9a7486ec6c5601e40ab592ada7f2fe7f,
-        type: 2}
       propertyPath: rocketController
       value: 
       objectReference: {fileID: 1492915127}
-    - target: {fileID: 114637630213776266, guid: 9a7486ec6c5601e40ab592ada7f2fe7f,
-        type: 2}
-      propertyPath: deployText
-      value: 
-      objectReference: {fileID: 1129676162}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9a7486ec6c5601e40ab592ada7f2fe7f, type: 2}
   m_IsPrefabParent: 0
@@ -300,6 +300,11 @@ Prefab:
 --- !u!1 &322192159 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 1971215656430992, guid: a2abcd712b1d7554886845985dc14efa,
+    type: 2}
+  m_PrefabInternal: {fileID: 1717544940}
+--- !u!1 &397992792 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1523133928644078, guid: a2abcd712b1d7554886845985dc14efa,
     type: 2}
   m_PrefabInternal: {fileID: 1717544940}
 --- !u!1001 &670517459
