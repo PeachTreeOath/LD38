@@ -16,6 +16,7 @@ public class RocketController : MonoBehaviour
     public float accel;
     public float maxAccel;
     public float torqueForce;
+	public float minY;
 
     bool startWobble;
     bool flyable;
@@ -28,9 +29,12 @@ public class RocketController : MonoBehaviour
     float transitionTimer;
     public float transitionTime = 5;
 
+	GameObject lastTile;
     GameObject launchParticles;
     Rigidbody2D rbody;
     private TextInstructionHandler textHandler;
+
+	WorldGenerator worldGen;
 
     // Use this for initialization
     void Start()
@@ -38,6 +42,7 @@ public class RocketController : MonoBehaviour
         Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("Player"), LayerMask.NameToLayer("Rocket"));
         rbody = gameObject.GetComponent<Rigidbody2D>();
         textHandler = GameObject.Find("UICanvas").GetComponent<TextInstructionHandler>();
+		worldGen = GameObject.Find("World").GetComponent<WorldGenerator>();
     }
 
     // Update is called once per frame
@@ -113,6 +118,22 @@ public class RocketController : MonoBehaviour
         }
     }
 
+	void LateUpdate()
+	{
+		if(lastTile != null &&
+			worldGen.worldTiles.Count > 0 )
+		{
+			GameObject leftMost = worldGen.GetLeftMost(worldGen.worldTiles);
+			GameObject rightMost = worldGen.GetRightMost(worldGen.worldTiles);
+			if(gameObject.transform.position.x < leftMost.transform.position.x ||
+				gameObject.transform.position.x > rightMost.transform.position.x ||
+				gameObject.transform.position.y < minY)
+			{
+				gameObject.transform.position = lastTile.transform.position + Vector3.up * 1;
+			}
+		}
+	}
+
     void OnTriggerEnter2D(Collider2D col)
     {
         if (col.gameObject.name.Equals("RocketTrigger"))
@@ -130,6 +151,11 @@ public class RocketController : MonoBehaviour
             startWobble = false;
             //StartCoroutine(Wobble());
         }
+
+		if(col.gameObject.tag.Equals("Ground"))
+		{
+			lastTile = col.gameObject;
+		}
     }
 
     private IEnumerator Wobble()
