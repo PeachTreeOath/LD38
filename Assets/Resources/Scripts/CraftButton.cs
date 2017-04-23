@@ -9,10 +9,25 @@ public class CraftButton : MonoBehaviour {
 
     public string itemName;
 
+	KeyCode numKeyCode;
+
+	UpgradesPanelController shopPanel;
+
     private void Awake()
     {
         blueOrb = Resources.Load<Sprite>("Textures/OrbBlue");
+		numKeyCode = (KeyCode) System.Enum.Parse(typeof(KeyCode), "Alpha"+transform.Find("KeyNumberText").GetComponent<Text>().text);
+		shopPanel = GameObject.Find("UpgradesPanel").GetComponent<UpgradesPanelController>();
     }
+
+	void Update()
+	{
+		if(shopPanel.group.alpha == 1 &&
+			Input.GetKeyDown(numKeyCode))
+		{
+			Debug.Log("Key down " + itemName);
+		}
+	}
 
     public void OnClick()
     {

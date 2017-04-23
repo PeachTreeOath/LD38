@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class UpgradesPanelController : MonoBehaviour {
 
-    private CanvasGroup group;
+	[HideInInspector]
+	public CanvasGroup group;
 
     void Start()
     {
