@@ -46,6 +46,9 @@ public class WorldGenerator : MonoBehaviour {
         
         dirt.transform.localScale = new Vector3(dirt.transform.localScale.x * scale,
             dirt.transform.localScale.y * scale, 1.0f);
+        background = GameObject.Find("Main Camera");
+        cloudOverlay = GameObject.Find("CloudOverlay");
+
         GenerateWorld();
 		lastPos = Globals.playerObj.transform.position;
 		pController = Globals.playerObj.GetComponent<PlayerController>();

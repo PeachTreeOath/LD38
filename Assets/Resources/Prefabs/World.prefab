@@ -148,8 +148,8 @@ MonoBehaviour:
   - {fileID: 21300000, guid: cdfbb594864fa2449b29fd6d57cddb4f, type: 3}
   - {fileID: 21300000, guid: 3f6328ea03dc56442b31c15eae210e48, type: 3}
   - {fileID: 21300000, guid: 42c48f1b662639f469289f2920085e9d, type: 3}
-  - {fileID: 21300000, guid: c4ec9ca64e3a8ee4ca0ef8dca35fb38a, type: 3}
-  - {fileID: 21300000, guid: 8af2cd0bd27619049b8f9f45503341e5, type: 3}
+  - {fileID: 21300000, guid: 41217a4e67314e54990f9e6652484f17, type: 3}
+  - {fileID: 21300000, guid: 8655dbf1f1ca8e54fbfde5c06e3d8efd, type: 3}
   PlutoBlockTypes:
   - {fileID: 21300000, guid: 4d7d9053dc9316e4489ef20a108578ea, type: 3}
   - {fileID: 21300000, guid: c09253a798305804fbf4141c92c736df, type: 3}
