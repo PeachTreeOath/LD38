@@ -1113,6 +1113,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ae6c9fec4a34f64cb9d930c3ffc598e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  itemName: Magnet
 --- !u!114 &114014792142081754
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1417,6 +1418,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ae6c9fec4a34f64cb9d930c3ffc598e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  itemName: Engine
 --- !u!114 &114139129804383232
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1428,6 +1430,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ae6c9fec4a34f64cb9d930c3ffc598e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  itemName: Resource
 --- !u!114 &114153013069529288
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2349,6 +2352,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ae6c9fec4a34f64cb9d930c3ffc598e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  itemName: Engine
 --- !u!114 &114499336452574230
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2646,6 +2650,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ae6c9fec4a34f64cb9d930c3ffc598e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  itemName: Armor
 --- !u!114 &114650666889531622
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2657,6 +2662,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ae6c9fec4a34f64cb9d930c3ffc598e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  itemName: Speed
 --- !u!114 &114659229684264556
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2722,6 +2728,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ae6c9fec4a34f64cb9d930c3ffc598e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  itemName: Jump
 --- !u!114 &114713446253266830
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2814,6 +2821,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ae6c9fec4a34f64cb9d930c3ffc598e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  itemName: Radar
 --- !u!114 &114793813471152504
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3165,6 +3173,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ae6c9fec4a34f64cb9d930c3ffc598e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  itemName: Shuttle
 --- !u!114 &114975966885377734
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4768,6 +4777,6 @@ CanvasGroup:
   m_GameObject: {fileID: 1842035712358862}
   m_Enabled: 1
   m_Alpha: 0
-  m_Interactable: 1
-  m_BlocksRaycasts: 1
+  m_Interactable: 0
+  m_BlocksRaycasts: 0
   m_IgnoreParentGroups: 0
