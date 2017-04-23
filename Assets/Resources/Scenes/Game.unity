@@ -287,31 +287,6 @@ Prefab:
       propertyPath: backpack
       value: 
       objectReference: {fileID: 1095587073}
-    - target: {fileID: 212591641417016346, guid: 9a7486ec6c5601e40ab592ada7f2fe7f,
-        type: 2}
-      propertyPath: m_SortingOrder
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 50788740434499574, guid: 9a7486ec6c5601e40ab592ada7f2fe7f,
-        type: 2}
-      propertyPath: m_GravityScale
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114637630213776266, guid: 9a7486ec6c5601e40ab592ada7f2fe7f,
-        type: 2}
-      propertyPath: jumpForce
-      value: 30
-      objectReference: {fileID: 0}
-    - target: {fileID: 114637630213776266, guid: 9a7486ec6c5601e40ab592ada7f2fe7f,
-        type: 2}
-      propertyPath: jumpTime
-      value: 0.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114637630213776266, guid: 9a7486ec6c5601e40ab592ada7f2fe7f,
-        type: 2}
-      propertyPath: carryingJumpForce
-      value: 20
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9a7486ec6c5601e40ab592ada7f2fe7f, type: 2}
   m_IsPrefabParent: 0
@@ -580,22 +555,6 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5230d2008a0ed2c4aa6ff681c8ef0fa6, type: 2}
   m_IsPrefabParent: 0
---- !u!1 &1498785266 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1151747125869182, guid: 9a7486ec6c5601e40ab592ada7f2fe7f,
-    type: 2}
-  m_PrefabInternal: {fileID: 203447517}
---- !u!114 &1498785267
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1498785266}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e455bb803cc6a9e42913f5133a4c82b2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &1825434945
 Prefab:
   m_ObjectHideFlags: 0

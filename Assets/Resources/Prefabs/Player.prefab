@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4444635849685958}
   - component: {fileID: 58761452625403236}
   - component: {fileID: 114325063581464154}
+  - component: {fileID: 114860291560336224}
   m_Layer: 0
   m_Name: MineralTrigger
   m_TagString: Untagged
@@ -150,7 +151,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0
-  m_GravityScale: 2
+  m_GravityScale: 1
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -276,21 +277,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   runSpeed: 3
-  carryingRunSpeed: 1.5
-  jumpForce: 7
+  carryingSpeedFactor: 0.5
+  jumpForce: 30
+  carryingJumpForce: 20
+  jumpTime: 0.1
   hitForce: 3
-  allowedJumps: 2
   maxHealth: 3
   metal: 0
   shopText: {fileID: 0}
   backpack: {fileID: 0}
   rocket: {fileID: 0}
-  radarStat: 0
-  speedStat: 0
-  armorStat: 0
-  jumpStat: 0
-  magnetStat: 0
-  resourceStat: 0
 --- !u!114 &114766738809615600
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -300,6 +296,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cabdc67b582ced549ad0d60375bc7237, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &114860291560336224
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1151747125869182}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e455bb803cc6a9e42913f5133a4c82b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!212 &212591641417016346
