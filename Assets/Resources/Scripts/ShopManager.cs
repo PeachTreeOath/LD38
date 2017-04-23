@@ -38,7 +38,7 @@ public class ShopManager : NonPersistentSingleton<ShopManager>
     public bool hasShuttle;
     public bool hasBoosters;
 
-    private bool debugOn = true;
+    public bool debugOn;
 
     protected override void Init()
     {
