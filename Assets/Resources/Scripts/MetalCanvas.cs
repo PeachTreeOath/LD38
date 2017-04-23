@@ -30,9 +30,17 @@ public class MetalCanvas : MonoBehaviour {
             UpdateMetalCount(PlayerInventoryManager.Instance.PlayerResources);
     }
 
-    public void UpdateMetalCount(int metal)
+    public void UpdateMetalCount(float metal)
     {
+        float mult = PlayerInventoryManager.Instance.scoreMultiplier;
+        if(mult > 1)
+        {
+            MetalText.text = "x " + (int)metal + " (" + mult + "x boost)";
+        }
+        else
+        {
         MetalText.text = "x " + metal;
+        }
         PlayScaleAnimation();
     }
 

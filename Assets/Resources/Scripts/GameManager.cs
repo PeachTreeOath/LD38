@@ -22,6 +22,5 @@ public class GameManager : Singleton<GameManager> {
         // Show upgrade menu
         PlayerInventoryManager.Instance.ResetGame();
         SceneTransitionManager.Instance.ResetGame();
-        ShopManager.Instance.ResetGame();
     }
 }

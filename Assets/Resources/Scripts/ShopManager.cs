@@ -17,11 +17,6 @@ public class ShopManager : NonPersistentSingleton<ShopManager>
     public int[] magnetCosts = { 1, 3, 5 };
     public int[] resourceCosts = { 1, 3, 5 };
 
-    internal void ResetGame()
-    {
-        throw new NotImplementedException();
-    }
-
     public const string speedString = "Speed";
     public const string jumpString = "Jump";
     public const string armorString = "Armor";

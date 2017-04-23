@@ -9,8 +9,10 @@ public class PlayerInventoryManager : Singleton<PlayerInventoryManager> {
     /// </summary>
     public int MaximumAllowedPickups = 50;
 
+    public float scoreMultiplier = 1;
+
     [HideInInspector]
-    public int PlayerResources { get; set; }
+    public float PlayerResources { get; set; }
 
     private int TotalSpawnedPickups = 0;
 
@@ -40,12 +42,13 @@ public class PlayerInventoryManager : Singleton<PlayerInventoryManager> {
     {
         if (TotalSpawnedPickups > 0)
             TotalSpawnedPickups--;
-        PlayerResources++;
+        PlayerResources += scoreMultiplier;
     } 
 
     public void ResetGame()
     {
         TotalSpawnedPickups = 0;
         PlayerResources = 0;
+        scoreMultiplier = 1;
     }
 }

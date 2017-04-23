@@ -43,8 +43,8 @@ public class PlayerController : MonoBehaviour
 
     private bool nearBackpack;
     private bool wearingBackpack;
-    
-	public enum FacingEnum { LEFT, RIGHT };
+
+    public enum FacingEnum { LEFT, RIGHT };
 
     private ShopManager shop;
 
@@ -136,7 +136,7 @@ public class PlayerController : MonoBehaviour
             {
                 body.AddForce(new Vector2(0, jumpForce), ForceMode2D.Impulse);
             }
-            
+
             animator.SetBool("isJumping", true);
         }
 
@@ -182,6 +182,18 @@ public class PlayerController : MonoBehaviour
                 break;
             case ShopManager.resourceString:
                 resourceStat = newLevel;
+                switch (resourceStat)
+                {
+                    case 1:
+                        PlayerInventoryManager.Instance.scoreMultiplier = 1.25f;
+                        break;
+                    case 2:
+                        PlayerInventoryManager.Instance.scoreMultiplier = 1.75f;
+                        break;
+                    case 3:
+                        PlayerInventoryManager.Instance.scoreMultiplier = 2.5f;
+                        break;
+                }
                 break;
         }
     }
@@ -288,7 +300,7 @@ public class PlayerController : MonoBehaviour
             else
             {
                 backpack.transform.position = new Vector3(transform.position.x - .5f, transform.position.y);
-                rocket.transform.position = new Vector3(transform.position.x -3f, transform.position.y + 2f);
+                rocket.transform.position = new Vector3(transform.position.x - 3f, transform.position.y + 2f);
             }
         }
 
