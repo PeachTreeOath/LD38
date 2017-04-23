@@ -47,7 +47,7 @@ public class WorldGenerator : MonoBehaviour {
         Globals.Levels.GetComponent<Levels>().GetCurrentLevel();
         dirt.transform.localScale = new Vector3(dirt.transform.localScale.x * scale,
             dirt.transform.localScale.y * scale, 1.0f);
-        background = GameObject.Find("Main Camera");
+        // background = GameObject.Find("Background");
         cloudOverlay = GameObject.Find("CloudOverlay");
 
         GenerateWorld();
@@ -159,7 +159,7 @@ public class WorldGenerator : MonoBehaviour {
                 break;
         }
         //Background Sky
-        //background.GetComponent<SpriteRenderer>().sprite = backgroundSprite;
+        background.GetComponent<SpriteRenderer>().sprite = backgroundSprite;
         background.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = backgroundSprite;
         //Clouds
         cloudOverlay.GetComponent<SpriteRenderer>().sprite = cloudSprite;

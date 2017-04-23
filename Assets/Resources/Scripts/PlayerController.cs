@@ -17,6 +17,7 @@ public class PlayerController : MonoBehaviour
 
     public GameObject shopText;
     public GameObject shipText;
+    public GameObject deployText;
     public GameObject backpack;
     public GameObject rocket;
     public RocketController rocketController;
@@ -174,7 +175,6 @@ public class PlayerController : MonoBehaviour
 
     void OnDisable()
     {
-        Debug.Log("Deactivate");
         shipText.SetActive(false);
         shopText.SetActive(false);
     }
@@ -341,9 +341,11 @@ public class PlayerController : MonoBehaviour
         if(wear)
         {
             rocket.transform.rotation = Quaternion.identity;
+            deployText.SetActive(true);
         }
         if (!wear)
         {
+            deployText.SetActive(false);
             if (GetFacing() == FacingEnum.LEFT)
             {
                 rocket.transform.position = new Vector3(transform.position.x + .5f, transform.position.y + 1f);

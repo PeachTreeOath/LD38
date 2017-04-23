@@ -29,10 +29,13 @@ public class Meteor : MonoBehaviour {
         mainCameraScript = GameObject.FindWithTag("MainCamera").GetComponent<CameraFollow>();
 
         //Create radar arrow
-        arrow = Instantiate<GameObject>(radarArrow);
-        MeteorRadar radar = arrow.GetComponent<MeteorRadar>();
-        radar.Meteor = gameObject;
-        radar.radarLevel = radarLevel;
+		if(radarLevel > 0)
+		{
+        	arrow = Instantiate<GameObject>(radarArrow);
+	        MeteorRadar radar = arrow.GetComponent<MeteorRadar>();
+	        radar.Meteor = gameObject;
+	        radar.radarLevel = radarLevel;
+		}
     }
 
 	void FixedUpdate()
@@ -44,7 +47,10 @@ public class Meteor : MonoBehaviour {
 
         if (transform.position.y <= -10.0f)
         {
-            arrow.GetComponent<MeteorRadar>().DestroyRadar();
+			if(arrow != null)
+			{
+            	arrow.GetComponent<MeteorRadar>().DestroyRadar();
+			}
             Destroy(gameObject);
         }
 	}
@@ -73,7 +79,10 @@ public class Meteor : MonoBehaviour {
             go.transform.localScale = new Vector3(blastRadius, blastRadius, 1.0f);
         }
         SpawnResources(1);
-        arrow.GetComponent<MeteorRadar>().DestroyRadar();
+		if(arrow != null)
+		{
+        	arrow.GetComponent<MeteorRadar>().DestroyRadar();
+		}
         Destroy(gameObject);
 
         mainCameraScript.shakeCycles = 5;
