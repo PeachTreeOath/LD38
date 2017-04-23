@@ -5,7 +5,7 @@ using System.Linq;
 
 public class WorldGenerator : MonoBehaviour {
 
-    public enum PlanetType { Earth, Mars, Pluto}
+    public enum PlanetType { Earth, Mars,Jupitor, Pluto}
     public PlanetType Type = PlanetType.Earth;
     public int depth;
     public int radius;
@@ -29,6 +29,7 @@ public class WorldGenerator : MonoBehaviour {
     public List<Sprite> EarthBlockTypes;
     public List<Sprite> MarsBlockTypes;
     public List<Sprite> PlutoBlockTypes;
+    public List<Sprite> JupitorBlockTypes;
     [HideInInspector]
 	public List<GameObject> worldTiles;
     [HideInInspector]
@@ -109,9 +110,13 @@ public class WorldGenerator : MonoBehaviour {
                         case PlanetType.Mars:
                             AssignBlockType(MarsBlockTypes, y, goRight);
                             break;
+                        case PlanetType.Jupitor:
+                            AssignBlockType(JupitorBlockTypes, y, goRight);
+                            break;
                         case PlanetType.Pluto:
                             AssignBlockType(PlutoBlockTypes, y, goRight);
                             break;
+                            
                         default:
                             AssignBlockType(EarthBlockTypes, y, goRight);
                             break;
