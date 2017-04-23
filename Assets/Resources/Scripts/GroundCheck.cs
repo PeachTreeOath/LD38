@@ -16,7 +16,6 @@ public class GroundCheck : MonoBehaviour {
         if (col.gameObject.tag.Equals("Ground") ||
             col.gameObject.tag.Equals("Backpack"))
         {
-            Debug.Log("reset");
             player.ResetJump();
         }
     }

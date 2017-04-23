@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour
     public float runSpeed;
     public float carryingRunSpeed;
     public float jumpForce;
+    public float carryingJumpForce;
     public float jumpTime;
     public float hitForce;
     public int maxHealth;
@@ -125,7 +126,15 @@ public class PlayerController : MonoBehaviour
             AudioManager.Instance.PlaySound("Jump", 0.3f);
             usedJumps++;
             body.velocity = Vector2.zero;
-            body.AddForce(new Vector2(0, jumpForce), ForceMode2D.Force);
+            if (wearingBackpack)
+            {
+                body.AddForce(new Vector2(0, carryingJumpForce), ForceMode2D.Force);
+            }
+            else
+            {
+                body.AddForce(new Vector2(0, jumpForce), ForceMode2D.Force);
+            }
+            
             animator.SetBool("isJumping", true);
             jumpStartTime = Time.time;
         }
@@ -134,7 +143,14 @@ public class PlayerController : MonoBehaviour
         {
             if(jumpStartTime != 0 && Time.time - jumpStartTime < jumpTime)
             {
-                body.AddForce(new Vector2(0, jumpForce), ForceMode2D.Force);
+                if (wearingBackpack)
+                {
+                    body.AddForce(new Vector2(0, carryingJumpForce), ForceMode2D.Force);
+                }
+                else
+                {
+                    body.AddForce(new Vector2(0, jumpForce), ForceMode2D.Force);
+                }
             }   
         }
 
@@ -212,7 +228,6 @@ public class PlayerController : MonoBehaviour
     {
         if (!Input.GetButton("Jump"))
         {
-            Debug.Log("reset");
             animator.SetBool("isJumping", false);
             usedJumps = 0;
         }
