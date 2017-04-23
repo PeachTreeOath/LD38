@@ -24,7 +24,6 @@ public class Meteor : MonoBehaviour {
 	{
 		rBody = gameObject.GetComponent<Rigidbody2D>();
         mainCameraScript = GameObject.FindWithTag("MainCamera").GetComponent<CameraFollow>();
-<<<<<<< HEAD
 
         //Create radar arrow
         arrow = Instantiate<GameObject>(radarArrow);
@@ -34,9 +33,7 @@ public class Meteor : MonoBehaviour {
 	void FixedUpdate()
 	{
 		rBody.AddForce(moveDir * moveSpeed, ForceMode2D.Force);
-=======
         rBody.AddForce(moveDir * moveSpeed * 20, ForceMode2D.Force);
->>>>>>> 57b53cc58e7d1afddb91ddf398895d151624010a
         rBody.AddTorque(torque);
 	}
 

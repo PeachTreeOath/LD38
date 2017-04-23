@@ -7,10 +7,7 @@ public class MeteorSpawner : MonoBehaviour {
 	public GameObject meteorFab;
     public GameObject radarArrow;
 
-<<<<<<< HEAD
     [Header("Speed")]
-=======
->>>>>>> 57b53cc58e7d1afddb91ddf398895d151624010a
 	public float speedMin;
 	public float speedMax;
 	public float secondsPerMeteor;
@@ -18,13 +15,9 @@ public class MeteorSpawner : MonoBehaviour {
     public float spawnerWidth;
     public float spawnerAngleRange;
     public float maxBlastSize;
-<<<<<<< HEAD
 
    
     private float prev_time;
-=======
-	private float prev_time;
->>>>>>> 57b53cc58e7d1afddb91ddf398895d151624010a
 
 	private Rigidbody2D rb2d;
 
@@ -49,11 +42,9 @@ public class MeteorSpawner : MonoBehaviour {
 		GameObject meteor = Instantiate<GameObject>(meteorFab);
 		Meteor m = meteor.GetComponent<Meteor>();
 
-<<<<<<< HEAD
         
 
        
-=======
 		// Set the meteor launch position
 		Vector3 meteorStartPosition = new Vector3();
 		Vector3 cameraPosition = Camera.main.gameObject.transform.position;
@@ -66,7 +57,6 @@ public class MeteorSpawner : MonoBehaviour {
 		m.moveDir = (Quaternion.AngleAxis(angle, Vector3.forward) * Vector3.down).normalized;
 		
 		// Set the blast size and radius
->>>>>>> 57b53cc58e7d1afddb91ddf398895d151624010a
         m.blastRadius = Random.Range(0, maxBlastSize);
         m.transform.localScale = new Vector3(Mathf.Clamp(0.5f,3.0f,m.blastRadius),
             Mathf.Clamp(0.5f, 3.0f, m.blastRadius), 1.0f);
