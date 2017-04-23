@@ -437,16 +437,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Type: 1
-  depth: 40
+  depth: 30
   radius: 100
   scale: 0.5
   swissCheeseDensity: 0.01
   swissCheeseHoleWidth: 0.6
   swissCheeseHoleHeight: 0.97
-  lavaPercent: 0.25
+  lavaPercent: 0.3
   stonePercent: 0.3
-  dirtPercent: 0.4
-  grassPercent: 0.1
+  dirtPercent: 0.35
+  grassPercent: 0.05
   dirt: {fileID: 1375242716300212}
   EarthBlockTypes:
   - {fileID: 21300000, guid: be5b10acbc19410478c46ae2d08b3e4b, type: 3}
