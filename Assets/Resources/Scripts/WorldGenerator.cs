@@ -31,6 +31,8 @@ public class WorldGenerator : MonoBehaviour {
     public List<Sprite> PlutoBlockTypes;
     [HideInInspector]
 	public List<GameObject> worldTiles;
+    [HideInInspector]
+    public List<GameObject> worldEntities;
 	Vector3 lastPos;
 	PlayerController pController;
 
@@ -57,7 +59,8 @@ public class WorldGenerator : MonoBehaviour {
         float xOffset = -scale * radius;
         float coreYOffset = playerStartYOffset - scale * depth;
         worldTiles = new List<GameObject>();
-		worldTiles.Add(GameObject.Find("Backpack"));
+		//worldTiles.Add(GameObject.Find("Backpack"));
+        worldEntities.Add(GameObject.Find("RocketTest"));
 
         for (int y = 0; y < depth; y++)
         {
@@ -156,6 +159,11 @@ public class WorldGenerator : MonoBehaviour {
 
         go.GetComponent<SpriteRenderer>().sprite = sprite;
         return sprite;
+    }
+
+    void WrapEntities()
+    {
+
     }
 
 	void WrapWorld()
