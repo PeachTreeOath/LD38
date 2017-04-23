@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour
     public float runSpeed;
     public float carryingRunSpeed;
     public float jumpForce;
+    public float jumpTime;
     public float hitForce;
     public int maxHealth;
     public int metal;
@@ -41,7 +42,9 @@ public class PlayerController : MonoBehaviour
     private bool nearBackpack;
     private bool wearingBackpack;
 
-    public enum FacingEnum { LEFT, RIGHT };
+    private float jumpStartTime;
+    
+	public enum FacingEnum { LEFT, RIGHT };
 
     private ShopManager shop;
 
@@ -122,8 +125,22 @@ public class PlayerController : MonoBehaviour
             AudioManager.Instance.PlaySound("Jump", 0.3f);
             usedJumps++;
             body.velocity = Vector2.zero;
-            body.AddForce(new Vector2(0, jumpForce), ForceMode2D.Impulse);
+            body.AddForce(new Vector2(0, jumpForce), ForceMode2D.Force);
             animator.SetBool("isJumping", true);
+            jumpStartTime = Time.time;
+        }
+
+        if (Input.GetButton("Jump"))
+        {
+            if(jumpStartTime != 0 && Time.time - jumpStartTime < jumpTime)
+            {
+                body.AddForce(new Vector2(0, jumpForce), ForceMode2D.Force);
+            }   
+        }
+
+        if (Input.GetButtonUp("Jump"))
+        {
+            jumpStartTime = 0;
         }
 
         if (nearBackpack && Input.GetButtonDown("Activate"))
@@ -193,8 +210,12 @@ public class PlayerController : MonoBehaviour
 
     public void ResetJump()
     {
-        animator.SetBool("isJumping", false);
-        usedJumps = 0;
+        if (!Input.GetButton("Jump"))
+        {
+            Debug.Log("reset");
+            animator.SetBool("isJumping", false);
+            usedJumps = 0;
+        }
     }
 
     public void TakeDamage()
