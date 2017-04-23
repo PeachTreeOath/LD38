@@ -2110,13 +2110,13 @@ MonoBehaviour:
     m_BestFit: 0
     m_MinSize: 10
     m_MaxSize: 70
-    m_Alignment: 2
+    m_Alignment: 0
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Press E to craft
+  m_Text: 'E to craft
 
     R to pick up'
 --- !u!114 &114445548837856830
@@ -4766,7 +4766,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 320.95, y: 113}
+  m_AnchoredPosition: {x: 366, y: 113}
   m_SizeDelta: {x: 194, y: 124}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!225 &225871402253718846

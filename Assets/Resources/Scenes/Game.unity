@@ -230,49 +230,6 @@ Prefab:
       propertyPath: m_AnchorMax.y
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 114458540931588156, guid: a2abcd712b1d7554886845985dc14efa,
-        type: 2}
-      propertyPath: heartFab
-      value: 
-      objectReference: {fileID: 1313505022350456, guid: 5f198d432a8262a4a8fbd9af8d67971e,
-        type: 2}
-    - target: {fileID: 114432858030002288, guid: a2abcd712b1d7554886845985dc14efa,
-        type: 2}
-      propertyPath: m_Text
-      value: 'Press E to craft
-
-        R to pick up'
-      objectReference: {fileID: 0}
-    - target: {fileID: 224979241468808736, guid: a2abcd712b1d7554886845985dc14efa,
-        type: 2}
-      propertyPath: m_AnchoredPosition.x
-      value: 320.95
-      objectReference: {fileID: 0}
-    - target: {fileID: 224979241468808736, guid: a2abcd712b1d7554886845985dc14efa,
-        type: 2}
-      propertyPath: m_SizeDelta.x
-      value: 194
-      objectReference: {fileID: 0}
-    - target: {fileID: 224979241468808736, guid: a2abcd712b1d7554886845985dc14efa,
-        type: 2}
-      propertyPath: m_AnchoredPosition.y
-      value: 113
-      objectReference: {fileID: 0}
-    - target: {fileID: 224979241468808736, guid: a2abcd712b1d7554886845985dc14efa,
-        type: 2}
-      propertyPath: m_SizeDelta.y
-      value: 124
-      objectReference: {fileID: 0}
-    - target: {fileID: 114432858030002288, guid: a2abcd712b1d7554886845985dc14efa,
-        type: 2}
-      propertyPath: m_FontData.m_Alignment
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 224040294590279742, guid: a2abcd712b1d7554886845985dc14efa,
-        type: 2}
-      propertyPath: m_AnchoredPosition.y
-      value: 16
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a2abcd712b1d7554886845985dc14efa, type: 2}
   m_IsPrefabParent: 0
