@@ -133,7 +133,7 @@ MonoBehaviour:
   dirtPercent: 0.35
   grassPercent: 0.05
   dirt: {fileID: 1500227599575828}
-  background: {fileID: 1492794596417266, guid: a81930dfe6d943a47be32c7b19a6bf74, type: 2}
+  background: {fileID: 1566027372119680, guid: 20b1801696b62f34c97f822e92dbc41e, type: 2}
   cloudOverlay: {fileID: 1817166608260722, guid: f0e76222ffcbe314992e8bd19751ffe4,
     type: 2}
   EarthBlockTypes:
@@ -162,7 +162,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 545af5eaad600d745928f6a20270f03d, type: 3}
   - {fileID: 21300000, guid: f0e713c24c51d7844a5d40e0cdffd566, type: 3}
   - {fileID: 21300000, guid: 71df4c76653805f4da5f9ecb37cea3cd, type: 3}
-  - {fileID: 21300000, guid: 2f38122fb3f844347915175231b9adc2, type: 3}
+  - {fileID: 0}
   - {fileID: 21300000, guid: d19e206ea6728fa4db3c0210bf86abdf, type: 3}
   worldTiles: []
   worldEntities: []
