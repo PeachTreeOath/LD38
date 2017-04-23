@@ -69,7 +69,7 @@ public class WorldGenerator : MonoBehaviour {
                     
                 }
 
-                if (genTile == true || y < 3)
+                if (genTile == true || y < 3 || x < 2)
                 {
                     GameObject goRight = Instantiate<GameObject>(dirt, transform);
                     goRight.transform.position = new Vector3(dirt.transform.position.x + (x * scale), dirt.transform.position.y + (y * scale));
