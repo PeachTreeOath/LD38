@@ -278,12 +278,12 @@ public class PlayerController : MonoBehaviour
             if (GetFacing() == FacingEnum.LEFT)
             {
                 backpack.transform.position = new Vector3(transform.position.x + .5f, transform.position.y);
-                //rocket.transform.position = new Vector3(transform.position.x + 3f, transform.position.y + 2f);
+                rocket.transform.position = new Vector3(transform.position.x + 3f, transform.position.y + 2f);
             }
             else
             {
                 backpack.transform.position = new Vector3(transform.position.x - .5f, transform.position.y);
-                //rocket.transform.position = new Vector3(transform.position.x -3f, transform.position.y + 2f);
+                rocket.transform.position = new Vector3(transform.position.x -3f, transform.position.y + 2f);
             }
         }
 
@@ -293,6 +293,6 @@ public class PlayerController : MonoBehaviour
         }
 
         backpack.SetActive(!wear);
-        //rocket.SetActive(!wear);
+        rocket.SetActive(!wear);
     }
 }
