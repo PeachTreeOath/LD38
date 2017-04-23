@@ -35,6 +35,8 @@ public class Meteor : MonoBehaviour {
 		rBody.AddForce(moveDir * moveSpeed, ForceMode2D.Force);
         //rBody.AddForce(moveDir * moveSpeed * 20, ForceMode2D.Force);
         rBody.AddTorque(torque);
+        
+
         if (transform.position.y <= -10.0f)
         {
             Destroy(arrow);

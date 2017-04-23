@@ -52,7 +52,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   meteorFab: {fileID: 1465577769175938, guid: 399e128a01af846419b78d2162cb2e4f, type: 2}
-  radarArrow: {fileID: 1568395941240994, guid: 7acfbee410bbd5c45b9fb02df4fa6a77, type: 2}
+  radarArrow: {fileID: 1074523737462866, guid: 7acfbee410bbd5c45b9fb02df4fa6a77, type: 2}
   speedMin: 3
   speedMax: 8
   secondsPerMeteor: 0.1
