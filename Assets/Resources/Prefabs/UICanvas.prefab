@@ -806,7 +806,7 @@ GameObject:
   m_IsActive: 1
 --- !u!1 &1523133928644078
 GameObject:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 5
@@ -815,7 +815,7 @@ GameObject:
   - component: {fileID: 222155499526088388}
   - component: {fileID: 114214139623880872}
   m_Layer: 5
-  m_Name: Text
+  m_Name: ShopInstructions
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1258,6 +1258,23 @@ GameObject:
   - component: {fileID: 224054677251222108}
   - component: {fileID: 222035532806612138}
   - component: {fileID: 114292569429425992}
+  m_Layer: 5
+  m_Name: Text
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &1794155173148554
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 224703430073850270}
+  - component: {fileID: 222669164144319864}
+  - component: {fileID: 114630227227404676}
   m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
@@ -2334,7 +2351,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1523133928644078}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 708705254, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
   m_Name: 
@@ -2360,9 +2377,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'E to craft
+  m_Text: 'Click or 1-9
 
-    F to pick up'
+    to craft'
 --- !u!114 &114256025875560550
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3914,6 +3931,41 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114630227227404676
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1794155173148554}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 708705254, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_FontData:
+    m_Font: {fileID: 12800000, guid: 2dee9682f7901c4458641d070d2cd369, type: 3}
+    m_FontSize: 59
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 10
+    m_MaxSize: 70
+    m_Alignment: 0
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: 'E to craft
+
+    F to pick up'
 --- !u!114 &114650666889531622
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4210,7 +4262,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df85fcf352b7ad345add2fbc79bf7e22, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  craftText: {fileID: 114214139623880872}
+  craftText: {fileID: 114630227227404676}
   shipText: {fileID: 114424260116301010}
 --- !u!114 &114761579557113836
 MonoBehaviour:
@@ -5327,6 +5379,12 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1400120723503418}
+--- !u!222 &222669164144319864
+CanvasRenderer:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1794155173148554}
 --- !u!222 &222671287312914100
 CanvasRenderer:
   m_ObjectHideFlags: 1
@@ -5794,6 +5852,7 @@ RectTransform:
   - {fileID: 224085541012007742}
   - {fileID: 224779833381578924}
   - {fileID: 224363098744064010}
+  - {fileID: 224487585664004652}
   m_Father: {fileID: 224169618554083588}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -5928,7 +5987,7 @@ RectTransform:
   m_Children:
   - {fileID: 224457997674959634}
   - {fileID: 224117264813106092}
-  - {fileID: 224487585664004652}
+  - {fileID: 224703430073850270}
   - {fileID: 224979241468808736}
   - {fileID: 224040294590279742}
   - {fileID: 224290003896085500}
@@ -6439,16 +6498,16 @@ RectTransform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1523133928644078}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 224169618554083588}
-  m_RootOrder: 2
+  m_Father: {fileID: 224117264813106092}
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 366, y: 113}
+  m_AnchoredPosition: {x: 366, y: -60}
   m_SizeDelta: {x: 194, y: 124}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224487997327394372
@@ -6831,6 +6890,24 @@ RectTransform:
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 64, y: 0.9}
   m_SizeDelta: {x: 22.1, y: 54.2}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!224 &224703430073850270
+RectTransform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1794155173148554}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 224169618554083588}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 366, y: 113}
+  m_SizeDelta: {x: 194, y: 124}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224703787272690052
 RectTransform:
