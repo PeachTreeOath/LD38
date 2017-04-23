@@ -3,22 +3,19 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Levels : MonoBehaviour {
+public class Levels : MonoBehaviour
+{
 
     WorldGenerator world;
     MeteorSpawner meteorSpawner;
-    
-	// Use this for initialization
-	void Awake () {
+
+    // Use this for initialization
+    void Awake()
+    {
         Globals.Levels = gameObject;
         world = GameObject.Find("World").GetComponent<WorldGenerator>();
         meteorSpawner = GameObject.Find("MeteorSpawner").GetComponent<MeteorSpawner>();
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+    }
 
     public void GetCurrentLevel()
     {
@@ -54,7 +51,10 @@ public class Levels : MonoBehaviour {
         world.dirtPercent = level.dirtPercent;
         world.grassPercent = level.grassPercent;
 
-        if(level.planetName.Equals("World 1"))
+        GameObject.Find("WorldNameText").GetComponent<Text>().text = "-" + level.WorldType.ToString() + "-";
+        GameObject.Find("WorldCountText").GetComponent<Text>().text = level.planetName + " of 5";
+
+        if (level.planetName.Equals("World 1"))
         {
             GameObject.Find("Tutorial").GetComponent<Image>().enabled = true;
         }
