@@ -3,15 +3,14 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
-[CustomEditor(typeof(MeteorSpawner))]
+//[CustomEditor(typeof(MeteorSpawner))]
 public class MeteorSpawnerEditor : Editor {
-
+	/*
 	public override void OnInspectorGUI(){
 		MeteorSpawner spawner = (MeteorSpawner)target;
 
 		EditorGUILayout.LabelField("Meteor Details", EditorStyles.boldLabel);
-		spawner.meteorFab = (GameObject) EditorGUILayout.ObjectField("Meteor Prefab", 
-			spawner.meteorFab, typeof(GameObject), true);
+		spawner.meteorFab = (GameObject) EditorGUILayout.ObjectField("Meteor Prefab", spawner.meteorFab, typeof(GameObject), true);
 		spawner.speedMin = EditorGUILayout.FloatField("Min Speed", spawner.speedMin);
 		spawner.speedMax = EditorGUILayout.FloatField("Max Speed", spawner.speedMax);
 		EditorGUILayout.MinMaxSlider(ref spawner.speedMin, ref spawner.speedMax, 0, 30);
@@ -25,5 +24,5 @@ public class MeteorSpawnerEditor : Editor {
 
 
 		EditorUtility.SetDirty(spawner);
-	}
+	}*/
 }

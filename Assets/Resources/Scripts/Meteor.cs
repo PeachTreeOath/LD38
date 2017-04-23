@@ -33,7 +33,7 @@ public class Meteor : MonoBehaviour {
 	void FixedUpdate()
 	{
 		rBody.AddForce(moveDir * moveSpeed, ForceMode2D.Force);
-        rBody.AddForce(moveDir * moveSpeed * 20, ForceMode2D.Force);
+        //rBody.AddForce(moveDir * moveSpeed * 20, ForceMode2D.Force);
         rBody.AddTorque(torque);
 	}
 
