@@ -48,7 +48,7 @@ public class MeteorSpawner : MonoBehaviour {
 		// Set the meteor launch position
 		Vector3 meteorStartPosition = new Vector3();
 		Vector3 cameraPosition = Camera.main.gameObject.transform.position;
-		meteorStartPosition.x = UnityEngine.Random.Range(-spawnerWidth, spawnerWidth) + cameraPosition.x;
+		meteorStartPosition.x = UnityEngine.Random.Range(-spawnerWidth, spawnerWidth) ;
 		meteorStartPosition.y = cameraPosition.y + 10;
 		meteor.transform.position = meteorStartPosition;
 		m.radarArrow = radarArrow;
