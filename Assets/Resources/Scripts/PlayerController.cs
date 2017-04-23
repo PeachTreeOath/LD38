@@ -170,6 +170,8 @@ public class PlayerController : MonoBehaviour
                 break;
             case ShopManager.armorString:
                 armorStat = newLevel;
+                currentHealth += 2;
+                heartCanvas.SetHealth(currentHealth);
                 break;
             case ShopManager.radarString:
                 radarStat = newLevel;

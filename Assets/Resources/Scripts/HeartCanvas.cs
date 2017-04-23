@@ -27,6 +27,10 @@ public class HeartCanvas : MonoBehaviour
                 {
                     heartList[i].enabled = false;
                 }
+                else
+                {
+                    heartList[i].enabled = true;
+                }
             }
         }
     }

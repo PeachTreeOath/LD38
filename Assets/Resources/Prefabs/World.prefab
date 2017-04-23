@@ -436,6 +436,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aec6a7575c84fab49a11662f35aa5361, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Type: 1
   depth: 40
   radius: 100
   scale: 0.5
@@ -447,11 +448,21 @@ MonoBehaviour:
   dirtPercent: 0.4
   grassPercent: 0.1
   dirt: {fileID: 1375242716300212}
-  BlockTypes:
+  EarthBlockTypes:
   - {fileID: 21300000, guid: be5b10acbc19410478c46ae2d08b3e4b, type: 3}
   - {fileID: 21300000, guid: a73916f0c2828644d99a36fce7579c92, type: 3}
   - {fileID: 21300000, guid: e0e6e5e6b50b15841b95bef6b89e89c2, type: 3}
   - {fileID: 21300000, guid: 888032f7e0c1c4e479e9532d43255019, type: 3}
+  MarsBlockTypes:
+  - {fileID: 21300000, guid: 07ad2b084c0389649bbb3043bdb0b1e7, type: 3}
+  - {fileID: 21300000, guid: cdfbb594864fa2449b29fd6d57cddb4f, type: 3}
+  - {fileID: 21300000, guid: 3f6328ea03dc56442b31c15eae210e48, type: 3}
+  - {fileID: 21300000, guid: 42c48f1b662639f469289f2920085e9d, type: 3}
+  PlutoBlockTypes:
+  - {fileID: 21300000, guid: 4d7d9053dc9316e4489ef20a108578ea, type: 3}
+  - {fileID: 21300000, guid: c09253a798305804fbf4141c92c736df, type: 3}
+  - {fileID: 21300000, guid: fce9d6074da7fe54ca0c88a5b38a370a, type: 3}
+  - {fileID: 21300000, guid: e0d2381c9bad0cb43a19215a0391e727, type: 3}
 --- !u!114 &114691978498465462
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ShopManager : Singleton<ShopManager>
+public class ShopManager : NonPersistentSingleton<ShopManager>
 {
 
     private bool isActive;
@@ -16,6 +16,11 @@ public class ShopManager : Singleton<ShopManager>
     public int[] radarCosts = { 1, 3, 5 };
     public int[] magnetCosts = { 1, 3, 5 };
     public int[] resourceCosts = { 1, 3, 5 };
+
+    internal void ResetGame()
+    {
+        throw new NotImplementedException();
+    }
 
     public const string speedString = "Speed";
     public const string jumpString = "Jump";
