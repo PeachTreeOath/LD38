@@ -31,6 +31,7 @@ public class PlayerController : MonoBehaviour
     private int usedJumps;
     private int currentHealth;
     private float origRunSpeed;
+    private bool inHitStun;
     private bool invincible;
     private bool isFacingLeft;
 
@@ -95,7 +96,7 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         // Player in hitstun
-        if (invincible)
+        if (inHitStun)
         {
             return;
         }
@@ -251,6 +252,7 @@ public class PlayerController : MonoBehaviour
         body.AddForce(hitDir, ForceMode2D.Impulse);
         usedJumps = allowedJumps;
         invincible = true;
+        inHitStun = true;
         currentHealth--;
         animator.SetBool("isJumping", true);
 
@@ -276,6 +278,10 @@ public class PlayerController : MonoBehaviour
             }
             yield return new WaitForSeconds(flashSpeed);
             elapsedTime += flashSpeed;
+            if(inHitStun && elapsedTime > duration/2)
+            {
+                inHitStun = false;
+            }
         }
         animator.SetBool("isJumping", false);
         sprite.material = origMat;

@@ -200,7 +200,7 @@ public class RocketController : MonoBehaviour
 
     private bool CheckIfAllPartsBuilt()
     {
-        if(ShopManager.Instance.hasEngine && ShopManager.Instance.hasShuttle && ShopManager.Instance.hasBoosters)
+        if (ShopManager.Instance.hasEngine && ShopManager.Instance.hasShuttle && ShopManager.Instance.hasBoosters)
         {
             return true;
         }
