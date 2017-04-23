@@ -203,12 +203,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   planetName: World 2
   WorldType: 1
-  depth: 25
+  depth: 65
   radius: 60
   holeDensity: 0.01
-  holeWidth: 0.6
+  holeWidth: 0.2
   holeHeight: 0.97
-  lavaPercent: 0.3
+  lavaPercent: 0.2
   stonePercent: 0.3
   dirtPercent: 0.35
   grassPercent: 0.35
@@ -216,7 +216,6 @@ MonoBehaviour:
   speedMax: 8
   secondsPerMeteor: 0.5
   torqueRange: 25
-  spawnerWidth: 80
   spawnerAngleRange: 45
   maxBlastRadius: 3
 --- !u!114 &114242360127423618
@@ -233,11 +232,11 @@ MonoBehaviour:
   planetName: World 4
   WorldType: 3
   depth: 25
-  radius: 60
+  radius: 50
   holeDensity: 0.01
   holeWidth: 0.6
   holeHeight: 0.97
-  lavaPercent: 0.3
+  lavaPercent: 0.2
   stonePercent: 0.3
   dirtPercent: 0.35
   grassPercent: 0.35
@@ -245,7 +244,6 @@ MonoBehaviour:
   speedMax: 8
   secondsPerMeteor: 0.5
   torqueRange: 25
-  spawnerWidth: 80
   spawnerAngleRange: 45
   maxBlastRadius: 3
 --- !u!114 &114555604996992490
@@ -261,20 +259,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   planetName: World 3
   WorldType: 2
-  depth: 25
-  radius: 60
+  depth: 125
+  radius: 200
   holeDensity: 0.01
   holeWidth: 0.6
   holeHeight: 0.97
-  lavaPercent: 0.3
-  stonePercent: 0.3
-  dirtPercent: 0.35
-  grassPercent: 0.35
+  lavaPercent: 0.4
+  stonePercent: 0.5
+  dirtPercent: 0
+  grassPercent: 0
   speedMin: 3
   speedMax: 8
   secondsPerMeteor: 0.5
   torqueRange: 25
-  spawnerWidth: 80
   spawnerAngleRange: 45
   maxBlastRadius: 3
 --- !u!114 &114861907179196604
@@ -301,20 +298,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   planetName: World 1
   WorldType: 0
-  depth: 25
-  radius: 60
+  depth: 100
+  radius: 80
   holeDensity: 0.01
-  holeWidth: 0.6
+  holeWidth: 0.01
   holeHeight: 0.97
-  lavaPercent: 0.3
-  stonePercent: 0.3
-  dirtPercent: 0.35
-  grassPercent: 0.35
+  lavaPercent: 0.1
+  stonePercent: 0.9
+  dirtPercent: 0.9
+  grassPercent: 0.9
   speedMin: 3
   speedMax: 8
   secondsPerMeteor: 0.5
   torqueRange: 25
-  spawnerWidth: 80
   spawnerAngleRange: 45
   maxBlastRadius: 3
 --- !u!114 &114957487916343614
@@ -330,19 +326,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   planetName: World 5
   WorldType: 4
-  depth: 25
-  radius: 60
-  holeDensity: 0.01
-  holeWidth: 0.6
-  holeHeight: 0.97
-  lavaPercent: 0.3
-  stonePercent: 0.3
+  depth: 100
+  radius: 100
+  holeDensity: 0.5
+  holeWidth: 0.2
+  holeHeight: 2
+  lavaPercent: 0.9
+  stonePercent: 0.9
   dirtPercent: 0.35
   grassPercent: 0.35
-  speedMin: 3
-  speedMax: 8
-  secondsPerMeteor: 0.5
+  speedMin: 5
+  speedMax: 10
+  secondsPerMeteor: 0.3
   torqueRange: 25
-  spawnerWidth: 80
   spawnerAngleRange: 45
   maxBlastRadius: 3
