@@ -6,13 +6,21 @@ using UnityEngine;
 /// Tracks the lifecycle of a pickup item, and despawns it if it has fallen off the map.
 public class PickupDespawn : MonoBehaviour {
 
+    private float spawnTime;
+
+    // Use this for initialization
+    void Start()
+    {
+        spawnTime = Time.time;
+    }
 
     /// <summary>
     /// If the resource has fallen off the map, despawn it.
     /// </summary>
     private void Update()
     {
-       if (gameObject.transform.localPosition.y < -50)
+       if (gameObject.transform.localPosition.y < -50 || 
+           Time.time - spawnTime > 30)
         {
             PlayerInventoryManager.Instance.DespawnedPickup();
             Destroy(this.gameObject);
