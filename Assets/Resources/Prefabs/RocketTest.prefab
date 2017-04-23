@@ -315,7 +315,7 @@ MonoBehaviour:
   nextLevelPromptFab: {fileID: 1824982556412062, guid: 09175afde5ef00b429fb944eb24bf055,
     type: 2}
   flamesFab: {fileID: 1528466486329470, guid: be3b0ff1fe95bc84b920587ca1286e90, type: 2}
-  launchForce: 25
+  launchForce: 70
   accel: 0.1
   maxAccel: 0.3
   torqueForce: 25
