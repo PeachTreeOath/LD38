@@ -44,7 +44,7 @@ public class SceneTransitionManager : Singleton<SceneTransitionManager>
         SceneManager.SetActiveScene(tempScene);
         SceneManager.LoadScene(nextSceneName, LoadSceneMode.Additive);
         StartCoroutine(SetActive(SceneManager.GetSceneByName(nextSceneName), true));*/
-
+		PlayerInventoryManager.Instance.ResetGame();
 		Application.LoadLevel(Application.loadedLevel);
     }
 
