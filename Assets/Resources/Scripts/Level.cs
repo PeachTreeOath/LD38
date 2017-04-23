@@ -26,13 +26,4 @@ public class Level : MonoBehaviour {
     public float spawnerAngleRange = 45;
     public float maxBlastRadius = 3;
 
-    // Use this for initialization
-    void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
 }
