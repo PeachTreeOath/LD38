@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ShopManager : NonPersistentSingleton<ShopManager>
 {
@@ -61,8 +62,15 @@ public class ShopManager : NonPersistentSingleton<ShopManager>
         levelMap.Add(magnetString, 0);
         levelMap.Add(resourceString, 0);
 
-        //Kick off initial theme here since there are no other scene singletons..
+        // Kick off initial theme here since there are no other scene singletons..
         AudioManager.Instance.PlayMusic("ItsASmallWorld", .50f);
+
+        // Init prices
+        CraftButton[] buttons = GameObject.FindObjectsOfType<CraftButton>();
+        foreach(CraftButton button in buttons)
+        {
+            //SetButtonCost(button, costMap.)
+        }
     }
 
     public void ToggleShop()
@@ -75,6 +83,18 @@ public class ShopManager : NonPersistentSingleton<ShopManager>
     public bool IsActive()
     {
         return isActive;
+    }
+
+    public void SetButtonCost(CraftButton buttonCaller, int cost)
+    {
+        Text costText = buttonCaller.GetComponentInChildren<Text>();
+        costText.text = "x " + cost;
+    }
+
+    public void SetButtonBlank(CraftButton buttonCaller)
+    {
+        Text costText = buttonCaller.GetComponentInChildren<Text>();
+        costText.text = "x  -";
     }
 
     public void PurchaseItem(string itemName, CraftButton buttonCaller)
@@ -127,17 +147,35 @@ public class ShopManager : NonPersistentSingleton<ShopManager>
         if (debugOn)
         {
             levelMap[itemName]++;
-            buttonCaller.SetOrbs(levelMap[itemName]);
-            player.SetStat(itemName, levelMap[itemName]);
+            int newLevel = levelMap[itemName];
+            buttonCaller.SetOrbs(newLevel);
+            player.SetStat(itemName, newLevel);
+            if (newLevel < 3)
+            {
+                SetButtonCost(buttonCaller, costMap[itemName][newLevel]);
+            }
+            else
+            {
+                SetButtonBlank(buttonCaller);
+            }
         }
         else
         {
             if (PlayerInventoryManager.Instance.PlayerResources >= cost)
             {
                 levelMap[itemName]++;
+                int newLevel = levelMap[itemName];
                 PlayerInventoryManager.Instance.PlayerResources -= cost;
-                buttonCaller.SetOrbs(levelMap[itemName]);
-                player.SetStat(itemName, levelMap[itemName]);
+                buttonCaller.SetOrbs(newLevel);
+                player.SetStat(itemName, newLevel);
+                if (newLevel < 3)
+                {
+                    SetButtonCost(buttonCaller, costMap[itemName][newLevel]);
+                }
+                else
+                {
+                    SetButtonBlank(buttonCaller);
+                }
             }
         }
     }
