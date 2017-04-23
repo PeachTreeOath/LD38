@@ -121,7 +121,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aec6a7575c84fab49a11662f35aa5361, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Type: 2
+  Type: 0
   depth: 20
   radius: 100
   scale: 0.5
@@ -141,8 +141,8 @@ MonoBehaviour:
   - {fileID: 21300000, guid: a73916f0c2828644d99a36fce7579c92, type: 3}
   - {fileID: 21300000, guid: e0e6e5e6b50b15841b95bef6b89e89c2, type: 3}
   - {fileID: 21300000, guid: 888032f7e0c1c4e479e9532d43255019, type: 3}
-  - {fileID: 21300000, guid: 3e987bbc6b58ad645a0704e243ff6992, type: 3}
-  - {fileID: 21300000, guid: d19e206ea6728fa4db3c0210bf86abdf, type: 3}
+  - {fileID: 21300000, guid: f4384bc33bc569241b62eb85ac1e5d28, type: 3}
+  - {fileID: 21300000, guid: dc535bae9063e4a4e995f7e64c5afd12, type: 3}
   MarsBlockTypes:
   - {fileID: 21300000, guid: 07ad2b084c0389649bbb3043bdb0b1e7, type: 3}
   - {fileID: 21300000, guid: cdfbb594864fa2449b29fd6d57cddb4f, type: 3}
