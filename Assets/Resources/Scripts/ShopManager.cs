@@ -11,13 +11,13 @@ public class ShopManager : NonPersistentSingleton<ShopManager>
     private PlayerController player;
     private RocketController rocket;
 
-    public int[] speedCosts = { 1, 3, 5 };
-    public int[] jumpCosts = { 1, 3, 5 };
-    public int[] armorCosts = { 1, 3, 5 };
-    public int[] radarCosts = { 1, 3, 5 };
-    public int[] magnetCosts = { 1, 3, 5 };
-    public int[] resourceCosts = { 1, 3, 5 };
-    public int shipPartCost = 1;
+    public int[] speedCosts = { 20, 40, 100 };
+    public int[] jumpCosts = { 10, 30, 70 };
+    public int[] armorCosts = { 75, 125, 250 };
+    public int[] radarCosts = { 30, 50, 150 };
+    public int[] magnetCosts = { 50, 300, 750 };
+    public int[] resourceCosts = { 50, 300, 1000 };
+    public int shipPartCost = 100; // TODO: Set this differently per level
 
     public const string engineString = "Engine";
     public const string shuttleString = "Shuttle";
