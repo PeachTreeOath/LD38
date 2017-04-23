@@ -16,7 +16,7 @@ public class PickupDespawn : MonoBehaviour {
     void Start()
     {
         spawnTime = Time.time;
-        //GameObject.Find("World").GetComponent<WorldGenerator>().worldTiles.Add(gameObject);
+        GameObject.Find("World").GetComponent<WorldGenerator>().worldTiles.Add(gameObject);
     }
 
     /// <summary>
