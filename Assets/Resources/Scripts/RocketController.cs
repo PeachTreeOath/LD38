@@ -54,6 +54,7 @@ public class RocketController : MonoBehaviour
             {
                 if (Input.GetAxisRaw("Activate") > 0 && CheckIfAllPartsBuilt())
                 {
+					gameObject.transform.rotation = Quaternion.identity;
                     AudioManager.Instance.PlaySound("Door_Sound", 0.5f);
                     launching = true;
                     launchTimer = Time.time;
@@ -144,7 +145,7 @@ public class RocketController : MonoBehaviour
                 textHandler.SetNearShip(true);
             }
         }
-        if (col.gameObject.tag.Equals("Meteor"))
+		if (col.gameObject.tag.Equals("Meteor") && !launching && !flying)
         {
             gameObject.GetComponent<Rigidbody2D>().AddForce(col.GetComponent<Rigidbody2D>().velocity, ForceMode2D.Impulse);
 
