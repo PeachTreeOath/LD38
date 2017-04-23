@@ -175,8 +175,10 @@ public class PlayerController : MonoBehaviour
 
     void OnDisable()
     {
-        shipText.SetActive(false);
-        shopText.SetActive(false);
+        if (shipText != null)
+            shipText.SetActive(false);
+        if (shopText != null)
+            shopText.SetActive(false);
     }
 
     public void SetStat(string itemName, int newLevel)
@@ -253,7 +255,7 @@ public class PlayerController : MonoBehaviour
 
     public void TakeDamage()
     {
-        if(invincible)
+        if (invincible)
         {
             return;
         }
@@ -299,7 +301,7 @@ public class PlayerController : MonoBehaviour
             }
             yield return new WaitForSeconds(flashSpeed);
             elapsedTime += flashSpeed;
-            if(inHitStun && elapsedTime > duration/2)
+            if (inHitStun && elapsedTime > duration / 2)
             {
                 inHitStun = false;
             }
@@ -308,7 +310,7 @@ public class PlayerController : MonoBehaviour
         sprite.material = origMat;
         invincible = false;
     }
-    
+
     private void NearBackpack(bool near)
     {
         shopText.SetActive(near);
@@ -338,7 +340,7 @@ public class PlayerController : MonoBehaviour
     private void WearBackpack(bool wear)
     {
         wearingBackpack = wear;
-        if(wear)
+        if (wear)
         {
             rocket.transform.rotation = Quaternion.identity;
             deployText.SetActive(true);
