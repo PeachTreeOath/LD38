@@ -442,6 +442,10 @@ MonoBehaviour:
   swissCheeseDensity: 0.01
   swissCheeseHoleWidth: 0.6
   swissCheeseHoleHeight: 0.97
+  lavaPercent: 0.25
+  stonePercent: 0.3
+  dirtPercent: 0.4
+  grassPercent: 0.1
   dirt: {fileID: 1375242716300212}
   BlockTypes:
   - {fileID: 21300000, guid: be5b10acbc19410478c46ae2d08b3e4b, type: 3}

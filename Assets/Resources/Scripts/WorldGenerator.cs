@@ -11,6 +11,10 @@ public class WorldGenerator : MonoBehaviour {
     public float swissCheeseDensity;
     public float swissCheeseHoleWidth;
     public float swissCheeseHoleHeight;
+    public float lavaPercent;
+    public float stonePercent;
+    public float dirtPercent;
+    public float grassPercent;
 
     private bool swissCheeseXGenning = false;
     private bool swissCheeseYGenning = false;
@@ -103,7 +107,7 @@ public class WorldGenerator : MonoBehaviour {
         }
 
         Sprite sprite = new Sprite();
-        if(index < 5)
+        if(index < lavaPercent * depth)
         {
             //Lava
             sprite = BlockTypes[0];
@@ -111,13 +115,13 @@ public class WorldGenerator : MonoBehaviour {
             go.GetComponent<Block>().Type = Block.BlockType.Damage;
             go.GetComponent<Block>().Health = 1;
         }
-        else if(index < 15)
+        else if(index < (lavaPercent + stonePercent) * depth)
         {
             //Stone
             sprite = BlockTypes[1];
             go.GetComponent<Block>().Health = 3;
         }
-        else if(index < 19)
+        else if(index < (lavaPercent + stonePercent + dirtPercent) * depth)
         {
             //Dirt
             sprite = BlockTypes[2];

@@ -39,6 +39,7 @@ public class PlayerController : MonoBehaviour
     private Material flashMat;
     private HeartCanvas heartCanvas;
     private MetalCanvas metalCanvas;
+    private CircleCollider2D vacuumCollider;
 
     private bool nearBackpack;
     private bool wearingBackpack;
@@ -75,6 +76,7 @@ public class PlayerController : MonoBehaviour
         metalCanvas = GameObject.Find("UICanvas").transform.FindChild("MetalImage").GetComponent<MetalCanvas>();
         origMat = sprite.material;
         flashMat = Resources.Load<Material>("Materials/WhiteFlashMat");
+        vacuumCollider = transform.FindChild("VacuumTrigger").GetComponent<CircleCollider2D>();
 
         origRunSpeed = runSpeed;
         currentHealth = maxHealth;
@@ -160,7 +162,7 @@ public class PlayerController : MonoBehaviour
         {
             case ShopManager.speedString:
                 speedStat = newLevel;
-                runSpeed = origRunSpeed + 1.5f;
+                runSpeed = origRunSpeed + speedStat * 1f;
                 break;
             case ShopManager.jumpString:
                 jumpStat = newLevel;
@@ -174,6 +176,7 @@ public class PlayerController : MonoBehaviour
                 break;
             case ShopManager.magnetString:
                 magnetStat = newLevel;
+                vacuumCollider.radius = newLevel * 1f;
                 break;
             case ShopManager.resourceString:
                 resourceStat = newLevel;
