@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Levels : MonoBehaviour {
 
@@ -52,5 +53,10 @@ public class Levels : MonoBehaviour {
         world.stonePercent = level.stonePercent;
         world.dirtPercent = level.dirtPercent;
         world.grassPercent = level.grassPercent;
+
+        if(level.planetName.Equals("World 1"))
+        {
+            GameObject.Find("Tutorial").GetComponent<Image>().enabled = true;
+        }
     }
 }
