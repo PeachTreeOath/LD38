@@ -7,11 +7,17 @@ public class BackgroundController : MonoBehaviour {
 	public float scrollSpeed;
     public float zIndex;
     public bool lockY;
-	// Update is called once per frame
-	void Update () {
+
+    private Camera mainCamera;
+
+    private void Start() {
+        mainCamera = Camera.main;
+    }
+    // Update is called once per frame
+    void Update () {
 		float xPosition, yPosition;
-		float camX = Camera.main.gameObject.transform.position.x;
-		float camY = Camera.main.gameObject.transform.position.y;
+		float camX = mainCamera.gameObject.transform.position.x;
+		float camY = mainCamera.gameObject.transform.position.y;
 
 		xPosition = camX - Mathf.Repeat((camX * scrollSpeed), gameObject.GetComponent<SpriteRenderer>().size.x);
 		yPosition = camY * scrollSpeed;
