@@ -27,12 +27,13 @@ public class SceneTransitionManager : Singleton<SceneTransitionManager>
     public void StartGame()
     {
         string nextSceneName = "Game";
-        SceneManager.UnloadSceneAsync("Start");
+		Application.LoadLevel(nextSceneName);
+       /* SceneManager.UnloadSceneAsync("Start");
 
         tempScene = SceneManager.CreateScene(tempSceneName);
         SceneManager.SetActiveScene(tempScene);
         SceneManager.LoadScene(nextSceneName, LoadSceneMode.Additive);
-        StartCoroutine(SetActive(SceneManager.GetSceneByName(nextSceneName), true));
+        StartCoroutine(SetActive(SceneManager.GetSceneByName(nextSceneName), true));*/
     }
 
     public void ResetGame()
