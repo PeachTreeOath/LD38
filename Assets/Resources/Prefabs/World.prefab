@@ -108,7 +108,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aec6a7575c84fab49a11662f35aa5361, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Type: 1
+  Type: 2
   depth: 20
   radius: 100
   scale: 0.5
@@ -135,6 +135,13 @@ MonoBehaviour:
   - {fileID: 21300000, guid: c09253a798305804fbf4141c92c736df, type: 3}
   - {fileID: 21300000, guid: fce9d6074da7fe54ca0c88a5b38a370a, type: 3}
   - {fileID: 21300000, guid: e0d2381c9bad0cb43a19215a0391e727, type: 3}
+  JupitorBlockTypes:
+  - {fileID: 21300000, guid: 892bef46343e5ab48b3b469274e00be9, type: 3}
+  - {fileID: 21300000, guid: 81f6df45766630342b301b4f182ad842, type: 3}
+  - {fileID: 21300000, guid: 31ae16b7d159f1d4b82c34d36a4e9af2, type: 3}
+  - {fileID: 21300000, guid: 8a20d2aab052c694f975d362c096b477, type: 3}
+  worldTiles: []
+  worldEntities: []
 --- !u!114 &114921512952316304
 MonoBehaviour:
   m_ObjectHideFlags: 1

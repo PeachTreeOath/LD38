@@ -16,6 +16,7 @@ public class Meteor : MonoBehaviour {
     public GameObject PickupItem;
     public GameObject radarArrow;
 
+    private GameObject World;
     private GameObject arrow;
 
 	Rigidbody2D rBody;
@@ -23,6 +24,7 @@ public class Meteor : MonoBehaviour {
 
     void Start()
 	{
+        World = GameObject.Find("World");
 		rBody = gameObject.GetComponent<Rigidbody2D>();
         mainCameraScript = GameObject.FindWithTag("MainCamera").GetComponent<CameraFollow>();
 
@@ -88,7 +90,7 @@ public class Meteor : MonoBehaviour {
         {
             if (PlayerInventoryManager.Instance.CanSpawnNewPickup())
             {
-                GameObject go = Instantiate(PickupItem);
+                GameObject go = Instantiate(PickupItem,World.transform);
                 go.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
                 go.transform.position = this.transform.position;
                 Rigidbody2D rb = go.GetComponent<Rigidbody2D>();

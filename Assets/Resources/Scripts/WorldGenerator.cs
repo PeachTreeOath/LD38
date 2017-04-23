@@ -5,7 +5,7 @@ using System.Linq;
 
 public class WorldGenerator : MonoBehaviour {
 
-    public enum PlanetType { Earth, Mars, Pluto}
+    public enum PlanetType { Earth, Mars,Jupitor, Pluto}
     public PlanetType Type = PlanetType.Earth;
     public int depth;
     public int radius;
@@ -29,8 +29,11 @@ public class WorldGenerator : MonoBehaviour {
     public List<Sprite> EarthBlockTypes;
     public List<Sprite> MarsBlockTypes;
     public List<Sprite> PlutoBlockTypes;
+    public List<Sprite> JupitorBlockTypes;
     [HideInInspector]
 	public List<GameObject> worldTiles;
+    [HideInInspector]
+    public List<GameObject> worldEntities;
 	Vector3 lastPos;
 	PlayerController pController;
 
@@ -57,7 +60,8 @@ public class WorldGenerator : MonoBehaviour {
         float xOffset = -scale * radius;
         float coreYOffset = playerStartYOffset - scale * depth;
         worldTiles = new List<GameObject>();
-		worldTiles.Add(GameObject.Find("Backpack"));
+		//worldTiles.Add(GameObject.Find("Backpack"));
+        worldEntities.Add(GameObject.Find("RocketTest"));
 
         for (int y = 0; y < depth; y++)
         {
@@ -106,9 +110,13 @@ public class WorldGenerator : MonoBehaviour {
                         case PlanetType.Mars:
                             AssignBlockType(MarsBlockTypes, y, goRight);
                             break;
+                        case PlanetType.Jupitor:
+                            AssignBlockType(JupitorBlockTypes, y, goRight);
+                            break;
                         case PlanetType.Pluto:
                             AssignBlockType(PlutoBlockTypes, y, goRight);
                             break;
+                            
                         default:
                             AssignBlockType(EarthBlockTypes, y, goRight);
                             break;
@@ -127,7 +135,13 @@ public class WorldGenerator : MonoBehaviour {
         }
 
         Sprite sprite = new Sprite();
-        if(index < lavaPercent * depth)
+        if( index == depth -1) 
+        {
+            //Grass
+            sprite = blockTypes[3];
+            go.GetComponent<Block>().Health = 1;
+        }
+        else if (index < lavaPercent * depth)
         {
             //Lava
             sprite = blockTypes[0];
@@ -156,6 +170,11 @@ public class WorldGenerator : MonoBehaviour {
 
         go.GetComponent<SpriteRenderer>().sprite = sprite;
         return sprite;
+    }
+
+    void WrapEntities()
+    {
+
     }
 
 	void WrapWorld()
