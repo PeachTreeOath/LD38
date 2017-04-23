@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -15,6 +16,7 @@ public class RocketController : MonoBehaviour {
 	public float maxAccel;
 	public float torqueForce;
 
+    bool startWobble;
 	bool flyable;
 	bool launching;
 	bool flying;
@@ -111,9 +113,46 @@ public class RocketController : MonoBehaviour {
 				GameObject.Find("ShipPrompt").GetComponent<Text>().color = Color.white;
 			}
 		}
+        if (col.gameObject.tag.Equals("Meteor"))
+        {
+            startWobble = false;
+            StartCoroutine(Wobble());
+        }
 	}
 
-	void OnTriggerExit2D(Collider2D col)
+    private IEnumerator Wobble()
+    {
+        startWobble = true;
+
+        Vector2 rotationAxis = new Vector2(gameObject.transform.localPosition.x, 
+            gameObject.transform.localPosition.y - 2);
+        for (int i = 0; i < 15; i++)
+        {
+            gameObject.transform.RotateAround(rotationAxis, Vector3.forward, .5f);
+            if (startWobble == false)
+                yield break;
+            else
+                yield return 0;
+        }
+        for (int i = 0; i < 30; i++)
+        {
+            gameObject.transform.RotateAround(rotationAxis, Vector3.forward, -.5f);
+            if (startWobble == false)
+                yield break;
+            else
+                yield return 0;
+        }
+        for (int i = 0; i < 15; i++)
+        {
+            gameObject.transform.RotateAround(rotationAxis, Vector3.forward, .5f);
+            if (startWobble == false)
+                yield break;
+            else
+                yield return 0;
+        }
+    }
+
+    void OnTriggerExit2D(Collider2D col)
 	{
 		if(col.gameObject.name.Equals("RocketTrigger"))
 		{
