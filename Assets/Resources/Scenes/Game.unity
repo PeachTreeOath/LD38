@@ -287,6 +287,21 @@ Prefab:
       propertyPath: backpack
       value: 
       objectReference: {fileID: 1095587073}
+    - target: {fileID: 114637630213776266, guid: 9a7486ec6c5601e40ab592ada7f2fe7f,
+        type: 2}
+      propertyPath: jumpForce
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 114637630213776266, guid: 9a7486ec6c5601e40ab592ada7f2fe7f,
+        type: 2}
+      propertyPath: carryingJumpForce
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 50788740434499574, guid: 9a7486ec6c5601e40ab592ada7f2fe7f,
+        type: 2}
+      propertyPath: m_GravityScale
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9a7486ec6c5601e40ab592ada7f2fe7f, type: 2}
   m_IsPrefabParent: 0
