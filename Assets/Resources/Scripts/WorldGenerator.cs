@@ -47,13 +47,16 @@ public class WorldGenerator : MonoBehaviour {
             
             for (int x = 0; x < radius; x++)
             {
-                if (swissCheeseYValues.Contains(x) || Random.Range(0f, 1f) < swissCheeseDensity)
+                bool newHole = Random.Range(0f, 1f) < swissCheeseDensity;
+                bool test = swissCheeseYValues.Contains(x);
+                if (swissCheeseYValues.Contains(x) || newHole)
                 {
+                    
                     swissCheeseYValues.Remove(x);
                     //gen holes
                     swissCheeseXGenning = true;
                     swissCheeseYGenning = true;
-                    if (Random.Range(0f, 1f) < swissCheeseHoleHeight)
+                    if (newHole || Random.Range(0f, 1f) < swissCheeseHoleHeight)
                         swissCheeseYValues.Add(x);
                 }
 
