@@ -5,8 +5,9 @@ using UnityEngine;
 public class MeteorSpawner : MonoBehaviour {
 
 	public GameObject meteorFab;
+    public GameObject radarArrow;
 
-	[Header("Speed")]
+    [Header("Speed")]
 	public float speedMin;
 	public float speedMax;
 	[Space(10)]
@@ -24,7 +25,8 @@ public class MeteorSpawner : MonoBehaviour {
 
     public float maxBlastSize;
 
-	private float prev_time;
+   
+    private float prev_time;
 
 	private Rigidbody2D rb2d;
 
@@ -52,6 +54,9 @@ public class MeteorSpawner : MonoBehaviour {
 		float x_angle = Random.Range(-spawnerAngleRange, spawnerAngleRange);
 		meteor.transform.position = new Vector3(cam_pos.x + x_offset, cam_pos.y + 10, 1);
 		Meteor m = meteor.GetComponent<Meteor>();
+
+        
+
        
         m.blastRadius = Random.Range(0, maxBlastSize);
         m.transform.localScale = new Vector3(Mathf.Clamp(1.0f,3.0f,m.blastRadius),

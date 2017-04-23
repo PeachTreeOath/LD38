@@ -13,6 +13,9 @@ public class Meteor : MonoBehaviour {
     /// Prefab for the resource pickup item dropped by the meteor.
     /// </summary>
     public GameObject PickupItem;
+    public GameObject radarArrow;
+
+    private GameObject arrow;
 
 	Rigidbody2D rBody;
     CameraFollow mainCameraScript;
@@ -21,7 +24,11 @@ public class Meteor : MonoBehaviour {
 	{
 		rBody = gameObject.GetComponent<Rigidbody2D>();
         mainCameraScript = GameObject.FindWithTag("MainCamera").GetComponent<CameraFollow>();
-	}
+
+        //Create radar arrow
+        arrow = Instantiate<GameObject>(radarArrow);
+        arrow.GetComponent<MeteorRadar>().Meteor = gameObject;
+    }
 
 	void FixedUpdate()
 	{
@@ -53,6 +60,7 @@ public class Meteor : MonoBehaviour {
             go.transform.localScale = new Vector3(blastRadius, blastRadius, 1.0f);
         }
         SpawnResources(1);
+        Destroy(arrow);
         Destroy(gameObject);
 
         mainCameraScript.shakeCycles = 5;
