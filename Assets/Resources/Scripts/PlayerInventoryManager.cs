@@ -4,9 +4,10 @@ using UnityEngine;
 public class PlayerInventoryManager : Singleton<PlayerInventoryManager> {
 
     /// <summary>
-    /// Maximum available pickups that can be allive at once on the map
+    /// Maximum available pickups that can be alive at once on the map. 
+    /// This should be set within the inspector.
     /// </summary>
-    public int MaximumAllowedPickups = 6;
+    public int MaximumAllowedPickups = 50;
 
     [HideInInspector]
     public int PlayerResources { get; set; }
