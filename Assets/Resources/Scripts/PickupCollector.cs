@@ -8,7 +8,7 @@ public class PickupCollector : MonoBehaviour {
 	{
 		if(col.gameObject.layer == LayerMask.NameToLayer("Pickup"))
 		{
-			AudioManager.Instance.PlaySound("Item_Pickup_Sound", 8.0f);
+			AudioManager.Instance.PlaySound("Item_Pickup_Sound", 4.0f);
 			PlayerInventoryManager.Instance.CollectedPickup();
 			Destroy(col.gameObject);
 		}

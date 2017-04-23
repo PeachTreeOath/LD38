@@ -9,6 +9,7 @@ public class MeteorRadar : MonoBehaviour {
 
     private Camera currentCamera;
     public float yOffset;
+    //Test change
 
 	// Use this for initialization
 	void Start () {
