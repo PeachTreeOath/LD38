@@ -131,6 +131,7 @@ MonoBehaviour:
     type: 2}
   nextLevelPromptFab: {fileID: 1824982556412062, guid: 09175afde5ef00b429fb944eb24bf055,
     type: 2}
+  flamesFab: {fileID: 1528466486329470, guid: be3b0ff1fe95bc84b920587ca1286e90, type: 2}
   launchForce: 100
   accel: 1
   maxAccel: 1.12
@@ -167,7 +168,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 7a7a84c982458be4b84bd2211d408f8c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

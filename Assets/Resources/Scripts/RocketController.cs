@@ -8,6 +8,7 @@ public class RocketController : MonoBehaviour {
 	public GameObject launchParticlesFab;
 	public GameObject flyingParticlesFab;
 	public GameObject nextLevelPromptFab;
+	public GameObject flamesFab;
 
 	public float launchForce;
 	public float accel;
@@ -68,6 +69,10 @@ public class RocketController : MonoBehaviour {
 				flyingParticles.transform.position = gameObject.transform.position - gameObject.transform.up * (gameObject.GetComponent<Renderer>().bounds.extents.y + .3f);
 				flyingParticles.transform.parent = gameObject.transform;
 				transitionTimer = Time.time;
+
+				GameObject flames = Instantiate(flamesFab) as GameObject;
+				flames.transform.position = gameObject.transform.position + -gameObject.transform.up * (gameObject.GetComponent<Renderer>().bounds.extents.y);
+				flames.transform.parent = gameObject.transform;
 			}
 		}
 

@@ -7,26 +7,24 @@ public class MeteorSpawner : MonoBehaviour {
 	public GameObject meteorFab;
     public GameObject radarArrow;
 
+<<<<<<< HEAD
     [Header("Speed")]
+=======
+>>>>>>> 57b53cc58e7d1afddb91ddf398895d151624010a
 	public float speedMin;
 	public float speedMax;
-	[Space(10)]
-
-	[Range(0, 2)]
 	public float secondsPerMeteor;
-
-
-	[Range(0, 20)]
 	public float torqueRange;
-	[Range(0, 20)]
     public float spawnerWidth;
-    [Range(0, 5)]
     public float spawnerAngleRange;
-
     public float maxBlastSize;
+<<<<<<< HEAD
 
    
     private float prev_time;
+=======
+	private float prev_time;
+>>>>>>> 57b53cc58e7d1afddb91ddf398895d151624010a
 
 	private Rigidbody2D rb2d;
 
@@ -41,28 +39,39 @@ public class MeteorSpawner : MonoBehaviour {
 		if(curr_time - prev_time > secondsPerMeteor)
 		{
 			prev_time = curr_time;
-			genMeteor();
+			GenerateMeteor();
 		}
 	}
 
-	void genMeteor()
+	void GenerateMeteor()
 	{
-		Vector3 cam_pos = Camera.main.gameObject.transform.position;
-
+		//Init the meteor
 		GameObject meteor = Instantiate<GameObject>(meteorFab);
-		float x_offset = UnityEngine.Random.Range(-spawnerWidth, spawnerWidth);
-		float x_angle = Random.Range(-spawnerAngleRange, spawnerAngleRange);
-		meteor.transform.position = new Vector3(cam_pos.x + x_offset, cam_pos.y + 10, 1);
 		Meteor m = meteor.GetComponent<Meteor>();
 
+<<<<<<< HEAD
         
 
        
-        m.blastRadius = Random.Range(0, maxBlastSize);
-        m.transform.localScale = new Vector3(Mathf.Clamp(1.0f,3.0f,m.blastRadius),
-            Mathf.Clamp(1.0f, 3.0f, m.blastRadius), 1.0f);
+=======
+		// Set the meteor launch position
+		Vector3 meteorStartPosition = new Vector3();
+		Vector3 cameraPosition = Camera.main.gameObject.transform.position;
+		meteorStartPosition.x = UnityEngine.Random.Range(-spawnerWidth, spawnerWidth);
+		meteorStartPosition.y = cameraPosition.y + 10;
+		meteor.transform.position = meteorStartPosition;
 
-        m.moveDir = new Vector3(x_angle, -1).normalized;
+		// Set the meteor launch angle
+		float angle = Random.Range(-spawnerAngleRange, spawnerAngleRange);
+		m.moveDir = (Quaternion.AngleAxis(angle, Vector3.forward) * Vector3.down).normalized;
+		
+		// Set the blast size and radius
+>>>>>>> 57b53cc58e7d1afddb91ddf398895d151624010a
+        m.blastRadius = Random.Range(0, maxBlastSize);
+        m.transform.localScale = new Vector3(Mathf.Clamp(0.5f,3.0f,m.blastRadius),
+            Mathf.Clamp(0.5f, 3.0f, m.blastRadius), 1.0f);
+
+        // Set Speed and Torque
 		m.moveSpeed = Random.Range(speedMin, speedMax);
 		m.torque = Random.Range(-torqueRange, torqueRange);
 	}
