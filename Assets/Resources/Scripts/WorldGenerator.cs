@@ -135,7 +135,13 @@ public class WorldGenerator : MonoBehaviour {
         }
 
         Sprite sprite = new Sprite();
-        if(index < lavaPercent * depth)
+        if( index == depth -1) 
+        {
+            //Grass
+            sprite = blockTypes[3];
+            go.GetComponent<Block>().Health = 1;
+        }
+        else if (index < lavaPercent * depth)
         {
             //Lava
             sprite = blockTypes[0];
