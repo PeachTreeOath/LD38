@@ -230,14 +230,14 @@ public class WorldGenerator : MonoBehaviour {
 				GameObject onDeckLeftMost = GetLeftMost(onDeck);
 				float onDeckRadius = temp.transform.position.x - onDeckLeftMost.transform.position.x;
 				float rightDist = worldRightMost.transform.position.x - temp.transform.position.x;
-				temp.transform.position += Vector3.right * (rightDist + onDeckRadius);
+				temp.transform.position += Vector3.right * ((rightDist + onDeckRadius) + .5f);
 			}else
 			{
 				GameObject worldLeftMost = GetLeftMost(worldTiles);
 				GameObject onDeckRightMost = GetRightMost(onDeck);
 				float onDeckRadius = onDeckRightMost.transform.position.x - temp.transform.position.x;
 				float leftDist = temp.transform.position.x - worldLeftMost.transform.position.x;
-				temp.transform.position += Vector3.left * (leftDist + onDeckRadius);
+				temp.transform.position += Vector3.left * ((leftDist + onDeckRadius) + .5f) ;
 			}
 
 			for(int i = 0; i < onDeck.Count; i++)
@@ -256,7 +256,8 @@ public class WorldGenerator : MonoBehaviour {
 		GameObject rMost = Globals.playerObj;
 		for(int  i = 0; i < tiles.Count; i++)
 		{
-			if(tiles[i] != null)
+			if(tiles[i] != null &&
+				tiles[i].tag.Equals("Ground"))
 			{
 				if(rMost.transform.position.x < tiles[i].transform.position.x)
 				{
@@ -273,7 +274,8 @@ public class WorldGenerator : MonoBehaviour {
 		GameObject lMost = Globals.playerObj;
 		for(int  i = 0; i < tiles.Count; i++)
 		{
-			if(tiles[i] != null)
+			if(tiles[i] != null &&
+				tiles[i].tag.Equals("Ground"))
 			{
 				if(lMost.transform.position.x > tiles[i].transform.position.x)
 				{

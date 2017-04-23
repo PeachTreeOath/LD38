@@ -319,6 +319,7 @@ MonoBehaviour:
   accel: 0.1
   maxAccel: 0.3
   torqueForce: 25
+  minY: -5
   transitionTime: 5
 --- !u!212 &212077335120455350
 SpriteRenderer:
