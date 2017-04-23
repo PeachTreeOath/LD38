@@ -174,7 +174,6 @@ public class PlayerController : MonoBehaviour
 
     void OnDisable()
     {
-        Debug.Log("Deactivate");
         shipText.SetActive(false);
         shopText.SetActive(false);
     }
