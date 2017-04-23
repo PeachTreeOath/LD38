@@ -12,6 +12,7 @@ public class ShopManager : NonPersistentSingleton<ShopManager>
     private PlayerController player;
     private RocketController rocket;
 
+    public int[] shipCosts = new int[1];
     public int[] speedCosts = { 20, 40, 100 };
     public int[] jumpCosts = { 10, 30, 70 };
     public int[] armorCosts = { 75, 125, 250 };
@@ -50,6 +51,9 @@ public class ShopManager : NonPersistentSingleton<ShopManager>
         costMap.Add(radarString, radarCosts);
         costMap.Add(magnetString, magnetCosts);
         costMap.Add(resourceString, resourceCosts);
+        costMap.Add(engineString, shipCosts);
+        costMap.Add(shuttleString, shipCosts);
+        costMap.Add(boostersString, shipCosts);
 
         levelMap = new Dictionary<string, int>();
         levelMap.Add(engineString, 0);
@@ -65,11 +69,12 @@ public class ShopManager : NonPersistentSingleton<ShopManager>
         // Kick off initial theme here since there are no other scene singletons..
         AudioManager.Instance.PlayMusic("ItsASmallWorld", .50f);
 
+        shipCosts[0] = shipPartCost;
         // Init prices
         CraftButton[] buttons = GameObject.FindObjectsOfType<CraftButton>();
         foreach(CraftButton button in buttons)
         {
-            //SetButtonCost(button, costMap.)
+            SetButtonCost(button, costMap[button.itemName][0]);
         }
     }
 
