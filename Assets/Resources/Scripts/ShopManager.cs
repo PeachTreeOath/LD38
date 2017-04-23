@@ -9,6 +9,7 @@ public class ShopManager : NonPersistentSingleton<ShopManager>
     private bool isActive;
     private UpgradesPanelController shopPanel;
     private PlayerController player;
+    private RocketController rocket;
 
     public int[] speedCosts = { 1, 3, 5 };
     public int[] jumpCosts = { 1, 3, 5 };
@@ -16,6 +17,11 @@ public class ShopManager : NonPersistentSingleton<ShopManager>
     public int[] radarCosts = { 1, 3, 5 };
     public int[] magnetCosts = { 1, 3, 5 };
     public int[] resourceCosts = { 1, 3, 5 };
+    public int shipPartCost = 1;
+
+    public const string engineString = "Engine";
+    public const string shuttleString = "Shuttle";
+    public const string boostersString = "Boosters";
 
     public const string speedString = "Speed";
     public const string jumpString = "Jump";
@@ -26,36 +32,34 @@ public class ShopManager : NonPersistentSingleton<ShopManager>
 
     public Dictionary<string, int[]> costMap;
     public Dictionary<string, int> levelMap;
+    public bool hasEngine;
+    public bool hasShuttle;
+    public bool hasBoosters;
 
     private bool debugOn = true;
 
     protected override void Init()
     {
-		player = GameObject.Find("Player").GetComponent<PlayerController>();
-		costMap = new Dictionary<string, int[]>();
-		costMap.Add(speedString, speedCosts);
-		costMap.Add(jumpString, jumpCosts);
-		costMap.Add(armorString, armorCosts);
-		costMap.Add(radarString, radarCosts);
-		costMap.Add(magnetString, magnetCosts);
-		costMap.Add(resourceString, resourceCosts);
+        player = GameObject.Find("Player").GetComponent<PlayerController>();
+        rocket = GameObject.Find("RocketTest").GetComponent<RocketController>();
+        costMap = new Dictionary<string, int[]>();
+        costMap.Add(speedString, speedCosts);
+        costMap.Add(jumpString, jumpCosts);
+        costMap.Add(armorString, armorCosts);
+        costMap.Add(radarString, radarCosts);
+        costMap.Add(magnetString, magnetCosts);
+        costMap.Add(resourceString, resourceCosts);
 
-		levelMap = new Dictionary<string, int>();
-		levelMap.Add(speedString, 0);
-		levelMap.Add(jumpString, 0);
-		levelMap.Add(armorString, 0);
-		levelMap.Add(radarString, 0);
-		levelMap.Add(magnetString, 0);
-		levelMap.Add(resourceString, 0);
-    }
-
-    void Update()
-    {
-        if (!isActive)
-        {
-            return;
-        }
-
+        levelMap = new Dictionary<string, int>();
+        levelMap.Add(engineString, 0);
+        levelMap.Add(shuttleString, 0);
+        levelMap.Add(boostersString, 0);
+        levelMap.Add(speedString, 0);
+        levelMap.Add(jumpString, 0);
+        levelMap.Add(armorString, 0);
+        levelMap.Add(radarString, 0);
+        levelMap.Add(magnetString, 0);
+        levelMap.Add(resourceString, 0);
     }
 
     public void ToggleShop()
@@ -72,7 +76,6 @@ public class ShopManager : NonPersistentSingleton<ShopManager>
 
     public void PurchaseItem(string itemName, CraftButton buttonCaller)
     {
-		Debug.Log("PurchaseItem: " + itemName);
         int level = levelMap[itemName];
 
         if (level > 2)
@@ -80,12 +83,46 @@ public class ShopManager : NonPersistentSingleton<ShopManager>
             return;
         }
 
-		Debug.Log("PurchaseItem: level " + level);
-        int cost = costMap[itemName][level];
+        if (itemName.Equals(engineString))
+        {
+            if (debugOn || PlayerInventoryManager.Instance.PlayerResources >= shipPartCost)
+            {
+                hasEngine = true;
+                rocket.BuildEngine();
+                if (!debugOn)
+                    PlayerInventoryManager.Instance.PlayerResources -= shipPartCost;
+                buttonCaller.SetOrbs(1);
+            }
+            return;
+        }
+        else if (itemName.Equals(shuttleString))
+        {
+            if (debugOn || PlayerInventoryManager.Instance.PlayerResources >= shipPartCost)
+            {
+                hasShuttle = true;
+                rocket.BuildShuttle();
+                if (!debugOn)
+                    PlayerInventoryManager.Instance.PlayerResources -= shipPartCost;
+                buttonCaller.SetOrbs(1);
+            }
+            return;
+        }
+        else if (itemName.Equals(boostersString))
+        {
+            if (debugOn || PlayerInventoryManager.Instance.PlayerResources >= shipPartCost)
+            {
+                hasBoosters = true;
+                rocket.BuildBoosters();
+                if (!debugOn)
+                    PlayerInventoryManager.Instance.PlayerResources -= shipPartCost;
+                buttonCaller.SetOrbs(1);
+            }
+            return;
+        }
 
+        int cost = costMap[itemName][level];
         if (debugOn)
         {
-            Debug.Log("Resources: " + PlayerInventoryManager.Instance.PlayerResources + " Cost: " + cost);
             levelMap[itemName]++;
             buttonCaller.SetOrbs(levelMap[itemName]);
             player.SetStat(itemName, levelMap[itemName]);

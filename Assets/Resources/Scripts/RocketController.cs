@@ -47,7 +47,7 @@ public class RocketController : MonoBehaviour
         {
             if (!launching)
             {
-                if (Input.GetAxisRaw("Activate") > 0)
+                if (Input.GetAxisRaw("Activate") > 0 && CheckIfAllPartsBuilt())
                 {
                     AudioManager.Instance.PlaySound("Door_Sound", 0.5f);
                     launching = true;
@@ -118,7 +118,7 @@ public class RocketController : MonoBehaviour
         if (col.gameObject.name.Equals("RocketTrigger"))
         {
             flyable = true;
-            if (!launching && !flying)
+            if (!launching && !flying && CheckIfAllPartsBuilt())
             {
                 textHandler.SetNearShip(true);
             }
@@ -181,5 +181,29 @@ public class RocketController : MonoBehaviour
             flyable = false;
             textHandler.SetNearShip(false);
         }
+    }
+
+    public void BuildEngine()
+    {
+        transform.Find("RocketTop").GetComponent<SpriteRenderer>().enabled = true;
+    }
+
+    public void BuildShuttle()
+    {
+        transform.Find("RocketMid").GetComponent<SpriteRenderer>().enabled = true;
+    }
+
+    public void BuildBoosters()
+    {
+        transform.Find("RocketBot").GetComponent<SpriteRenderer>().enabled = true;
+    }
+
+    private bool CheckIfAllPartsBuilt()
+    {
+        if(ShopManager.Instance.hasEngine && ShopManager.Instance.hasShuttle && ShopManager.Instance.hasBoosters)
+        {
+            return true;
+        }
+        return false;
     }
 }
