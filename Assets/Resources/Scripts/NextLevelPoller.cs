@@ -13,8 +13,9 @@ public class NextLevelPoller : MonoBehaviour {
 		{
 			Time.timeScale = 1;
 			loadingLevel = true;
-			//Debug.Log(Time.time + " go to next level");
-			//TODO: Load next level
+            //Debug.Log(Time.time + " go to next level");
+            //TODO: Load next level
+            Globals.currentLevel += 1;
 			SceneTransitionManager.Instance.ResetGame();
 		}
 	}

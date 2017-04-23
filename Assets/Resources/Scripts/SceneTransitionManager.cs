@@ -46,6 +46,7 @@ public class SceneTransitionManager : Singleton<SceneTransitionManager>
         StartCoroutine(SetActive(SceneManager.GetSceneByName(nextSceneName), true));*/
 		PlayerInventoryManager.Instance.ResetGame();
 		Application.LoadLevel(Application.loadedLevel);
+
     }
 
     // You only need to use mergeTempScene if you are potentially

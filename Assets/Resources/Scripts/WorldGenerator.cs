@@ -5,6 +5,7 @@ using System.Linq;
 
 public class WorldGenerator : MonoBehaviour {
 
+    public string WorldName;
     public enum PlanetType { Earth, Mars,Jupitor, Pluto}
     public PlanetType Type = PlanetType.Earth;
     public int depth;
@@ -43,7 +44,7 @@ public class WorldGenerator : MonoBehaviour {
     // Use this for initialization
     void Start()
     {
-        
+        Globals.Levels.GetComponent<Levels>().GetCurrentLevel();
         dirt.transform.localScale = new Vector3(dirt.transform.localScale.x * scale,
             dirt.transform.localScale.y * scale, 1.0f);
         background = GameObject.Find("Main Camera");
