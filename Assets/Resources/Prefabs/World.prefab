@@ -121,6 +121,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aec6a7575c84fab49a11662f35aa5361, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  WorldName: 
   Type: 1
   depth: 20
   radius: 100
@@ -133,7 +134,7 @@ MonoBehaviour:
   dirtPercent: 0.35
   grassPercent: 0.05
   dirt: {fileID: 1500227599575828}
-  background: {fileID: 1566027372119680, guid: 20b1801696b62f34c97f822e92dbc41e, type: 2}
+  background: {fileID: 0}
   cloudOverlay: {fileID: 1817166608260722, guid: f0e76222ffcbe314992e8bd19751ffe4,
     type: 2}
   EarthBlockTypes:
@@ -164,6 +165,13 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 71df4c76653805f4da5f9ecb37cea3cd, type: 3}
   - {fileID: 21300000, guid: f5546960a3e1a824dab3fc9010c84711, type: 3}
   - {fileID: 21300000, guid: d19e206ea6728fa4db3c0210bf86abdf, type: 3}
+  PlanetXBlockTypes:
+  - {fileID: 21300000, guid: 9ce80f0e7ceb5cd409901bec012dd41b, type: 3}
+  - {fileID: 21300000, guid: 2e2e6a72a6012d647b48eecb81764c83, type: 3}
+  - {fileID: 21300000, guid: 6d11c4ca7563a07499398982e8fdbbd3, type: 3}
+  - {fileID: 21300000, guid: d226dcd31238fb44cade2f4a1e2261a6, type: 3}
+  - {fileID: 21300000, guid: def355a0f35339d46b3e55b3bc9ac119, type: 3}
+  - {fileID: 21300000, guid: 0a4136e566043d6469d7788345bc5c87, type: 3}
   worldTiles: []
   worldEntities: []
 --- !u!212 &212668459756692250

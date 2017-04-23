@@ -39,7 +39,7 @@ public class Levels : MonoBehaviour {
         meteorSpawner.speedMax = level.speedMax;
         meteorSpawner.secondsPerMeteor = level.secondsPerMeteor;
         meteorSpawner.torqueRange = level.torqueRange;
-        meteorSpawner.spawnerWidth = level.spawnerWidth;
+        meteorSpawner.spawnerWidth = level.radius * world.scale;
         meteorSpawner.spawnerAngleRange = level.spawnerAngleRange;
         meteorSpawner.maxBlastSize = level.maxBlastRadius;
 
