@@ -116,7 +116,7 @@ public class RocketController : MonoBehaviour {
         if (col.gameObject.tag.Equals("Meteor"))
         {
             startWobble = false;
-            StartCoroutine(Wobble());
+            //StartCoroutine(Wobble());
         }
 	}
 
@@ -126,30 +126,40 @@ public class RocketController : MonoBehaviour {
 
         Vector2 rotationAxis = new Vector2(gameObject.transform.localPosition.x, 
             gameObject.transform.localPosition.y - 2);
-        for (int i = 0; i < 15; i++)
+        float wobbleTime = .5f;
+        float counter = 0;
+        while (counter < wobbleTime)
         {
+            counter += Time.deltaTime;
             gameObject.transform.RotateAround(rotationAxis, Vector3.forward, .5f);
             if (startWobble == false)
                 yield break;
             else
                 yield return 0;
         }
-        for (int i = 0; i < 30; i++)
+
+        counter = 0;
+        while (counter < wobbleTime*2)
         {
+            counter += Time.deltaTime;
             gameObject.transform.RotateAround(rotationAxis, Vector3.forward, -.5f);
             if (startWobble == false)
                 yield break;
             else
                 yield return 0;
         }
-        for (int i = 0; i < 15; i++)
+
+        counter = 0;
+        while (counter < wobbleTime)
         {
+            counter += Time.deltaTime;
             gameObject.transform.RotateAround(rotationAxis, Vector3.forward, .5f);
             if (startWobble == false)
                 yield break;
             else
                 yield return 0;
         }
+        gameObject.transform.eulerAngles = (new Vector3(0f, 0f, 0f));
     }
 
     void OnTriggerExit2D(Collider2D col)
