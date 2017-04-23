@@ -8,7 +8,7 @@ public class Levels : MonoBehaviour {
     MeteorSpawner meteorSpawner;
     
 	// Use this for initialization
-	void Start () {
+	void Awake () {
         Globals.Levels = gameObject;
         world = GameObject.Find("World").GetComponent<WorldGenerator>();
         meteorSpawner = GameObject.Find("MeteorSpawner").GetComponent<MeteorSpawner>();
