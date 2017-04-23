@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ShopManager : NonPersistentSingleton<ShopManager>
 {
@@ -11,6 +12,7 @@ public class ShopManager : NonPersistentSingleton<ShopManager>
     private PlayerController player;
     private RocketController rocket;
 
+    public int[] shipCosts = new int[1];
     public int[] speedCosts = { 20, 40, 100 };
     public int[] jumpCosts = { 10, 30, 70 };
     public int[] armorCosts = { 75, 125, 250 };
@@ -36,7 +38,7 @@ public class ShopManager : NonPersistentSingleton<ShopManager>
     public bool hasShuttle;
     public bool hasBoosters;
 
-    private bool debugOn = true;
+    public bool debugOn;
 
     protected override void Init()
     {
@@ -49,6 +51,9 @@ public class ShopManager : NonPersistentSingleton<ShopManager>
         costMap.Add(radarString, radarCosts);
         costMap.Add(magnetString, magnetCosts);
         costMap.Add(resourceString, resourceCosts);
+        costMap.Add(engineString, shipCosts);
+        costMap.Add(shuttleString, shipCosts);
+        costMap.Add(boostersString, shipCosts);
 
         levelMap = new Dictionary<string, int>();
         levelMap.Add(engineString, 0);
@@ -61,8 +66,16 @@ public class ShopManager : NonPersistentSingleton<ShopManager>
         levelMap.Add(magnetString, 0);
         levelMap.Add(resourceString, 0);
 
-        //Kick off initial theme here since there are no other scene singletons..
+        // Kick off initial theme here since there are no other scene singletons..
         AudioManager.Instance.PlayMusic("ItsASmallWorld", .50f);
+
+        shipCosts[0] = shipPartCost;
+        // Init prices
+        CraftButton[] buttons = GameObject.FindObjectsOfType<CraftButton>();
+        foreach(CraftButton button in buttons)
+        {
+            SetButtonCost(button, costMap[button.itemName][0]);
+        }
     }
 
     public void ToggleShop()
@@ -75,6 +88,18 @@ public class ShopManager : NonPersistentSingleton<ShopManager>
     public bool IsActive()
     {
         return isActive;
+    }
+
+    public void SetButtonCost(CraftButton buttonCaller, int cost)
+    {
+        Text costText = buttonCaller.GetComponentInChildren<Text>();
+        costText.text = "x " + cost;
+    }
+
+    public void SetButtonBlank(CraftButton buttonCaller)
+    {
+        Text costText = buttonCaller.GetComponentInChildren<Text>();
+        costText.text = "x  -";
     }
 
     public void PurchaseItem(string itemName, CraftButton buttonCaller)
@@ -127,17 +152,35 @@ public class ShopManager : NonPersistentSingleton<ShopManager>
         if (debugOn)
         {
             levelMap[itemName]++;
-            buttonCaller.SetOrbs(levelMap[itemName]);
-            player.SetStat(itemName, levelMap[itemName]);
+            int newLevel = levelMap[itemName];
+            buttonCaller.SetOrbs(newLevel);
+            player.SetStat(itemName, newLevel);
+            if (newLevel < 3)
+            {
+                SetButtonCost(buttonCaller, costMap[itemName][newLevel]);
+            }
+            else
+            {
+                SetButtonBlank(buttonCaller);
+            }
         }
         else
         {
             if (PlayerInventoryManager.Instance.PlayerResources >= cost)
             {
                 levelMap[itemName]++;
+                int newLevel = levelMap[itemName];
                 PlayerInventoryManager.Instance.PlayerResources -= cost;
-                buttonCaller.SetOrbs(levelMap[itemName]);
-                player.SetStat(itemName, levelMap[itemName]);
+                buttonCaller.SetOrbs(newLevel);
+                player.SetStat(itemName, newLevel);
+                if (newLevel < 3)
+                {
+                    SetButtonCost(buttonCaller, costMap[itemName][newLevel]);
+                }
+                else
+                {
+                    SetButtonBlank(buttonCaller);
+                }
             }
         }
     }

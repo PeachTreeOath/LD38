@@ -122,7 +122,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Type: 1
-  depth: 30
+  depth: 20
   radius: 100
   scale: 0.5
   swissCheeseDensity: 0.01
@@ -133,22 +133,37 @@ MonoBehaviour:
   dirtPercent: 0.35
   grassPercent: 0.05
   dirt: {fileID: 1500227599575828}
+  background: {fileID: 1566027372119680, guid: 20b1801696b62f34c97f822e92dbc41e, type: 2}
+  cloudOverlay: {fileID: 1817166608260722, guid: f0e76222ffcbe314992e8bd19751ffe4,
+    type: 2}
   EarthBlockTypes:
   - {fileID: 21300000, guid: be5b10acbc19410478c46ae2d08b3e4b, type: 3}
   - {fileID: 21300000, guid: a73916f0c2828644d99a36fce7579c92, type: 3}
   - {fileID: 21300000, guid: e0e6e5e6b50b15841b95bef6b89e89c2, type: 3}
   - {fileID: 21300000, guid: 888032f7e0c1c4e479e9532d43255019, type: 3}
+  - {fileID: 21300000, guid: f4384bc33bc569241b62eb85ac1e5d28, type: 3}
+  - {fileID: 21300000, guid: dc535bae9063e4a4e995f7e64c5afd12, type: 3}
   MarsBlockTypes:
   - {fileID: 21300000, guid: 07ad2b084c0389649bbb3043bdb0b1e7, type: 3}
   - {fileID: 21300000, guid: cdfbb594864fa2449b29fd6d57cddb4f, type: 3}
   - {fileID: 21300000, guid: 3f6328ea03dc56442b31c15eae210e48, type: 3}
   - {fileID: 21300000, guid: 42c48f1b662639f469289f2920085e9d, type: 3}
+  - {fileID: 21300000, guid: 41217a4e67314e54990f9e6652484f17, type: 3}
+  - {fileID: 21300000, guid: 8655dbf1f1ca8e54fbfde5c06e3d8efd, type: 3}
   PlutoBlockTypes:
   - {fileID: 21300000, guid: 4d7d9053dc9316e4489ef20a108578ea, type: 3}
   - {fileID: 21300000, guid: c09253a798305804fbf4141c92c736df, type: 3}
   - {fileID: 21300000, guid: fce9d6074da7fe54ca0c88a5b38a370a, type: 3}
   - {fileID: 21300000, guid: e0d2381c9bad0cb43a19215a0391e727, type: 3}
-  JupitorBlockTypes: []
+  - {fileID: 21300000, guid: 3e987bbc6b58ad645a0704e243ff6992, type: 3}
+  - {fileID: 21300000, guid: dc535bae9063e4a4e995f7e64c5afd12, type: 3}
+  JupitorBlockTypes:
+  - {fileID: 21300000, guid: 87fe67b8a208e594183121e78cfecd19, type: 3}
+  - {fileID: 21300000, guid: 545af5eaad600d745928f6a20270f03d, type: 3}
+  - {fileID: 21300000, guid: f0e713c24c51d7844a5d40e0cdffd566, type: 3}
+  - {fileID: 21300000, guid: 71df4c76653805f4da5f9ecb37cea3cd, type: 3}
+  - {fileID: 21300000, guid: f5546960a3e1a824dab3fc9010c84711, type: 3}
+  - {fileID: 21300000, guid: d19e206ea6728fa4db3c0210bf86abdf, type: 3}
   worldTiles: []
   worldEntities: []
 --- !u!212 &212668459756692250

@@ -26,10 +26,13 @@ public class WorldGenerator : MonoBehaviour {
 
 
     public GameObject dirt;
+    public GameObject background;
+    public GameObject cloudOverlay;
     public List<Sprite> EarthBlockTypes;
     public List<Sprite> MarsBlockTypes;
     public List<Sprite> PlutoBlockTypes;
     public List<Sprite> JupitorBlockTypes;
+    
     [HideInInspector]
 	public List<GameObject> worldTiles;
     [HideInInspector]
@@ -43,6 +46,9 @@ public class WorldGenerator : MonoBehaviour {
         
         dirt.transform.localScale = new Vector3(dirt.transform.localScale.x * scale,
             dirt.transform.localScale.y * scale, 1.0f);
+        background = GameObject.Find("Main Camera");
+        cloudOverlay = GameObject.Find("CloudOverlay");
+
         GenerateWorld();
 		lastPos = Globals.playerObj.transform.position;
 		pController = Globals.playerObj.GetComponent<PlayerController>();
@@ -124,6 +130,39 @@ public class WorldGenerator : MonoBehaviour {
                 }
             }
         }
+
+        Sprite backgroundSprite = new Sprite();
+        Sprite cloudSprite = new Sprite();
+        switch (Type)
+        {
+            case PlanetType.Earth:
+                backgroundSprite = EarthBlockTypes[4];
+                cloudSprite = EarthBlockTypes[5];
+                break;
+            case PlanetType.Mars:
+                backgroundSprite = MarsBlockTypes[4];
+                cloudSprite = MarsBlockTypes[5];
+                break;
+            case PlanetType.Jupitor:
+                backgroundSprite = JupitorBlockTypes[4];
+                cloudSprite = JupitorBlockTypes[5];
+                break;
+            case PlanetType.Pluto:
+                backgroundSprite = PlutoBlockTypes[4];
+                cloudSprite = PlutoBlockTypes[5];
+                break;
+
+            default:
+                backgroundSprite = EarthBlockTypes[4];
+                cloudSprite = EarthBlockTypes[5];
+                break;
+        }
+        //Background Sky
+        //background.GetComponent<SpriteRenderer>().sprite = backgroundSprite;
+        background.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = backgroundSprite;
+        //Clouds
+        cloudOverlay.GetComponent<SpriteRenderer>().sprite = cloudSprite;
+        cloudOverlay.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = cloudSprite;
     }
 
     Sprite AssignBlockType(List<Sprite> blockTypes, int index, GameObject go)
@@ -167,6 +206,8 @@ public class WorldGenerator : MonoBehaviour {
             sprite = blockTypes[3];
             go.GetComponent<Block>().Health = 1;
         }
+
+        
 
         go.GetComponent<SpriteRenderer>().sprite = sprite;
         return sprite;

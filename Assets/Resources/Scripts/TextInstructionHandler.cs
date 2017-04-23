@@ -26,12 +26,17 @@ public class TextInstructionHandler : MonoBehaviour {
 
     private void RecalculateText()
     {
-        if(isNearCraft)
+        if(isNearCraft && isNearShip)
+        {
+            craftText.enabled = true;
+            shipText.enabled = true;
+        }
+        else if(isNearCraft)
         {
             craftText.enabled = true;
             shipText.enabled = false;
         }
-        else if (isNearShip)
+        else if(isNearShip)
         {
             shipText.enabled = true;
             craftText.enabled = false;
@@ -45,7 +50,7 @@ public class TextInstructionHandler : MonoBehaviour {
 
     public bool isFlyable()
     {
-        if(craftText.enabled == false && shipText.enabled == true)
+        if(shipText.enabled == true)
         {
             return true;
         }

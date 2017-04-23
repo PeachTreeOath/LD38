@@ -19,9 +19,9 @@ public class RocketController : MonoBehaviour
 	public float minY;
 
     bool startWobble;
-    bool flyable;
-    bool launching;
-    bool flying;
+    public bool flyable;
+    public bool launching;
+    public bool flying;
     float launchTimer;
     float launchTime = 2;
     float flytimer;
@@ -52,8 +52,13 @@ public class RocketController : MonoBehaviour
         {
             if (!launching)
             {
-                if (Input.GetAxisRaw("Activate") > 0 && CheckIfAllPartsBuilt())
+                if (Input.GetAxisRaw("Fire3") > 0 && CheckIfAllPartsBuilt())
                 {
+                    if(ShopManager.Instance.IsActive())
+                    {
+                        ShopManager.Instance.ToggleShop();
+                    }
+					gameObject.transform.rotation = Quaternion.identity;
                     AudioManager.Instance.PlaySound("Door_Sound", 0.5f);
                     launching = true;
                     launchTimer = Time.time;
@@ -136,15 +141,15 @@ public class RocketController : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D col)
     {
-        if (col.gameObject.name.Equals("RocketTrigger"))
-        {
-            flyable = true;
-            if (!launching && !flying && CheckIfAllPartsBuilt())
-            {
-                textHandler.SetNearShip(true);
-            }
-        }
-        if (col.gameObject.tag.Equals("Meteor"))
+        // if (col.gameObject.name.Equals("RocketTrigger"))
+        // {
+        //     flyable = true;
+        //     if (!launching && !flying && CheckIfAllPartsBuilt())
+        //     {
+        //         textHandler.SetNearShip(true);
+        //     }
+        // }
+		if (col.gameObject.tag.Equals("Meteor") && !launching && !flying)
         {
             gameObject.GetComponent<Rigidbody2D>().AddForce(col.GetComponent<Rigidbody2D>().velocity, ForceMode2D.Impulse);
 
@@ -224,7 +229,7 @@ public class RocketController : MonoBehaviour
         transform.Find("RocketBot").GetComponent<SpriteRenderer>().enabled = true;
     }
 
-    private bool CheckIfAllPartsBuilt()
+    public bool CheckIfAllPartsBuilt()
     {
         if (ShopManager.Instance.hasEngine && ShopManager.Instance.hasShuttle && ShopManager.Instance.hasBoosters)
         {
