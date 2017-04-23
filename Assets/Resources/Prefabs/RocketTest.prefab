@@ -38,7 +38,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1607717865388584}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.43, y: 12.21, z: 0.1}
+  m_LocalPosition: {x: -1.43, y: 12.21, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -55,11 +55,11 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 10
+  m_Mass: 0.6
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: dd1df0d25bf264b4ca9b4a8c9a5813c6, type: 2}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
@@ -87,7 +87,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 2}
+  m_Size: {x: 1.2, y: 2.2}
   m_EdgeRadius: 0
 --- !u!61 &61750817088056574
 BoxCollider2D:
@@ -132,9 +132,9 @@ MonoBehaviour:
   nextLevelPromptFab: {fileID: 1824982556412062, guid: 09175afde5ef00b429fb944eb24bf055,
     type: 2}
   flamesFab: {fileID: 1528466486329470, guid: be3b0ff1fe95bc84b920587ca1286e90, type: 2}
-  launchForce: 100
-  accel: 1
-  maxAccel: 1.12
+  launchForce: 25
+  accel: 0.1
+  maxAccel: 0.3
   torqueForce: 25
   transitionTime: 5
 --- !u!212 &212839149100871196
