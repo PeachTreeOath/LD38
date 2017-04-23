@@ -18,12 +18,12 @@ public class PlayerController : MonoBehaviour
     public GameObject backpack;
     public GameObject rocket;
 
-    public int radarStat;
-    public int speedStat;
-    public int armorStat;
-    public int jumpStat;
-    public int magnetStat;
-    public int resourceStat;
+    private int radarStat;
+    private int speedStat;
+    private int armorStat;
+    private int jumpStat;
+    private int magnetStat;
+    private int resourceStat;
 
     private Rigidbody2D body;
     private int allowedJumps;
