@@ -57,6 +57,7 @@ public class PlayerController : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+		Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("Player"), LayerMask.NameToLayer("Pickup"));
 		Globals.playerObj = gameObject;
         shop = ShopManager.Instance;
 
