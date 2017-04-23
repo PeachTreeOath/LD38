@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
@@ -40,8 +41,9 @@ public class PlayerController : MonoBehaviour
     private HeartCanvas heartCanvas;
     private MetalCanvas metalCanvas;
     private CircleCollider2D vacuumCollider;
+    private TextInstructionHandler textHandler;
 
-    private bool nearBackpack;
+    public bool nearBackpack;
     private bool wearingBackpack;
 
     public enum FacingEnum { LEFT, RIGHT };
@@ -58,6 +60,11 @@ public class PlayerController : MonoBehaviour
         {
             return FacingEnum.RIGHT;
         }
+    }
+
+    void Awake()
+    {
+        textHandler = GameObject.Find("UICanvas").GetComponent<TextInstructionHandler>();
     }
 
     // Use this for initialization
@@ -274,10 +281,11 @@ public class PlayerController : MonoBehaviour
         sprite.material = origMat;
         invincible = false;
     }
-
+    
     private void NearBackpack(bool near)
     {
         shopText.SetActive(near);
+        textHandler.SetNearCraft(near);
         nearBackpack = near;
 
         if (!near && shop.IsActive())

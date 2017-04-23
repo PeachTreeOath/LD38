@@ -331,6 +331,7 @@ MonoBehaviour:
   shopText: {fileID: 0}
   backpack: {fileID: 0}
   rocket: {fileID: 0}
+  nearBackpack: 0
 --- !u!114 &114766738809615600
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -261,6 +261,7 @@ GameObject:
   - component: {fileID: 114533119873108104}
   - component: {fileID: 114589013645614316}
   - component: {fileID: 114458540931588156}
+  - component: {fileID: 114738962585548848}
   m_Layer: 5
   m_Name: UICanvas
   m_TagString: Untagged
@@ -2003,13 +2004,13 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1971215656430992}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 708705254, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -2029,7 +2030,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Press E to enter ship
+  m_Text: E to enter ship
 --- !u!114 &114427717953487126
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2090,7 +2091,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1094045775181042}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 708705254, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
   m_Name: 
@@ -2783,6 +2784,19 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114738962585548848
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1156012502992514}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df85fcf352b7ad345add2fbc79bf7e22, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  craftText: {fileID: 114432858030002288}
+  shipText: {fileID: 114424260116301010}
 --- !u!114 &114761579557113836
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3677,11 +3691,11 @@ RectTransform:
   m_LocalScale: {x: 0.99999887, y: 0.99999887, z: 0.99999887}
   m_Children: []
   m_Father: {fileID: 224169618554083588}
-  m_RootOrder: 6
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 289.9, y: 16}
+  m_AnchoredPosition: {x: 397.5, y: 140.5}
   m_SizeDelta: {x: 256, y: 66.7}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224055197936088054
@@ -3948,10 +3962,10 @@ RectTransform:
   - {fileID: 224457997674959634}
   - {fileID: 224117264813106092}
   - {fileID: 224979241468808736}
+  - {fileID: 224040294590279742}
   - {fileID: 224200393095430288}
   - {fileID: 224561563190640046}
   - {fileID: 224350865583199712}
-  - {fileID: 224040294590279742}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -4008,7 +4022,7 @@ RectTransform:
   m_Children:
   - {fileID: 224579036305300564}
   m_Father: {fileID: 224169618554083588}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -4152,7 +4166,7 @@ RectTransform:
   m_LocalScale: {x: 0.7051464, y: 0.7051464, z: 0.7051464}
   m_Children: []
   m_Father: {fileID: 224169618554083588}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -4390,7 +4404,7 @@ RectTransform:
   - {fileID: 224109349554857628}
   - {fileID: 224109068704676848}
   m_Father: {fileID: 224169618554083588}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
