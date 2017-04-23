@@ -121,7 +121,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aec6a7575c84fab49a11662f35aa5361, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Type: 1
+  Type: 2
   depth: 20
   radius: 100
   scale: 0.5
@@ -148,8 +148,8 @@ MonoBehaviour:
   - {fileID: 21300000, guid: cdfbb594864fa2449b29fd6d57cddb4f, type: 3}
   - {fileID: 21300000, guid: 3f6328ea03dc56442b31c15eae210e48, type: 3}
   - {fileID: 21300000, guid: 42c48f1b662639f469289f2920085e9d, type: 3}
-  - {fileID: 21300000, guid: 3e987bbc6b58ad645a0704e243ff6992, type: 3}
-  - {fileID: 21300000, guid: d19e206ea6728fa4db3c0210bf86abdf, type: 3}
+  - {fileID: 21300000, guid: c4ec9ca64e3a8ee4ca0ef8dca35fb38a, type: 3}
+  - {fileID: 21300000, guid: 8af2cd0bd27619049b8f9f45503341e5, type: 3}
   PlutoBlockTypes:
   - {fileID: 21300000, guid: 4d7d9053dc9316e4489ef20a108578ea, type: 3}
   - {fileID: 21300000, guid: c09253a798305804fbf4141c92c736df, type: 3}
@@ -162,7 +162,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 545af5eaad600d745928f6a20270f03d, type: 3}
   - {fileID: 21300000, guid: f0e713c24c51d7844a5d40e0cdffd566, type: 3}
   - {fileID: 21300000, guid: 71df4c76653805f4da5f9ecb37cea3cd, type: 3}
-  - {fileID: 0}
+  - {fileID: 21300000, guid: f5546960a3e1a824dab3fc9010c84711, type: 3}
   - {fileID: 21300000, guid: d19e206ea6728fa4db3c0210bf86abdf, type: 3}
   worldTiles: []
   worldEntities: []

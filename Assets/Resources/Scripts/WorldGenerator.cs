@@ -155,7 +155,7 @@ public class WorldGenerator : MonoBehaviour {
                 break;
         }
         //Background Sky
-        background.GetComponent<SpriteRenderer>().sprite = backgroundSprite;
+        //background.GetComponent<SpriteRenderer>().sprite = backgroundSprite;
         background.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = backgroundSprite;
         //Clouds
         cloudOverlay.GetComponent<SpriteRenderer>().sprite = cloudSprite;
