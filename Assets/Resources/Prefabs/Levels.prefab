@@ -329,7 +329,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   planetName: World 5
-  WorldType: 0
+  WorldType: 4
   depth: 25
   radius: 60
   holeDensity: 0.01
