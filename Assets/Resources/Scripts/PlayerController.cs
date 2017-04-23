@@ -341,9 +341,11 @@ public class PlayerController : MonoBehaviour
         if(wear)
         {
             rocket.transform.rotation = Quaternion.identity;
+            deployText.SetActive(true);
         }
         if (!wear)
         {
+            deployText.SetActive(false);
             if (GetFacing() == FacingEnum.LEFT)
             {
                 rocket.transform.position = new Vector3(transform.position.x + .5f, transform.position.y + 1f);
