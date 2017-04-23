@@ -72,7 +72,7 @@ public class PlayerController : MonoBehaviour
         flashMat = Resources.Load<Material>("Materials/WhiteFlashMat");
 
         currentHealth = maxHealth;
-        heartCanvas.SetMaxHealth(maxHealth);
+        heartCanvas.SetHealth(currentHealth);
     }
 
     // Update is called once per frame
