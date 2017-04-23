@@ -7,6 +7,9 @@ using UnityEngine;
 public class PickupDespawn : MonoBehaviour {
 
     private float spawnTime;
+    private bool isVacuuming;
+    private Transform player;
+    private float vacuumSpeed = 10;
 
     // Use this for initialization
     void Start()
@@ -19,11 +22,26 @@ public class PickupDespawn : MonoBehaviour {
     /// </summary>
     private void Update()
     {
-       if (gameObject.transform.localPosition.y < -50 || 
+        if (isVacuuming)
+        {
+            Vector2 newPos = Vector2.MoveTowards(transform.position, player.position, vacuumSpeed * Time.deltaTime);
+            transform.position = newPos;
+            return;
+        }
+
+        if (gameObject.transform.localPosition.y < -50 || 
            Time.time - spawnTime > 30)
         {
             PlayerInventoryManager.Instance.DespawnedPickup();
             Destroy(this.gameObject);
         }
+    }
+
+    public void StartVacuum(Transform player)
+    {
+        this.player = player;
+        isVacuuming = true;
+        GetComponent<BoxCollider2D>().enabled = false;
+        GetComponent<Rigidbody2D>().gravityScale = 0f;
     }
 }
