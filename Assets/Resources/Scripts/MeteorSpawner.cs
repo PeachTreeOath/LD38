@@ -51,6 +51,7 @@ public class MeteorSpawner : MonoBehaviour {
 		meteorStartPosition.x = UnityEngine.Random.Range(-spawnerWidth, spawnerWidth);
 		meteorStartPosition.y = cameraPosition.y + 10;
 		meteor.transform.position = meteorStartPosition;
+		m.radarArrow = radarArrow;
 
 		// Set the meteor launch angle
 		float angle = Random.Range(-spawnerAngleRange, spawnerAngleRange);
