@@ -16,6 +16,9 @@ public class WorldGenerator : MonoBehaviour {
     private bool swissCheeseYGenning = false;
     private HashSet<int> swissCheeseYValues = new HashSet<int>();
 
+    private float playerStartYOffset = 11f;
+
+
     public GameObject dirt;
     public List<Sprite> BlockTypes;
 	List<GameObject> worldTiles;
@@ -25,11 +28,13 @@ public class WorldGenerator : MonoBehaviour {
     // Use this for initialization
     void Start()
     {
+        
         dirt.transform.localScale = new Vector3(dirt.transform.localScale.x * scale,
             dirt.transform.localScale.y * scale, 1.0f);
         GenerateWorld();
 		lastPos = Globals.playerObj.transform.position;
 		pController = Globals.playerObj.GetComponent<PlayerController>();
+        
     }
 
     // Update is called once per frame
@@ -40,12 +45,14 @@ public class WorldGenerator : MonoBehaviour {
 
     void GenerateWorld()
     {
-		worldTiles = new List<GameObject>();
+        float xOffset = -scale * radius;
+        float coreYOffset = playerStartYOffset - scale * depth;
+        worldTiles = new List<GameObject>();
 		worldTiles.Add(GameObject.Find("Backpack"));
         for (int y = 0; y < depth; y++)
         {
             
-            for (int x = 0; x < radius; x++)
+            for (int x = 0; x < radius*2; x++)
             {
                 bool newHole = Random.Range(0f, 1f) < swissCheeseDensity;
                 bool test = swissCheeseYValues.Contains(x);
@@ -74,17 +81,14 @@ public class WorldGenerator : MonoBehaviour {
 
                 if (genTile == true || y < 3 || x < 2)
                 {
+                    Vector3 xOffsetPos = new Vector3(xOffset + transform.position.x, transform.position.y);
                     GameObject goRight = Instantiate<GameObject>(dirt, transform);
-                    goRight.transform.position = new Vector3(dirt.transform.position.x + (x * scale), dirt.transform.position.y + (y * scale));
+                    goRight.transform.position = new Vector3(dirt.transform.position.x + ((x-radius) * scale), dirt.transform.position.y + (coreYOffset + y * scale));
                     worldTiles.Add(goRight);
 
-                    GameObject goLeft = Instantiate<GameObject>(dirt, transform);
-                    goLeft.transform.position = new Vector3(dirt.transform.position.x - (x * scale), dirt.transform.position.y + (y * scale));
-					worldTiles.Add(goLeft);
 
                     //Changes the texture ultilized based on hieght: Lava, dirt, rock, etc.
                     AssignBlockType(y, goRight);
-                    AssignBlockType(y, goLeft);
                 }
             }
         }

@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -6,10 +7,10 @@ public class PlayerController : MonoBehaviour
 {
 
     public float runSpeed;
-    public float carryingRunSpeed;
+    public float carryingSpeedFactor;
     public float jumpForce;
+    public float carryingJumpForce;
     public float hitForce;
-    public int allowedJumps;
     public int maxHealth;
     public int metal;
 
@@ -17,16 +18,18 @@ public class PlayerController : MonoBehaviour
     public GameObject backpack;
     public GameObject rocket;
 
-    public int radarStat;
-    public int speedStat;
-    public int armorStat;
-    public int jumpStat;
-    public int magnetStat;
-    public int resourceStat;
+    private int radarStat;
+    private int speedStat;
+    private int armorStat;
+    private int jumpStat;
+    private int magnetStat;
+    private int resourceStat;
 
     private Rigidbody2D body;
+    private int allowedJumps;
     private int usedJumps;
     private int currentHealth;
+    private float origRunSpeed;
     private bool invincible;
     private bool isFacingLeft;
 
@@ -36,30 +39,31 @@ public class PlayerController : MonoBehaviour
     private Material flashMat;
     private HeartCanvas heartCanvas;
     private MetalCanvas metalCanvas;
-    
+
     private bool nearBackpack;
     private bool wearingBackpack;
-
+    
 	public enum FacingEnum { LEFT, RIGHT };
 
     private ShopManager shop;
 
-	public FacingEnum GetFacing()
-	{
-		if(isFacingLeft)
-		{
-			return FacingEnum.LEFT;
-		}else
-		{
-			return FacingEnum.RIGHT;
-		}
-	}
+    public FacingEnum GetFacing()
+    {
+        if (isFacingLeft)
+        {
+            return FacingEnum.LEFT;
+        }
+        else
+        {
+            return FacingEnum.RIGHT;
+        }
+    }
 
     // Use this for initialization
     void Start()
     {
-		Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("Player"), LayerMask.NameToLayer("Pickup"));
-		Globals.playerObj = gameObject;
+        Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("Player"), LayerMask.NameToLayer("Pickup"));
+        Globals.playerObj = gameObject;
         shop = ShopManager.Instance;
 
         NearBackpack(false);
@@ -72,15 +76,17 @@ public class PlayerController : MonoBehaviour
         origMat = sprite.material;
         flashMat = Resources.Load<Material>("Materials/WhiteFlashMat");
 
+        origRunSpeed = runSpeed;
         currentHealth = maxHealth;
         heartCanvas.SetHealth(currentHealth);
+        allowedJumps = 1;
     }
 
     // Update is called once per frame
     void Update()
     {
         // Player in hitstun
-        if(invincible)
+        if (invincible)
         {
             return;
         }
@@ -89,7 +95,7 @@ public class PlayerController : MonoBehaviour
 
         if (wearingBackpack)
         {
-            hSpeed = Input.GetAxisRaw("Horizontal") * carryingRunSpeed * Time.deltaTime;
+            hSpeed = Input.GetAxisRaw("Horizontal") * runSpeed * carryingSpeedFactor * Time.deltaTime;
         }
         else
         {
@@ -119,7 +125,16 @@ public class PlayerController : MonoBehaviour
             AudioManager.Instance.PlaySound("Jump", 0.3f);
             usedJumps++;
             body.velocity = Vector2.zero;
-            body.AddForce(new Vector2(0, jumpForce), ForceMode2D.Impulse);
+
+            if (wearingBackpack)
+            {
+                body.AddForce(new Vector2(0, carryingJumpForce), ForceMode2D.Impulse);
+            }
+            else
+            {
+                body.AddForce(new Vector2(0, jumpForce), ForceMode2D.Impulse);
+            }
+            
             animator.SetBool("isJumping", true);
         }
 
@@ -139,38 +154,54 @@ public class PlayerController : MonoBehaviour
 
     }
 
-    void OnCollisionEnter2D(Collision2D col)
+    public void SetStat(string itemName, int newLevel)
     {
-        if (col.gameObject.tag.Equals("Ground"))
+        switch (itemName)
         {
-           
+            case ShopManager.speedString:
+                speedStat = newLevel;
+                runSpeed = origRunSpeed + 1.5f;
+                break;
+            case ShopManager.jumpString:
+                jumpStat = newLevel;
+                allowedJumps = jumpStat + 1;
+                break;
+            case ShopManager.armorString:
+                armorStat = newLevel;
+                break;
+            case ShopManager.radarString:
+                radarStat = newLevel;
+                break;
+            case ShopManager.magnetString:
+                magnetStat = newLevel;
+                break;
+            case ShopManager.resourceString:
+                resourceStat = newLevel;
+                break;
         }
-
     }
 
     void OnTriggerEnter2D(Collider2D col)
     {
         if (!invincible && col.gameObject.tag.Equals("Meteor"))
         {
-            
             TakeDamage();
         }
-        
-        if(col.gameObject.tag.Equals("Backpack") &&
+
+        if (col.gameObject.tag.Equals("Backpack") &&
            col.GetType() == typeof(CircleCollider2D))
         {
-            
             NearBackpack(true);
         }
     }
 
     void OnTriggerExit2D(Collider2D col)
     {
-        if(col.gameObject.tag.Equals("Backpack") &&
+        if (col.gameObject.tag.Equals("Backpack") &&
            col.GetType() == typeof(CircleCollider2D))
         {
             NearBackpack(false);
-        }        
+        }
     }
 
     public void ResetJump()
@@ -181,7 +212,7 @@ public class PlayerController : MonoBehaviour
 
     public void TakeDamage()
     {
-        AudioManager.Instance.PlaySound("Damage",0.5f);
+        AudioManager.Instance.PlaySound("Damage", 0.5f);
         StartCoroutine(FlashWhite(.05f, .5f));
         Vector2 hitDir = Vector2.zero;
         if (isFacingLeft)
@@ -232,7 +263,7 @@ public class PlayerController : MonoBehaviour
         shopText.SetActive(near);
         nearBackpack = near;
 
-        if(!near && shop.IsActive())
+        if (!near && shop.IsActive())
         {
             shop.ToggleShop();
         }
@@ -242,29 +273,26 @@ public class PlayerController : MonoBehaviour
     {
         wearingBackpack = wear;
 
-        if(!wear)
+        if (!wear)
         {
-            if(GetFacing() == FacingEnum.LEFT)
+            if (GetFacing() == FacingEnum.LEFT)
             {
                 backpack.transform.position = new Vector3(transform.position.x + .5f, transform.position.y);
-                rocket.transform.position = new Vector3(transform.position.x + 3f, transform.position.y + 2f);
+                //rocket.transform.position = new Vector3(transform.position.x + 3f, transform.position.y + 2f);
             }
             else
             {
                 backpack.transform.position = new Vector3(transform.position.x - .5f, transform.position.y);
-                rocket.transform.position = new Vector3(transform.position.x -3f, transform.position.y + 2f);
+                //rocket.transform.position = new Vector3(transform.position.x -3f, transform.position.y + 2f);
             }
         }
 
-        if(shop.IsActive())
+        if (shop.IsActive())
         {
             shop.ToggleShop();
         }
 
         backpack.SetActive(!wear);
-        rocket.SetActive(!wear);
+        //rocket.SetActive(!wear);
     }
-
-    
-
 }

@@ -230,6 +230,11 @@ Prefab:
       propertyPath: m_AnchorMax.y
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114191859289724206, guid: a2abcd712b1d7554886845985dc14efa,
+        type: 2}
+      propertyPath: m_Navigation.m_Mode
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a2abcd712b1d7554886845985dc14efa, type: 2}
   m_IsPrefabParent: 0
@@ -282,9 +287,19 @@ Prefab:
       propertyPath: backpack
       value: 
       objectReference: {fileID: 1095587073}
-    - target: {fileID: 212591641417016346, guid: 9a7486ec6c5601e40ab592ada7f2fe7f,
+    - target: {fileID: 114637630213776266, guid: 9a7486ec6c5601e40ab592ada7f2fe7f,
         type: 2}
-      propertyPath: m_SortingOrder
+      propertyPath: jumpForce
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 114637630213776266, guid: 9a7486ec6c5601e40ab592ada7f2fe7f,
+        type: 2}
+      propertyPath: carryingJumpForce
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 50788740434499574, guid: 9a7486ec6c5601e40ab592ada7f2fe7f,
+        type: 2}
+      propertyPath: m_GravityScale
       value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -328,6 +343,11 @@ Prefab:
     - target: {fileID: 4858312243965670, guid: b7551f6a5e6912d4899c0e2623e792d5, type: 2}
       propertyPath: m_RootOrder
       value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 114635882027118418, guid: b7551f6a5e6912d4899c0e2623e792d5,
+        type: 2}
+      propertyPath: secondsPerMeteor
+      value: 99.69
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b7551f6a5e6912d4899c0e2623e792d5, type: 2}
@@ -480,26 +500,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 5
       objectReference: {fileID: 0}
-    - target: {fileID: 114273795356543962, guid: 79298b3baf4e73a4c83af24f0a162d06,
-        type: 2}
-      propertyPath: swissCheeseHoleHeight
-      value: 0.97
-      objectReference: {fileID: 0}
-    - target: {fileID: 114273795356543962, guid: 79298b3baf4e73a4c83af24f0a162d06,
-        type: 2}
-      propertyPath: swissCheeseHoleWidth
-      value: 0.6
-      objectReference: {fileID: 0}
-    - target: {fileID: 114273795356543962, guid: 79298b3baf4e73a4c83af24f0a162d06,
-        type: 2}
-      propertyPath: swissCheeseDensity
-      value: 0.01
-      objectReference: {fileID: 0}
-    - target: {fileID: 212084370371768320, guid: 79298b3baf4e73a4c83af24f0a162d06,
-        type: 2}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 6fc8580b701311744b3c11296cf2ae55, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 79298b3baf4e73a4c83af24f0a162d06, type: 2}
   m_IsPrefabParent: 0
@@ -550,22 +550,6 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5230d2008a0ed2c4aa6ff681c8ef0fa6, type: 2}
   m_IsPrefabParent: 0
---- !u!1 &1498785266 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1151747125869182, guid: 9a7486ec6c5601e40ab592ada7f2fe7f,
-    type: 2}
-  m_PrefabInternal: {fileID: 203447517}
---- !u!114 &1498785267
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1498785266}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e455bb803cc6a9e42913f5133a4c82b2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &1825434945
 Prefab:
   m_ObjectHideFlags: 0

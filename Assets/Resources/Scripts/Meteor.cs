@@ -35,6 +35,11 @@ public class Meteor : MonoBehaviour {
 		rBody.AddForce(moveDir * moveSpeed, ForceMode2D.Force);
         //rBody.AddForce(moveDir * moveSpeed * 20, ForceMode2D.Force);
         rBody.AddTorque(torque);
+        if (transform.position.y <= -10.0f)
+        {
+            Destroy(arrow);
+            Destroy(gameObject);
+        }
 	}
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -65,7 +70,7 @@ public class Meteor : MonoBehaviour {
         Destroy(gameObject);
 
         mainCameraScript.shakeCycles = 5;
-        mainCameraScript.shakeIntensity = 0.2f;
+        mainCameraScript.shakeIntensity = 0.2f * (blastRadius / 5.0f);
     }
     
     /// <summary>

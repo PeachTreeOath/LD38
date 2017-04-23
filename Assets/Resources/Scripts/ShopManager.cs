@@ -17,41 +17,36 @@ public class ShopManager : Singleton<ShopManager>
     public int[] magnetCosts = { 1, 3, 5 };
     public int[] resourceCosts = { 1, 3, 5 };
 
-    public static string speedString = "Speed";
-    public static string jumpString = "Jump";
-    public static string armorString = "Armor";
-    public static string radarString = "Radar";
-    public static string magnetString = "Magnet";
-    public static string resourceString = "Resource";
+    public const string speedString = "Speed";
+    public const string jumpString = "Jump";
+    public const string armorString = "Armor";
+    public const string radarString = "Radar";
+    public const string magnetString = "Magnet";
+    public const string resourceString = "Resource";
 
     public Dictionary<string, int[]> costMap;
     public Dictionary<string, int> levelMap;
 
     private bool debugOn = true;
 
-    void Start()
-    {
-        player = GameObject.Find("Player").GetComponent<PlayerController>();
-        costMap = new Dictionary<string, int[]>();
-        costMap.Add(speedString, speedCosts);
-        costMap.Add(jumpString, jumpCosts);
-        costMap.Add(armorString, armorCosts);
-        costMap.Add(radarString, radarCosts);
-        costMap.Add(magnetString, magnetCosts);
-        costMap.Add(resourceString, resourceCosts);
-
-        levelMap = new Dictionary<string, int>();
-        levelMap.Add(speedString, 0);
-        levelMap.Add(jumpString, 0);
-        levelMap.Add(armorString, 0);
-        levelMap.Add(radarString, 0);
-        levelMap.Add(magnetString, 0);
-        levelMap.Add(resourceString, 0);
-    }
-
     protected override void Init()
     {
+		player = GameObject.Find("Player").GetComponent<PlayerController>();
+		costMap = new Dictionary<string, int[]>();
+		costMap.Add(speedString, speedCosts);
+		costMap.Add(jumpString, jumpCosts);
+		costMap.Add(armorString, armorCosts);
+		costMap.Add(radarString, radarCosts);
+		costMap.Add(magnetString, magnetCosts);
+		costMap.Add(resourceString, resourceCosts);
 
+		levelMap = new Dictionary<string, int>();
+		levelMap.Add(speedString, 0);
+		levelMap.Add(jumpString, 0);
+		levelMap.Add(armorString, 0);
+		levelMap.Add(radarString, 0);
+		levelMap.Add(magnetString, 0);
+		levelMap.Add(resourceString, 0);
     }
 
     void Update()
@@ -77,6 +72,7 @@ public class ShopManager : Singleton<ShopManager>
 
     public void PurchaseItem(string itemName, CraftButton buttonCaller)
     {
+		Debug.Log("PurchaseItem: " + itemName);
         int level = levelMap[itemName];
 
         if (level > 2)
@@ -84,6 +80,7 @@ public class ShopManager : Singleton<ShopManager>
             return;
         }
 
+		Debug.Log("PurchaseItem: level " + level);
         int cost = costMap[itemName][level];
 
         if (debugOn)
@@ -91,6 +88,7 @@ public class ShopManager : Singleton<ShopManager>
             Debug.Log("Resources: " + PlayerInventoryManager.Instance.PlayerResources + " Cost: " + cost);
             levelMap[itemName]++;
             buttonCaller.SetOrbs(levelMap[itemName]);
+            player.SetStat(itemName, levelMap[itemName]);
         }
         else
         {
@@ -99,6 +97,7 @@ public class ShopManager : Singleton<ShopManager>
                 levelMap[itemName]++;
                 PlayerInventoryManager.Instance.PlayerResources -= cost;
                 buttonCaller.SetOrbs(levelMap[itemName]);
+                player.SetStat(itemName, levelMap[itemName]);
             }
         }
     }

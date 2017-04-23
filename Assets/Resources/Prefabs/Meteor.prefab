@@ -56,9 +56,9 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 1
-  m_AngularDrag: 0.05
-  m_GravityScale: 0.1
+  m_LinearDrag: 0
+  m_AngularDrag: 0
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -111,6 +111,7 @@ MonoBehaviour:
   blastRadius: 0
   Explosion: {fileID: 1965772678869182, guid: 94eb1bbb955b70242984fd637ef15231, type: 2}
   PickupItem: {fileID: 1726125879128090, guid: f7e3bbea8e4d0a646b7f27438182601d, type: 2}
+  radarArrow: {fileID: 0}
 --- !u!212 &212840867345048776
 SpriteRenderer:
   m_ObjectHideFlags: 1

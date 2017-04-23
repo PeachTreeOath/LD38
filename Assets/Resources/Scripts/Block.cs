@@ -16,16 +16,6 @@ public class Block : MonoBehaviour {
 	int maxHealth;
 	int health;
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
-
     public void TakeDamage(int damage = 1)
     {
         if (!isIndestructable)
