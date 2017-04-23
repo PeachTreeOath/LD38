@@ -23,6 +23,9 @@ public class WorldGenerator : MonoBehaviour {
     private bool swissCheeseYGenning = false;
     private HashSet<int> swissCheeseYValues = new HashSet<int>();
 
+    public float wrapDist;
+    public float wrapUpdateDist;
+
     private float playerStartYOffset = 11f;
 
 
@@ -45,6 +48,8 @@ public class WorldGenerator : MonoBehaviour {
     // Use this for initialization
     void Start()
     {
+        wrapDist = 30;
+        wrapUpdateDist = 5;
         Globals.Levels.GetComponent<Levels>().GetCurrentLevel();
         dirt.transform.localScale = new Vector3(dirt.transform.localScale.x * scale,
             dirt.transform.localScale.y * scale, 1.0f);
@@ -228,8 +233,6 @@ public class WorldGenerator : MonoBehaviour {
 
 	void WrapWorld()
 	{
-		float wrapDist = 30;
-		float wrapUpdateDist = 5;
 		if(Vector3.Distance(lastPos, Globals.playerObj.transform.position) > wrapUpdateDist)
 		{
 			bool left = true;

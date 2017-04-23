@@ -122,19 +122,17 @@ public class RocketController : MonoBehaviour
             }
         }
     }
-
+    
 	void LateUpdate()
 	{
 		if(lastTile != null &&
 			worldGen.worldTiles.Count > 0 )
 		{
-			GameObject leftMost = worldGen.GetLeftMost(worldGen.worldTiles);
-			GameObject rightMost = worldGen.GetRightMost(worldGen.worldTiles);
-			if(gameObject.transform.position.x < leftMost.transform.position.x ||
-				gameObject.transform.position.x > rightMost.transform.position.x ||
-				gameObject.transform.position.y < minY)
+            if (Mathf.Abs(gameObject.transform.position.x - Globals.playerObj.transform.position.x) > worldGen.wrapDist)
 			{
-				gameObject.transform.position = lastTile.transform.position + Vector3.up * 1;
+				gameObject.transform.position = new Vector3(Globals.playerObj.transform.position.x + (Globals.playerObj.transform.position.x - gameObject.transform.position.x),
+                    gameObject.transform.position.y,
+                    gameObject.transform.position.z);
 			}
 		}
 	}
