@@ -14,6 +14,8 @@ public class MetalCanvas : MonoBehaviour {
     private bool _reverse = false;
     private Vector2 originalScale;
     private Vector2 tempScale;
+
+    private int previousMetalTotal = 0;
     
 	// Use this for initialization
 	void Start () {
@@ -24,6 +26,8 @@ public class MetalCanvas : MonoBehaviour {
 	void Update () {
         UpdateScaleAnaimation();
 
+        if (previousMetalTotal != PlayerInventoryManager.Instance.PlayerResources)
+            UpdateMetalCount(PlayerInventoryManager.Instance.PlayerResources);
     }
 
     public void UpdateMetalCount(int metal)
