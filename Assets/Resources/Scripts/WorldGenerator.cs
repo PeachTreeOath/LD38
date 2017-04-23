@@ -29,7 +29,8 @@ public class WorldGenerator : MonoBehaviour {
     public List<Sprite> EarthBlockTypes;
     public List<Sprite> MarsBlockTypes;
     public List<Sprite> PlutoBlockTypes;
-	List<GameObject> worldTiles;
+    [HideInInspector]
+	public List<GameObject> worldTiles;
 	Vector3 lastPos;
 	PlayerController pController;
 
@@ -57,6 +58,7 @@ public class WorldGenerator : MonoBehaviour {
         float coreYOffset = playerStartYOffset - scale * depth;
         worldTiles = new List<GameObject>();
 		worldTiles.Add(GameObject.Find("Backpack"));
+
         for (int y = 0; y < depth; y++)
         {
             

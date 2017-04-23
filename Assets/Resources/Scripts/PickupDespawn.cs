@@ -10,11 +10,13 @@ public class PickupDespawn : MonoBehaviour {
     private bool isVacuuming;
     private Transform player;
     private float vacuumSpeed = 10;
+    
 
     // Use this for initialization
     void Start()
     {
         spawnTime = Time.time;
+        //GameObject.Find("World").GetComponent<WorldGenerator>().worldTiles.Add(gameObject);
     }
 
     /// <summary>

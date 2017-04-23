@@ -50,21 +50,24 @@ public class MeteorRadar : MonoBehaviour {
         }
 
         //RAD TIER 3
-        RaycastHit2D[] hits = Physics2D.RaycastAll(Meteor.transform.position, Meteor.GetComponent<Meteor>().moveDir);
-        Vector2 position = new Vector2(0, 0);
-        foreach (RaycastHit2D hit in hits)
+        if (Meteor != null)
         {
-            if (hit.collider != null && hit.collider.tag == "Ground")
+            RaycastHit2D[] hits = Physics2D.RaycastAll(Meteor.transform.position, Meteor.GetComponent<Meteor>().moveDir);
+            Vector2 position = new Vector2(0, 0);
+            foreach (RaycastHit2D hit in hits)
             {
-                if (hit.point.y > position.y)
+                if (hit.collider != null && hit.collider.tag == "Ground")
                 {
-                    position = hit.point;
+                    if (hit.point.y > position.y)
+                    {
+                        position = hit.point;
 
+                    }
                 }
             }
+            targetInstance.transform.position = new Vector3(position.x, position.y, -1.0f);
+            PulsateTarget();
         }
-        targetInstance.transform.position = new Vector3(position.x, position.y, -1.0f);
-        PulsateTarget();
     }
 
     void PulsateTarget()
