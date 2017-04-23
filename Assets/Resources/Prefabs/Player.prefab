@@ -374,8 +374,11 @@ MonoBehaviour:
   maxHealth: 3
   metal: 0
   shopText: {fileID: 0}
+  shipText: {fileID: 0}
+  deployText: {fileID: 0}
   backpack: {fileID: 0}
   rocket: {fileID: 0}
+  rocketController: {fileID: 0}
   nearBackpack: 0
 --- !u!114 &114766738809615600
 MonoBehaviour:

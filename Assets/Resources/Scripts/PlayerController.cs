@@ -17,6 +17,7 @@ public class PlayerController : MonoBehaviour
 
     public GameObject shopText;
     public GameObject shipText;
+    public GameObject deployText;
     public GameObject backpack;
     public GameObject rocket;
     public RocketController rocketController;
