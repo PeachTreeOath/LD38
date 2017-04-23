@@ -7,7 +7,7 @@ public class PlayerController : MonoBehaviour
 {
 
     public float runSpeed;
-    public float carryingRunSpeed;
+    public float carryingSpeedFactor;
     public float jumpForce;
     public float carryingJumpForce;
     public float jumpTime;
@@ -30,6 +30,7 @@ public class PlayerController : MonoBehaviour
     private int allowedJumps;
     private int usedJumps;
     private int currentHealth;
+    private float origRunSpeed;
     private bool invincible;
     private bool isFacingLeft;
 
@@ -78,6 +79,7 @@ public class PlayerController : MonoBehaviour
         origMat = sprite.material;
         flashMat = Resources.Load<Material>("Materials/WhiteFlashMat");
 
+        origRunSpeed = runSpeed;
         currentHealth = maxHealth;
         heartCanvas.SetHealth(currentHealth);
         allowedJumps = 1;
@@ -96,7 +98,7 @@ public class PlayerController : MonoBehaviour
 
         if (wearingBackpack)
         {
-            hSpeed = Input.GetAxisRaw("Horizontal") * carryingRunSpeed * Time.deltaTime;
+            hSpeed = Input.GetAxisRaw("Horizontal") * runSpeed * carryingSpeedFactor * Time.deltaTime;
         }
         else
         {
@@ -181,6 +183,7 @@ public class PlayerController : MonoBehaviour
         {
             case ShopManager.speedString:
                 speedStat = newLevel;
+                runSpeed = origRunSpeed + 1.5f;
                 break;
             case ShopManager.jumpString:
                 jumpStat = newLevel;
