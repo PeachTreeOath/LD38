@@ -2,10 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MeteorRadar : MonoBehaviour {
+public class MeteorRadar : MonoBehaviour
+{
 
     public GameObject Meteor;
-    
+
 
     private Camera currentCamera;
     public float yOffset;
@@ -19,38 +20,42 @@ public class MeteorRadar : MonoBehaviour {
     public Color _pulseStartColor;
     public Color _pulseEndColor;
     private bool _reverse;
-    
+    public int radarLevel;
 
     //Test change
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start()
+    {
         currentCamera = GameObject.Find("Main Camera").GetComponent<Camera>();
 
-
         //RAD TIER 2 - Used for rotating the arrow to the direction of the meteor
-        float angle = Mathf.Atan2(Meteor.GetComponent<Meteor>().moveDir.x,
-            Meteor.GetComponent<Meteor>().moveDir.y) * Mathf.Rad2Deg;
-        transform.rotation = Quaternion.AngleAxis(angle + 180.0f, Vector3.back);
+        if (radarLevel > 1)
+        {
+            float angle = Mathf.Atan2(Meteor.GetComponent<Meteor>().moveDir.x,
+                Meteor.GetComponent<Meteor>().moveDir.y) * Mathf.Rad2Deg;
+            transform.rotation = Quaternion.AngleAxis(angle + 180.0f, Vector3.back);
+        }
 
         //RAD TIER 3 - used to show move to location.
-        targetInstance = Instantiate<GameObject>(TargetPrefab);
-        
-
-    }
-	
-	// Update is called once per frame
-	void Update () {
-
-        //RAD TIER 1
-        if (Meteor != null && Camera.current != null)
+        if (radarLevel > 2)
         {
-			Vector3 screenPos = currentCamera.WorldToScreenPoint(Meteor.transform.position);
-			transform.position = currentCamera.ScreenToWorldPoint( new Vector3(screenPos.x, Screen.height - 50, 10.0f));
+            targetInstance = Instantiate<GameObject>(TargetPrefab);
+        }
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        //RAD TIER 1
+        if (radarLevel > 0 && Meteor != null && Camera.current != null)
+        {
+            Vector3 screenPos = currentCamera.WorldToScreenPoint(Meteor.transform.position);
+            transform.position = currentCamera.ScreenToWorldPoint(new Vector3(screenPos.x, Screen.height - 50, 10.0f));
         }
 
         //RAD TIER 3
-        if (Meteor != null)
+        if (radarLevel > 2 && Meteor != null)
         {
             RaycastHit2D[] hits = Physics2D.RaycastAll(Meteor.transform.position, Meteor.GetComponent<Meteor>().moveDir);
             Vector2 position = new Vector2(0, 0);
@@ -72,7 +77,7 @@ public class MeteorRadar : MonoBehaviour {
 
     void PulsateTarget()
     {
-        if(_reverse)
+        if (_reverse)
         {
             if (Time.time > _timeSincePulseStarted + _pulseDuration)
             {
@@ -92,10 +97,10 @@ public class MeteorRadar : MonoBehaviour {
         }
         else
         {
-            if(Time.time > _timeSincePulseStarted + _pulseDuration)
+            if (Time.time > _timeSincePulseStarted + _pulseDuration)
             {
                 float normalizedTime = Time.time / (_timeSincePulseStarted + _pulseDuration);
-                if(normalizedTime < 1.0f)
+                if (normalizedTime < 1.0f)
                 {
                     Color color = Color.Lerp(_pulseStartColor, _pulseEndColor, normalizedTime);
                     targetInstance.GetComponent<SpriteRenderer>().color = color;
@@ -113,9 +118,11 @@ public class MeteorRadar : MonoBehaviour {
     public void DestroyRadar()
     {
         //RAD TIER 3
-        Destroy(targetInstance);
+        if (radarLevel > 2)
+            Destroy(targetInstance);
 
-        //RAD TIER 2
-        Destroy(gameObject);
+        //RAD TIER 1
+        if (radarLevel > 0)
+            Destroy(gameObject);
     }
 }

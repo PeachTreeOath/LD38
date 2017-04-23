@@ -15,7 +15,7 @@ public class MeteorSpawner : MonoBehaviour {
     public float spawnerWidth;
     public float spawnerAngleRange;
     public float maxBlastSize;
-
+    public int radarLevel;
    
     private float prev_time;
 
@@ -41,10 +41,8 @@ public class MeteorSpawner : MonoBehaviour {
 		//Init the meteor
 		GameObject meteor = Instantiate<GameObject>(meteorFab);
 		Meteor m = meteor.GetComponent<Meteor>();
+        m.radarLevel = radarLevel;
 
-        
-
-       
 		// Set the meteor launch position
 		Vector3 meteorStartPosition = new Vector3();
 		Vector3 cameraPosition = Camera.main.gameObject.transform.position;

@@ -8,6 +8,7 @@ public class Meteor : MonoBehaviour {
 	public float torque;
     public float blastRadius;
     public GameObject Explosion;
+    public int radarLevel;
 
     /// <summary>
     /// Prefab for the resource pickup item dropped by the meteor.
@@ -27,7 +28,9 @@ public class Meteor : MonoBehaviour {
 
         //Create radar arrow
         arrow = Instantiate<GameObject>(radarArrow);
-        arrow.GetComponent<MeteorRadar>().Meteor = gameObject;
+        MeteorRadar radar = arrow.GetComponent<MeteorRadar>();
+        radar.Meteor = gameObject;
+        radar.radarLevel = radarLevel;
     }
 
 	void FixedUpdate()

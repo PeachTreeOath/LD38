@@ -60,3 +60,4 @@ MonoBehaviour:
   spawnerWidth: 80
   spawnerAngleRange: 45
   maxBlastSize: 3
+  radarLevel: 0

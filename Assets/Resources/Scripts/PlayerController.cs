@@ -43,6 +43,7 @@ public class PlayerController : MonoBehaviour
     private MetalCanvas metalCanvas;
     private CircleCollider2D vacuumCollider;
     private TextInstructionHandler textHandler;
+    private MeteorSpawner meteorSpawner;
 
     public bool nearBackpack;
     private bool wearingBackpack;
@@ -85,6 +86,7 @@ public class PlayerController : MonoBehaviour
         origMat = sprite.material;
         flashMat = Resources.Load<Material>("Materials/WhiteFlashMat");
         vacuumCollider = transform.FindChild("VacuumTrigger").GetComponent<CircleCollider2D>();
+        meteorSpawner = GameObject.Find("MeteorSpawner").GetComponent<MeteorSpawner>();
 
         origRunSpeed = runSpeed;
         currentHealth = maxHealth;
@@ -183,6 +185,7 @@ public class PlayerController : MonoBehaviour
                 break;
             case ShopManager.radarString:
                 radarStat = newLevel;
+                meteorSpawner.radarLevel = radarStat;
                 break;
             case ShopManager.magnetString:
                 magnetStat = newLevel;
@@ -237,6 +240,11 @@ public class PlayerController : MonoBehaviour
 
     public void TakeDamage()
     {
+        if(invincible)
+        {
+            return;
+        }
+
         AudioManager.Instance.PlaySound("Damage", 0.5f);
         StartCoroutine(FlashWhite(.05f, 1f));
         Vector2 hitDir = Vector2.zero;
