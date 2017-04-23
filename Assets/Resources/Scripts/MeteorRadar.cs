@@ -49,7 +49,7 @@ public class MeteorRadar : MonoBehaviour {
 			transform.position = currentCamera.ScreenToWorldPoint( new Vector3(screenPos.x, Screen.height - 50, 10.0f));
         }
 
-        //RAD Tier 3
+        //RAD TIER 3
         RaycastHit2D[] hits = Physics2D.RaycastAll(Meteor.transform.position, Meteor.GetComponent<Meteor>().moveDir);
         Vector2 position = new Vector2(0, 0);
         foreach (RaycastHit2D hit in hits)
@@ -109,7 +109,10 @@ public class MeteorRadar : MonoBehaviour {
 
     public void DestroyRadar()
     {
+        //RAD TIER 3
         Destroy(targetInstance);
+
+        //RAD TIER 2
         Destroy(gameObject);
     }
 }
