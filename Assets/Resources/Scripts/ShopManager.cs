@@ -17,12 +17,12 @@ public class ShopManager : Singleton<ShopManager>
     public int[] magnetCosts = { 1, 3, 5 };
     public int[] resourceCosts = { 1, 3, 5 };
 
-    public static string speedString = "Speed";
-    public static string jumpString = "Jump";
-    public static string armorString = "Armor";
-    public static string radarString = "Radar";
-    public static string magnetString = "Magnet";
-    public static string resourceString = "Resource";
+    public const string speedString = "Speed";
+    public const string jumpString = "Jump";
+    public const string armorString = "Armor";
+    public const string radarString = "Radar";
+    public const string magnetString = "Magnet";
+    public const string resourceString = "Resource";
 
     public Dictionary<string, int[]> costMap;
     public Dictionary<string, int> levelMap;
@@ -91,6 +91,7 @@ public class ShopManager : Singleton<ShopManager>
             Debug.Log("Resources: " + PlayerInventoryManager.Instance.PlayerResources + " Cost: " + cost);
             levelMap[itemName]++;
             buttonCaller.SetOrbs(levelMap[itemName]);
+            player.SetStat(itemName, levelMap[itemName]);
         }
         else
         {
@@ -99,6 +100,7 @@ public class ShopManager : Singleton<ShopManager>
                 levelMap[itemName]++;
                 PlayerInventoryManager.Instance.PlayerResources -= cost;
                 buttonCaller.SetOrbs(levelMap[itemName]);
+                player.SetStat(itemName, levelMap[itemName]);
             }
         }
     }
