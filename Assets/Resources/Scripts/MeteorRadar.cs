@@ -14,6 +14,7 @@ public class MeteorRadar : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         currentCamera = Camera.current;
+		transform.rotation = Quaternion.LookRotation(Meteor.GetComponent<Meteor>().moveDir, Vector3.back);
 	}
 	
 	// Update is called once per frame
