@@ -42,4 +42,13 @@ public class TextInstructionHandler : MonoBehaviour {
             shipText.enabled = false;
         }
     }
+
+    public bool isFlyable()
+    {
+        if(craftText.enabled == false && shipText.enabled == true)
+        {
+            return true;
+        }
+        return false;
+    }
 }

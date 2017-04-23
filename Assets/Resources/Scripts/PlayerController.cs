@@ -297,18 +297,23 @@ public class PlayerController : MonoBehaviour
     private void WearBackpack(bool wear)
     {
         wearingBackpack = wear;
-
+        if(wear)
+        {
+            rocket.transform.rotation = Quaternion.identity;
+        }
         if (!wear)
         {
             if (GetFacing() == FacingEnum.LEFT)
             {
-                backpack.transform.position = new Vector3(transform.position.x + .5f, transform.position.y);
-                rocket.transform.position = new Vector3(transform.position.x + 3f, transform.position.y + 2f);
+                rocket.transform.position = new Vector3(transform.position.x + .5f, transform.position.y + 1f);
+                // backpack.transform.position = new Vector3(transform.position.x + .5f, transform.position.y);
+                //rocket.transform.position = new Vector3(transform.position.x + 3f, transform.position.y + 2f);
             }
             else
             {
-                backpack.transform.position = new Vector3(transform.position.x - .5f, transform.position.y);
-                rocket.transform.position = new Vector3(transform.position.x - 3f, transform.position.y + 2f);
+                rocket.transform.position = new Vector3(transform.position.x - 1.5f, transform.position.y + 1f);
+                //backpack.transform.position = new Vector3(transform.position.x - .5f, transform.position.y);
+                //rocket.transform.position = new Vector3(transform.position.x - 3f, transform.position.y + 2f);
             }
         }
 
@@ -317,7 +322,7 @@ public class PlayerController : MonoBehaviour
             shop.ToggleShop();
         }
 
-        backpack.SetActive(!wear);
+        //backpack.SetActive(!wear);
         rocket.SetActive(!wear);
     }
 }

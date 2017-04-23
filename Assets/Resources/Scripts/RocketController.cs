@@ -43,7 +43,7 @@ public class RocketController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (flyable)
+        if (flyable && textHandler.isFlyable()) // Roundabout check against player being too close to crafting table
         {
             if (!launching)
             {
