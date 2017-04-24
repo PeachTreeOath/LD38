@@ -10,6 +10,7 @@ Shader "Curve/CurveWorld2"
         _ScreenWidth("_ScreenWidth", float) = 1920
         _ScreenHeight("_ScreenHeight", float) = 1080
         _CurveIntensity("_CurveIntensity", float) = .001
+		_YOffestMultiplier("_YOffsetMultiplier",float) = .3
         _VignettePower ("VignettePower", Range(0.0,6.0)) = 1.5
     }
     SubShader {
@@ -48,6 +49,7 @@ Shader "Curve/CurveWorld2"
         	uniform float _ScreenHeight;
         	uniform float _CurveIntensity;
         	uniform float _VignettePower;
+			uniform float _YOffestMultiplier;
 
 
         	fixed4 frag (v2f i) : SV_Target
@@ -57,7 +59,7 @@ Shader "Curve/CurveWorld2"
 				float rescaleXperc = (xPerc - 0.5f) * 2;
         		float diff = pi * (rescaleXperc);
         		float yOffset = (diff*diff)/_CurveIntensity;
-        		yOffset *= min(1, i.vertex.y/(_ScreenHeight*.3f));
+        		yOffset *= min(1, i.vertex.y/(_ScreenHeight*_YOffestMultiplier));
         		fixed4 col = tex2D(_MainTex, i.uv + float2(0, yOffset));
 
         		float4 renderTex = tex2D(_MainTex, i.uv);

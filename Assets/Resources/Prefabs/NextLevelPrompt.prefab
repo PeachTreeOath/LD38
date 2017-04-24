@@ -61,7 +61,11 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: 'Escaped!
+  m_Text: '
+
+
+
+    Escaped!
 
     Press space to go to next level.'
 --- !u!114 &114897519828999946
