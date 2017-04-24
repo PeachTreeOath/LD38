@@ -50,7 +50,7 @@ public class Meteor : MonoBehaviour
         rBody.AddTorque(torque);
 
 
-        if (transform.position.y <= -10.0f)
+        if (transform.position.y <= -30.0f)
         {
             if (arrow != null)
             {
