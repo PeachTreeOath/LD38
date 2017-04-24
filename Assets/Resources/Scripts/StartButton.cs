@@ -18,5 +18,10 @@ public class StartButton : MonoBehaviour {
 		Globals.ship3 = false;
 
         SceneTransitionManager.Instance.StartGame();
-    } 
+    }
+
+    public void RestartGame()
+    {
+        SceneTransitionManager.Instance.RestartGame();
+    }
 }
