@@ -36,6 +36,20 @@ public class SceneTransitionManager : Singleton<SceneTransitionManager>
         StartCoroutine(SetActive(SceneManager.GetSceneByName(nextSceneName), true));*/
     }
 
+    public void ShowVictoryScene()
+    {
+        SceneManager.LoadScene("Victory", LoadSceneMode.Additive);
+        SceneManager.UnloadSceneAsync("Game");
+    }
+
+    public void RestartGame()
+    {
+        PlayerInventoryManager.Instance.ResetGame();
+        Globals.currentLevel = 0;
+        SceneManager.LoadScene("Game", LoadSceneMode.Additive);
+        SceneManager.UnloadSceneAsync("Victory");
+    }
+
     public void ResetGame()
     {/*
         string nextSceneName = "Game";

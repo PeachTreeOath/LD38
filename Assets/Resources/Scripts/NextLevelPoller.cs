@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿
 using UnityEngine;
 
 public class NextLevelPoller : MonoBehaviour {
@@ -16,7 +15,11 @@ public class NextLevelPoller : MonoBehaviour {
             //Debug.Log(Time.time + " go to next level");
             //TODO: Load next level
             Globals.currentLevel += 1;
-			SceneTransitionManager.Instance.ResetGame();
+
+            if (Globals.currentLevel == 5)
+                SceneTransitionManager.Instance.ShowVictoryScene();
+            else
+                SceneTransitionManager.Instance.ResetGame();
 		}
 	}
 }
