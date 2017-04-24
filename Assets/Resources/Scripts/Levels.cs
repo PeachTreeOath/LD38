@@ -54,6 +54,8 @@ public class Levels : MonoBehaviour
         GameObject.Find("WorldNameText").GetComponent<Text>().text = "-" + level.WorldType.ToString() + "-";
         GameObject.Find("WorldCountText").GetComponent<Text>().text = level.planetName + " of 5";
 
+        ShopManager.Instance.SetShipPartCost(level.shipPartCost);
+
         if (level.planetName.Equals("World 1"))
         {
             GameObject.Find("Tutorial").GetComponent<Image>().enabled = true;

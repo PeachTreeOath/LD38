@@ -68,15 +68,17 @@ public class ShopManager : NonPersistentSingleton<ShopManager>
 		levelMap.Add(magnetString, Globals.magnetStat);
 		levelMap.Add(resourceString, Globals.resourceStat);
 
-        // Kick off initial theme here since there are no other scene singletons..
-        
+        shipCosts[0] = shipPartCost;
+    }
 
+    public void SetShipPartCost(int cost)
+    {
         shipCosts[0] = shipPartCost;
         // Init prices
         CraftButton[] buttons = GameObject.FindObjectsOfType<CraftButton>();
-        foreach(CraftButton button in buttons)
+        foreach (CraftButton button in buttons)
         {
-            SetButtonCost(button, costMap[button.itemName][0]);
+            SetButtonCost(button, cost);
         }
     }
 
