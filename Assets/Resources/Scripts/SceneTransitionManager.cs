@@ -38,16 +38,14 @@ public class SceneTransitionManager : Singleton<SceneTransitionManager>
 
     public void ShowVictoryScene()
     {
-        SceneManager.LoadScene("Victory", LoadSceneMode.Additive);
-        SceneManager.UnloadSceneAsync("Game");
+        SceneManager.LoadScene("Victory");
     }
 
     public void RestartGame()
     {
         PlayerInventoryManager.Instance.ResetGame();
         Globals.currentLevel = 0;
-        SceneManager.LoadScene("Game", LoadSceneMode.Additive);
-        SceneManager.UnloadSceneAsync("Victory");
+        SceneManager.LoadScene("Game");
     }
 
     public void ResetGame()

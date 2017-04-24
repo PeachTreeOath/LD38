@@ -567,7 +567,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: 2056522685
+  randomSeed: 1160565733
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -3540,7 +3540,6 @@ GameObject:
   - component: {fileID: 832103515}
   - component: {fileID: 832103514}
   - component: {fileID: 832103513}
-  - component: {fileID: 832103512}
   - component: {fileID: 832103517}
   m_Layer: 0
   m_Name: Main Camera
@@ -3549,13 +3548,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!81 &832103512
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 832103511}
-  m_Enabled: 1
 --- !u!124 &832103513
 Behaviour:
   m_ObjectHideFlags: 0
