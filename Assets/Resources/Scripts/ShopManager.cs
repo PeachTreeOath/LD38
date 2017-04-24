@@ -125,39 +125,42 @@ public class ShopManager : NonPersistentSingleton<ShopManager>
             return;
         }
 
-        if (itemName.Equals(engineString))
+        if (itemName.Equals(engineString) )
         {
-            if (!hasCost || debugOn || PlayerInventoryManager.Instance.PlayerResources >= shipPartCost)
+            if (!hasCost || debugOn || PlayerInventoryManager.Instance.PlayerResources >= shipPartCost && level == 0)
             {
                 hasEngine = true;
                 rocket.BuildEngine(defaultMat);
                 if (!hasCost || !debugOn)
                     PlayerInventoryManager.Instance.PlayerResources -= shipPartCost;
                 buttonCaller.SetOrbs(1);
+                levelMap[itemName]++;
             }
             return;
         }
-        else if (itemName.Equals(shuttleString))
+        else if (itemName.Equals(shuttleString) )
         {
-            if (!hasCost || debugOn || PlayerInventoryManager.Instance.PlayerResources >= shipPartCost)
+            if (!hasCost || debugOn || PlayerInventoryManager.Instance.PlayerResources >= shipPartCost && level == 0)
             {
                 hasShuttle = true;
                 rocket.BuildShuttle(defaultMat);
                 if (!hasCost || !debugOn)
                     PlayerInventoryManager.Instance.PlayerResources -= shipPartCost;
                 buttonCaller.SetOrbs(1);
+                levelMap[itemName]++;
             }
             return;
         }
-        else if (itemName.Equals(boostersString))
+        else if (itemName.Equals(boostersString) )
         {
-            if (!hasCost || debugOn || PlayerInventoryManager.Instance.PlayerResources >= shipPartCost)
+            if (!hasCost || debugOn || PlayerInventoryManager.Instance.PlayerResources >= shipPartCost && level == 0)
             {
                 hasBoosters = true;
                 rocket.BuildBoosters(defaultMat);
                 if (!hasCost || !debugOn)
                     PlayerInventoryManager.Instance.PlayerResources -= shipPartCost;
                 buttonCaller.SetOrbs(1);
+                levelMap[itemName]++;
             }
             return;
         }
