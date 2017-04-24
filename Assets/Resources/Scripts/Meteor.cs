@@ -19,7 +19,7 @@ public class Meteor : MonoBehaviour
 
     private GameObject World;
     private GameObject arrow;
-
+    private WorldGenerator worldGen;
     Rigidbody2D rBody;
     CameraFollow mainCameraScript;
     void Start()
@@ -27,6 +27,7 @@ public class Meteor : MonoBehaviour
         World = GameObject.Find("World");
         rBody = gameObject.GetComponent<Rigidbody2D>();
         mainCameraScript = GameObject.FindWithTag("MainCamera").GetComponent<CameraFollow>();
+        worldGen = GameObject.Find("World").GetComponent<WorldGenerator>();
 
         //Create radar arrow
         if (radarLevel > 0)
@@ -56,6 +57,28 @@ public class Meteor : MonoBehaviour
                 arrow.GetComponent<MeteorRadar>().DestroyRadar();
             }
             Destroy(gameObject);
+        }
+    }
+
+    private void Update() {
+        if (worldGen.worldTiles.Count > 0) {
+            GameObject leftMost = worldGen.GetWorldLeftMost();
+            GameObject rightMost = worldGen.GetWorldRightMost();
+            if (gameObject.transform.position.x < leftMost.transform.position.x ||
+                gameObject.transform.position.x > rightMost.transform.position.x) {
+                if (gameObject.transform.position.x < leftMost.transform.position.x) {
+                    gameObject.transform.position = new Vector3(rightMost.transform.position.x, 
+                        gameObject.transform.position.y, 
+                        gameObject.transform.position.z);
+                } else {
+                    gameObject.transform.position = new Vector3(leftMost.transform.position.x, 
+                        gameObject.transform.position.y, 
+                        gameObject.transform.position.z);
+                }
+                //gameObject.transform.position = new Vector3(gameObject.transform.position.x, Globals.startY + 1, gameObject.transform.position.z);
+                //gameObject.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+                //gameObject.GetComponent<Rigidbody2D>().angularVelocity = 0;
+            }
         }
     }
 
