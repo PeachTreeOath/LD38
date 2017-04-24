@@ -57,6 +57,15 @@ public class Levels : MonoBehaviour
         if (level.planetName.Equals("World 1"))
         {
             GameObject.Find("Tutorial").GetComponent<Image>().enabled = true;
+            AudioManager.Instance.PlayMusic("ItsASmallWorld", .50f);
+        }
+        else if (level.planetName.Equals("World 2"))
+        {
+            AudioManager.Instance.PlayMusic("Mars_Theme", .50f);
+        }
+        else if (level.planetName.Equals("World 3"))
+        {
+            AudioManager.Instance.PlayMusicWithIntro("Planet3_Intro","Planet3_Loop", .50f);
         }
     }
 }
