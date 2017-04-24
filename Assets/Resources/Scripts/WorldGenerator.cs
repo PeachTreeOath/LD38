@@ -39,10 +39,17 @@ public class WorldGenerator : MonoBehaviour {
     
     [HideInInspector]
 	public List<GameObject> worldTiles;
+	[HideInInspector]
+	public List<GameObject> bottomTiles;
     [HideInInspector]
     public List<GameObject> worldEntities;
 	Vector3 lastPos;
 	PlayerController pController;
+
+	[HideInInspector]
+	public Vector3 finalLeftMostPos;
+	[HideInInspector]
+	public Vector3 finalRightMostPos;
 
     // Use this for initialization
     void Start()
@@ -129,6 +136,7 @@ public class WorldGenerator : MonoBehaviour {
         float xOffset = -scale * radius;
         float coreYOffset = playerStartYOffset - scale * depth;
         worldTiles = new List<GameObject>();
+		bottomTiles = new List<GameObject>();
 		//worldTiles.Add(GameObject.Find("Backpack"));
         worldEntities.Add(GameObject.Find("RocketTest"));
 
@@ -169,6 +177,10 @@ public class WorldGenerator : MonoBehaviour {
                     goRight.transform.position = new Vector3(dirt.transform.position.x + ((x-radius) * scale), dirt.transform.position.y + (coreYOffset + y * scale));
                     worldTiles.Add(goRight);
 
+					if(y == 0)
+					{
+						bottomTiles.Add(goRight);
+					}
 
                     //Changes the texture ultilized based on hieght: Lava, dirt, rock, etc.
                     switch(Type)
@@ -350,6 +362,7 @@ public class WorldGenerator : MonoBehaviour {
 			if(!left)
 			{
 				GameObject worldRightMost = GetRightMost(worldTiles);
+				finalRightMostPos = worldRightMost.transform.position;
 				GameObject onDeckLeftMost = GetLeftMost(onDeck);
 				float onDeckRadius = temp.transform.position.x - onDeckLeftMost.transform.position.x;
 				float rightDist = worldRightMost.transform.position.x - temp.transform.position.x;
@@ -357,6 +370,7 @@ public class WorldGenerator : MonoBehaviour {
 			}else
 			{
 				GameObject worldLeftMost = GetLeftMost(worldTiles);
+				finalLeftMostPos = worldLeftMost.transform.position;
 				GameObject onDeckRightMost = GetRightMost(onDeck);
 				float onDeckRadius = onDeckRightMost.transform.position.x - temp.transform.position.x;
 				float leftDist = temp.transform.position.x - worldLeftMost.transform.position.x;
@@ -403,6 +417,40 @@ public class WorldGenerator : MonoBehaviour {
 				if(lMost.transform.position.x > tiles[i].transform.position.x)
 				{
 					lMost = tiles[i];
+				}
+			}
+		}
+
+		return lMost;
+	}
+
+	public GameObject GetWorldRightMost()
+	{
+		GameObject rMost = Globals.playerObj;
+		for(int  i = 0; i < bottomTiles.Count; i++)
+		{
+			if(bottomTiles[i] != null)
+			{
+				if(rMost.transform.position.x < bottomTiles[i].transform.position.x)
+				{
+					rMost = bottomTiles[i];
+				}
+			}
+		}
+
+		return rMost;
+	}
+
+	public GameObject GetWorldLeftMost()
+	{
+		GameObject lMost = Globals.playerObj;
+		for(int  i = 0; i < bottomTiles.Count; i++)
+		{
+			if(bottomTiles[i] != null)
+			{
+				if(lMost.transform.position.x > bottomTiles[i].transform.position.x)
+				{
+					lMost = bottomTiles[i];
 				}
 			}
 		}

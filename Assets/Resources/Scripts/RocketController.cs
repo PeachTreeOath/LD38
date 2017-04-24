@@ -122,7 +122,7 @@ public class RocketController : MonoBehaviour
             }
         }
     }
-    
+    /*
 	void LateUpdate()
 	{
 		if(lastTile != null &&
@@ -138,6 +138,27 @@ public class RocketController : MonoBehaviour
 				gameObject.transform.position = new Vector3(Globals.playerObj.transform.position.x + (Globals.playerObj.transform.position.x - gameObject.transform.position.x),
                     gameObject.transform.position.y,
                     gameObject.transform.position.z);
+			}
+		}
+	}*/
+
+	void LateUpdate()
+	{
+		if(worldGen.worldTiles.Count > 0 )
+		{
+			GameObject leftMost = worldGen.GetWorldLeftMost();
+			GameObject rightMost = worldGen.GetWorldRightMost();
+			if(gameObject.transform.position.x < leftMost.transform.position.x ||
+				gameObject.transform.position.x > rightMost.transform.position.x ||
+				gameObject.transform.position.y < minY)
+			{
+				if(gameObject.transform.position.x < leftMost.transform.position.x)
+				{
+					gameObject.transform.position = leftMost.transform.position + Vector3.up * 50;
+				}else
+				{
+					gameObject.transform.position = rightMost.transform.position + Vector3.up * 50;
+				}
 			}
 		}
 	}
