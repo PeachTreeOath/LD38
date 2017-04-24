@@ -69,7 +69,7 @@ public class ShopManager : NonPersistentSingleton<ShopManager>
 		levelMap.Add(resourceString, Globals.resourceStat);
 
         // Kick off initial theme here since there are no other scene singletons..
-        AudioManager.Instance.PlayMusic("ItsASmallWorld", .50f);
+        
 
         shipCosts[0] = shipPartCost;
         // Init prices

@@ -6,7 +6,7 @@ using System.Linq;
 public class WorldGenerator : MonoBehaviour {
 
     public string WorldName;
-    public enum PlanetType { Earth, Mars,Jupitor, Pluto, PlanetX}
+    public enum PlanetType { Earth, Mars,Jupiter, Pluto, PlanetX}
     public PlanetType Type = PlanetType.Earth;
     public int depth;
     public int radius;
@@ -176,7 +176,7 @@ public class WorldGenerator : MonoBehaviour {
                         case PlanetType.Mars:
                             AssignBlockType(MarsBlockTypes, y, goRight);
                             break;
-                        case PlanetType.Jupitor:
+                        case PlanetType.Jupiter:
                             AssignBlockType(JupitorBlockTypes, y, goRight);
                             break;
                         case PlanetType.Pluto:
@@ -205,7 +205,7 @@ public class WorldGenerator : MonoBehaviour {
                 backgroundSprite = MarsBlockTypes[4];
                 cloudSprite = MarsBlockTypes[5];
                 break;
-            case PlanetType.Jupitor:
+            case PlanetType.Jupiter:
                 backgroundSprite = JupitorBlockTypes[4];
                 cloudSprite = JupitorBlockTypes[5];
                 break;
@@ -286,9 +286,9 @@ public class WorldGenerator : MonoBehaviour {
 
 	void WrapWorld()
 	{
-		float wrapDist = 30;
-		float wrapUpdateDist = 5;
-		if(Vector3.Distance(lastPos, Globals.playerObj.transform.position) > wrapUpdateDist)
+        float wrapDist = radius * scale;
+        float wrapUpdateDist = 5;
+        if (Vector3.Distance(lastPos, Globals.playerObj.transform.position) > wrapUpdateDist)
 		{
 			bool left = true;
 			List<GameObject> onDeck = new List<GameObject>();
