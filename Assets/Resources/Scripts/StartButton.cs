@@ -4,8 +4,8 @@ public class StartButton : MonoBehaviour {
 
     public void BeginGame()
     {
-		Globals.currentLevel = 1;
-		Globals.lastLevel = 1;
+		Globals.currentLevel = 0;
+		Globals.lastLevel = 0;
 		Globals.radarStat = 0;
 		Globals.speedStat = 0;
 		Globals.armorStat = 0;
