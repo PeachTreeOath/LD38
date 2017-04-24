@@ -85,6 +85,7 @@ public class RocketController : MonoBehaviour
                 {
                     Destroy(launchParticles);
                 }
+                AudioManager.Instance.PlaySound("Spaceship", .3f);
                 flying = true;
                 flytimer = Time.time;
                 GameObject flyingParticles = Instantiate(flyingParticlesFab) as GameObject;

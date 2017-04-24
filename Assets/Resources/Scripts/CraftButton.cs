@@ -34,6 +34,7 @@ public class CraftButton : MonoBehaviour {
     public void OnClick()
     {
 		ShopManager.Instance.PurchaseItem(itemName, this, true);
+        AudioManager.Instance.PlaySound("Crafting_Sound");
     }
 
     public void SetOrbs(int numOrbs)
