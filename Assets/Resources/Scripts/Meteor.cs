@@ -37,7 +37,9 @@ public class Meteor : MonoBehaviour
             radar.radarLevel = radarLevel;
         }
 
-        transform.localScale = new Vector3(blastRadius, blastRadius, 1.0f);
+        //transform.localScale = new Vector3(blastRadius, blastRadius, 1.0f);
+        transform.localScale = new Vector3(Mathf.Clamp(blastRadius,1.0f, 3.0f),
+            Mathf.Clamp(blastRadius, 1.0f, 3.0f), 1.0f);
     }
 
     void FixedUpdate()
