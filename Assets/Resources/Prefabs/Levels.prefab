@@ -208,9 +208,9 @@ MonoBehaviour:
   holeDensity: 0.01
   holeWidth: 0.2
   holeHeight: 0.97
-  lavaPercent: 0.2
-  stonePercent: 0.3
-  dirtPercent: 0.35
+  lavaPercent: 0.5
+  stonePercent: 0.25
+  dirtPercent: 0.25
   grassPercent: 0.35
   speedMin: 0.5
   speedMax: 1.5
@@ -247,7 +247,7 @@ MonoBehaviour:
   torqueRange: 50
   spawnerAngleRange: 45
   maxBlastRadius: 4
-  shipPartCost: 1000
+  shipPartCost: 700
 --- !u!114 &114555604996992490
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -261,22 +261,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   planetName: World 3
   WorldType: 2
-  depth: 25
-  radius: 200
+  depth: 50
+  radius: 60
   holeDensity: 0.01
   holeWidth: 0.6
   holeHeight: 0.97
-  lavaPercent: 0.4
-  stonePercent: 0.5
-  dirtPercent: 0
+  lavaPercent: 0.2
+  stonePercent: 0.2
+  dirtPercent: 0.6
   grassPercent: 0
   speedMin: 1
-  speedMax: 3
+  speedMax: 4
   secondsPerMeteor: 0.4
   torqueRange: 35
   spawnerAngleRange: 45
-  maxBlastRadius: 3
-  shipPartCost: 500
+  maxBlastRadius: 2
+  shipPartCost: 400
 --- !u!114 &114861907179196604
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -306,7 +306,7 @@ MonoBehaviour:
   holeDensity: 0.01
   holeWidth: 0.01
   holeHeight: 0.97
-  lavaPercent: 0.1
+  lavaPercent: 0.7
   stonePercent: 0.9
   dirtPercent: 0.9
   grassPercent: 0.9
@@ -345,4 +345,4 @@ MonoBehaviour:
   torqueRange: 70
   spawnerAngleRange: 40
   maxBlastRadius: 7
-  shipPartCost: 2500
+  shipPartCost: 1000
