@@ -208,8 +208,8 @@ MonoBehaviour:
   holeDensity: 0.01
   holeWidth: 0.2
   holeHeight: 0.97
-  lavaPercent: 0.5
-  stonePercent: 0.25
+  lavaPercent: 0.25
+  stonePercent: 0.5
   dirtPercent: 0.25
   grassPercent: 0.35
   speedMin: 0.5
@@ -218,7 +218,7 @@ MonoBehaviour:
   torqueRange: 25
   spawnerAngleRange: 45
   maxBlastRadius: 2.5
-  shipPartCost: 100
+  shipPartCost: 75
 --- !u!114 &114242360127423618
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -310,8 +310,8 @@ MonoBehaviour:
   stonePercent: 0.4
   dirtPercent: 0.1
   grassPercent: 1
-  speedMin: 0.5
-  speedMax: 0.75
+  speedMin: 0.15
+  speedMax: 0.35
   secondsPerMeteor: 0.7
   torqueRange: 15
   spawnerAngleRange: 45
