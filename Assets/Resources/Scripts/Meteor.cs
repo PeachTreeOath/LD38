@@ -1,11 +1,12 @@
 ﻿
 using UnityEngine;
 
-public class Meteor : MonoBehaviour {
+public class Meteor : MonoBehaviour
+{
 
-	public Vector2 moveDir;
-	public float moveSpeed;
-	public float torque;
+    public Vector2 moveDir;
+    public float moveSpeed;
+    public float torque;
     public float blastRadius;
     public GameObject Explosion;
     public int radarLevel;
@@ -19,51 +20,60 @@ public class Meteor : MonoBehaviour {
     private GameObject World;
     private GameObject arrow;
 
-	Rigidbody2D rBody;
+    Rigidbody2D rBody;
     CameraFollow mainCameraScript;
-
     void Start()
-	{
+    {
         World = GameObject.Find("World");
-		rBody = gameObject.GetComponent<Rigidbody2D>();
+        rBody = gameObject.GetComponent<Rigidbody2D>();
         mainCameraScript = GameObject.FindWithTag("MainCamera").GetComponent<CameraFollow>();
 
         //Create radar arrow
-		if(radarLevel > 0)
-		{
-        	arrow = Instantiate<GameObject>(radarArrow);
-	        MeteorRadar radar = arrow.GetComponent<MeteorRadar>();
-	        radar.Meteor = gameObject;
-	        radar.radarLevel = radarLevel;
-		}
+        if (radarLevel > 0)
+        {
+            arrow = Instantiate<GameObject>(radarArrow);
+            MeteorRadar radar = arrow.GetComponent<MeteorRadar>();
+            radar.Meteor = gameObject;
+            radar.radarLevel = radarLevel;
+        }
+
+        transform.localScale = new Vector3(blastRadius, blastRadius, 1.0f);
     }
 
-	void FixedUpdate()
-	{
-		rBody.AddForce(moveDir * moveSpeed, ForceMode2D.Force);
+    void FixedUpdate()
+    {
+        rBody.AddForce(moveDir * moveSpeed, ForceMode2D.Force);
         //rBody.AddForce(moveDir * moveSpeed * 20, ForceMode2D.Force);
         rBody.AddTorque(torque);
-        
+
 
         if (transform.position.y <= -10.0f)
         {
-			if(arrow != null)
-			{
-            	arrow.GetComponent<MeteorRadar>().DestroyRadar();
-			}
+            if (arrow != null)
+            {
+                arrow.GetComponent<MeteorRadar>().DestroyRadar();
+            }
             Destroy(gameObject);
         }
-	}
+    }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
+        if (other.tag.Equals("Meteor"))
+        {
+            if (blastRadius / other.GetComponent<Meteor>().blastRadius > 1.25f) // Bigger meteors dont explode on impact
+            {
+                return;
+            }
+        }
+
         if (other.tag.Equals("Ground"))
         {
             other.GetComponent<Block>().TakeDamage();
             //Destroy(other.gameObject);
         }
-        RaycastHit2D[] hit2dList = Physics2D.CircleCastAll(transform.position, blastRadius, new Vector2(0.0f, 0.0f));
-        for(int i = 0; i < hit2dList.Length; i++)
+        RaycastHit2D[] hit2dList = Physics2D.CircleCastAll(transform.position, blastRadius * .75f, new Vector2(0.0f, 0.0f));
+        for (int i = 0; i < hit2dList.Length; i++)
         {
             if (hit2dList[i].collider.tag.Equals("Ground"))
             {
@@ -79,16 +89,16 @@ public class Meteor : MonoBehaviour {
             go.transform.localScale = new Vector3(blastRadius, blastRadius, 1.0f);
         }
         SpawnResources(1);
-		if(arrow != null)
-		{
-        	arrow.GetComponent<MeteorRadar>().DestroyRadar();
-		}
+        if (arrow != null)
+        {
+            arrow.GetComponent<MeteorRadar>().DestroyRadar();
+        }
         Destroy(gameObject);
 
         mainCameraScript.shakeCycles = 5;
         mainCameraScript.shakeIntensity = 0.2f * (blastRadius / 5.0f);
     }
-    
+
     /// <summary>
     /// Handles creation of meteor resouce pickup items.
     /// </summary>
@@ -99,7 +109,7 @@ public class Meteor : MonoBehaviour {
         {
             if (PlayerInventoryManager.Instance.CanSpawnNewPickup())
             {
-                GameObject go = Instantiate(PickupItem,World.transform);
+                GameObject go = Instantiate(PickupItem, World.transform);
                 go.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
                 go.transform.position = this.transform.position;
                 Rigidbody2D rb = go.GetComponent<Rigidbody2D>();
