@@ -41,13 +41,6 @@ public class SceneTransitionManager : Singleton<SceneTransitionManager>
         SceneManager.LoadScene("Victory");
     }
 
-    public void RestartGame()
-    {
-        PlayerInventoryManager.Instance.ResetGame();
-        Globals.currentLevel = 0;
-        SceneManager.LoadScene("Game");
-    }
-
     public void ResetGame()
     {/*
         string nextSceneName = "Game";
