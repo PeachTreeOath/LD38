@@ -54,6 +54,8 @@ public class Levels : MonoBehaviour
         GameObject.Find("WorldNameText").GetComponent<Text>().text = "-" + level.WorldType.ToString() + "-";
         GameObject.Find("WorldCountText").GetComponent<Text>().text = level.planetName + " of 5";
 
+        ShopManager.Instance.SetShipPartCost(level.shipPartCost);
+
         if (level.planetName.Equals("World 1"))
         {
             GameObject.Find("Tutorial").GetComponent<Image>().enabled = true;
@@ -65,7 +67,11 @@ public class Levels : MonoBehaviour
         }
         else if (level.planetName.Equals("World 3"))
         {
-            AudioManager.Instance.PlayMusicWithIntro("Planet3_Intro","Planet3_Loop", .50f);
+            AudioManager.Instance.PlayMusic("Jupiter_Theme", .50f);
+        }
+        else if (level.planetName.Equals("World 4"))
+        {
+            AudioManager.Instance.PlayMusicWithIntro("Planet3_Intro", "Planet3_Loop", .50f);
         }
     }
 }
