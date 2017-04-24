@@ -79,6 +79,7 @@ public class ShopManager : NonPersistentSingleton<ShopManager>
 
     public void SetShipPartCost(int cost)
     {
+        shipPartCost = cost;
         shipCosts[0] = shipPartCost;
         // Init prices
         CraftButton[] buttons = GameObject.FindObjectsOfType<CraftButton>();
