@@ -119,7 +119,7 @@ public class ShopManager : NonPersistentSingleton<ShopManager>
     {
         int level = levelMap[itemName];
 
-        if (level > 2)
+		if (level > 2 && hasCost)
         {
             return;
         }
@@ -161,7 +161,11 @@ public class ShopManager : NonPersistentSingleton<ShopManager>
             return;
         }
 
-        int cost = costMap[itemName][level];
+		int cost = 0;
+		if(hasCost)
+		{
+			cost = costMap[itemName][level];
+		}
         if (!hasCost || debugOn)
         {
             if (hasCost)
