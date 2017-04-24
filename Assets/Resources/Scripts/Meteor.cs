@@ -68,7 +68,6 @@ public class Meteor : MonoBehaviour
                 return;
             }
         }
-
         if (other.tag.Equals("Ground"))
         {
             other.GetComponent<Block>().TakeDamage();
