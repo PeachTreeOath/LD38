@@ -61,12 +61,12 @@ public class ShopManager : NonPersistentSingleton<ShopManager>
         levelMap.Add(engineString, 0);
         levelMap.Add(shuttleString, 0);
         levelMap.Add(boostersString, 0);
-        levelMap.Add(speedString, 0);
-        levelMap.Add(jumpString, 0);
-        levelMap.Add(armorString, 0);
-        levelMap.Add(radarString, 0);
-        levelMap.Add(magnetString, 0);
-        levelMap.Add(resourceString, 0);
+		levelMap.Add(speedString, Globals.speedStat);
+		levelMap.Add(jumpString, Globals.jumpStat);
+		levelMap.Add(armorString, Globals.armorStat);
+		levelMap.Add(radarString, Globals.radarStat);
+		levelMap.Add(magnetString, Globals.magnetStat);
+		levelMap.Add(resourceString, Globals.resourceStat);
 
         // Kick off initial theme here since there are no other scene singletons..
         
@@ -104,7 +104,7 @@ public class ShopManager : NonPersistentSingleton<ShopManager>
         costText.text = "x  -";
     }
 
-    public void PurchaseItem(string itemName, CraftButton buttonCaller)
+	public void PurchaseItem(string itemName, CraftButton buttonCaller, bool hasCost)
     {
         int level = levelMap[itemName];
 
@@ -115,48 +115,46 @@ public class ShopManager : NonPersistentSingleton<ShopManager>
 
         if (itemName.Equals(engineString))
         {
-            if (debugOn || PlayerInventoryManager.Instance.PlayerResources >= shipPartCost)
+			if (!hasCost || debugOn || PlayerInventoryManager.Instance.PlayerResources >= shipPartCost)
             {
                 hasEngine = true;
-                rocket.BuildEngine();
-                if (!debugOn)
+				rocket.BuildEngine(defaultMat);
+				if (!hasCost || !debugOn)
                     PlayerInventoryManager.Instance.PlayerResources -= shipPartCost;
                 buttonCaller.SetOrbs(1);
-                GameObject.Find("EngineSilhouette").GetComponent<Image>().material = defaultMat;
             }
             return;
         }
         else if (itemName.Equals(shuttleString))
         {
-            if (debugOn || PlayerInventoryManager.Instance.PlayerResources >= shipPartCost)
+			if (!hasCost || debugOn || PlayerInventoryManager.Instance.PlayerResources >= shipPartCost)
             {
                 hasShuttle = true;
-                rocket.BuildShuttle();
-                if (!debugOn)
+				rocket.BuildShuttle(defaultMat);
+				if (!hasCost || !debugOn)
                     PlayerInventoryManager.Instance.PlayerResources -= shipPartCost;
                 buttonCaller.SetOrbs(1);
-                GameObject.Find("ShuttleSilhouette").GetComponent<Image>().material = defaultMat;
             }
             return;
         }
         else if (itemName.Equals(boostersString))
         {
-            if (debugOn || PlayerInventoryManager.Instance.PlayerResources >= shipPartCost)
+			if (!hasCost || debugOn || PlayerInventoryManager.Instance.PlayerResources >= shipPartCost)
             {
                 hasBoosters = true;
-                rocket.BuildBoosters();
-                if (!debugOn)
+				rocket.BuildBoosters(defaultMat);
+				if (!hasCost || !debugOn)
                     PlayerInventoryManager.Instance.PlayerResources -= shipPartCost;
                 buttonCaller.SetOrbs(1);
-                GameObject.Find("BoostersSilhouette").GetComponent<Image>().material = defaultMat;
             }
             return;
         }
 
         int cost = costMap[itemName][level];
-        if (debugOn)
+		if (!hasCost || debugOn)
         {
-            levelMap[itemName]++;
+			if(hasCost)
+            	levelMap[itemName]++;
             int newLevel = levelMap[itemName];
             buttonCaller.SetOrbs(newLevel);
             player.SetStat(itemName, newLevel);

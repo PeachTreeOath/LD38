@@ -128,7 +128,7 @@ public class RocketController : MonoBehaviour
 		if(lastTile != null &&
 			worldGen.worldTiles.Count > 0 )
 		{
-            if (Mathf.Abs(gameObject.transform.position.x - Globals.playerObj.transform.position.x) > worldGen.wrapDist)
+            if (Mathf.Abs(gameObject.transform.position.x - Globals.playerObj.transform.position.x) > worldGen.radius * worldGen.scale)
 			{
 				gameObject.transform.position = new Vector3(Globals.playerObj.transform.position.x + (Globals.playerObj.transform.position.x - gameObject.transform.position.x),
                     gameObject.transform.position.y,
@@ -212,19 +212,25 @@ public class RocketController : MonoBehaviour
         }
     }
 
-    public void BuildEngine()
+	public void BuildEngine(Material defaultMat)
     {
         transform.Find("RocketTop").GetComponent<SpriteRenderer>().enabled = true;
+		GameObject.Find("EngineSilhouette").GetComponent<Image>().material = defaultMat;
+		Globals.ship1 = true;
     }
 
-    public void BuildShuttle()
+	public void BuildShuttle(Material defaultMat)
     {
         transform.Find("RocketMid").GetComponent<SpriteRenderer>().enabled = true;
+		GameObject.Find("ShuttleSilhouette").GetComponent<Image>().material = defaultMat;
+		Globals.ship2 = true;
     }
 
-    public void BuildBoosters()
+	public void BuildBoosters(Material defaultMat)
     {
         transform.Find("RocketBot").GetComponent<SpriteRenderer>().enabled = true;
+		GameObject.Find("BoostersSilhouette").GetComponent<Image>().material = defaultMat;
+		Globals.ship3 = true;
     }
 
     public bool CheckIfAllPartsBuilt()

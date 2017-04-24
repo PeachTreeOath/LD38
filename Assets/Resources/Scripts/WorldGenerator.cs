@@ -23,15 +23,14 @@ public class WorldGenerator : MonoBehaviour {
     private bool swissCheeseYGenning = false;
     private HashSet<int> swissCheeseYValues = new HashSet<int>();
 
-    public float wrapDist;
-    public float wrapUpdateDist;
-
     private float playerStartYOffset = 11f;
 
 
     public GameObject dirt;
     public GameObject background;
     public GameObject cloudOverlay;
+    public GameObject cloudBackOverlay;
+    public float cloudBackTint;
     public List<Sprite> EarthBlockTypes;
     public List<Sprite> MarsBlockTypes;
     public List<Sprite> PlutoBlockTypes;
@@ -48,19 +47,76 @@ public class WorldGenerator : MonoBehaviour {
     // Use this for initialization
     void Start()
     {
-        wrapDist = 30;
-        wrapUpdateDist = 5;
+		PersistUpgrades();
+		
         Globals.Levels.GetComponent<Levels>().GetCurrentLevel();
         dirt.transform.localScale = new Vector3(dirt.transform.localScale.x * scale,
             dirt.transform.localScale.y * scale, 1.0f);
         // background = GameObject.Find("Background");
         cloudOverlay = GameObject.Find("CloudOverlay");
+        cloudBackOverlay = GameObject.Find("CloudBackOverlay");
 
         GenerateWorld();
 		lastPos = Globals.playerObj.transform.position;
 		pController = Globals.playerObj.GetComponent<PlayerController>();
         
     }
+
+	void PersistUpgrades()
+	{
+		//Only reset ship upgrades on new level
+		if(Globals.lastLevel != Globals.currentLevel)
+		{
+			Globals.lastLevel = Globals.currentLevel;
+			Globals.ship1 = false;
+			Globals.ship2 = false;
+			Globals.ship3 = false;
+		}else
+		{
+			if(Globals.ship1)
+			{
+				ShopManager.Instance.PurchaseItem(ShopManager.engineString, GameObject.Find("UpgradeIcon1").GetComponent<CraftButton>(), false);
+			}
+			if(Globals.ship2)
+			{
+				ShopManager.Instance.PurchaseItem(ShopManager.shuttleString, GameObject.Find("UpgradeIcon2").GetComponent<CraftButton>(), false);
+			}
+			if(Globals.ship3)
+			{
+				ShopManager.Instance.PurchaseItem(ShopManager.boostersString, GameObject.Find("UpgradeIcon3").GetComponent<CraftButton>(), false);
+			}
+		}
+
+		for(int i = 0; i < Globals.speedStat; i++)
+		{
+			ShopManager.Instance.PurchaseItem(ShopManager.speedString, GameObject.Find("UpgradeIcon4").GetComponent<CraftButton>(), false);
+		}
+
+		for(int i = 0; i < Globals.jumpStat; i++)
+		{
+			ShopManager.Instance.PurchaseItem(ShopManager.jumpString, GameObject.Find("UpgradeIcon5").GetComponent<CraftButton>(), false);
+		}
+
+		for(int i = 0; i < Globals.armorStat; i++)
+		{
+			ShopManager.Instance.PurchaseItem(ShopManager.armorString, GameObject.Find("UpgradeIcon6").GetComponent<CraftButton>(), false);
+		}
+
+		for(int i = 0; i < Globals.radarStat; i++)
+		{
+			ShopManager.Instance.PurchaseItem(ShopManager.radarString, GameObject.Find("UpgradeIcon7").GetComponent<CraftButton>(), false);
+		}
+
+		for(int i = 0; i < Globals.magnetStat; i++)
+		{
+			ShopManager.Instance.PurchaseItem(ShopManager.magnetString, GameObject.Find("UpgradeIcon8").GetComponent<CraftButton>(), false);
+		}
+
+		for(int i = 0; i < Globals.resourceStat; i++)
+		{
+			ShopManager.Instance.PurchaseItem(ShopManager.resourceString, GameObject.Find("UpgradeIcon9").GetComponent<CraftButton>(), false);
+		}
+	}
 
     // Update is called once per frame
     void Update()
@@ -142,32 +198,39 @@ public class WorldGenerator : MonoBehaviour {
 
         Sprite backgroundSprite = new Sprite();
         Sprite cloudSprite = new Sprite();
+        Sprite cloudBackSprite = new Sprite();
         switch (Type)
         {
             case PlanetType.Earth:
                 backgroundSprite = EarthBlockTypes[4];
                 cloudSprite = EarthBlockTypes[5];
+                cloudBackSprite = EarthBlockTypes[5];
                 break;
             case PlanetType.Mars:
                 backgroundSprite = MarsBlockTypes[4];
                 cloudSprite = MarsBlockTypes[5];
+                cloudBackSprite = MarsBlockTypes[5];
                 break;
             case PlanetType.Jupiter:
                 backgroundSprite = JupitorBlockTypes[4];
                 cloudSprite = JupitorBlockTypes[5];
+                cloudBackSprite = JupitorBlockTypes[5];
                 break;
             case PlanetType.Pluto:
                 backgroundSprite = PlutoBlockTypes[4];
                 cloudSprite = PlutoBlockTypes[5];
+                cloudBackSprite = PlutoBlockTypes[5];
                 break;
             case PlanetType.PlanetX:
                 backgroundSprite = PlanetXBlockTypes[4];
                 cloudSprite = PlanetXBlockTypes[5];
+                cloudBackSprite = PlanetXBlockTypes[5];
                 break;
 
             default:
                 backgroundSprite = EarthBlockTypes[4];
                 cloudSprite = EarthBlockTypes[5];
+                cloudBackSprite = EarthBlockTypes[5];
                 break;
         }
         //Background Sky
@@ -176,6 +239,12 @@ public class WorldGenerator : MonoBehaviour {
         //Clouds
         cloudOverlay.GetComponent<SpriteRenderer>().sprite = cloudSprite;
         cloudOverlay.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = cloudSprite;
+
+        cloudBackOverlay.GetComponent<SpriteRenderer>().sprite = cloudSprite;
+        cloudBackOverlay.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = cloudSprite;
+        cloudBackOverlay.GetComponent<SpriteRenderer>().color = new Color(cloudBackTint, cloudBackTint, cloudBackTint);
+        cloudBackOverlay.transform.GetChild(0).GetComponent<SpriteRenderer>().color = new Color(cloudBackTint, cloudBackTint, cloudBackTint);
+
     }
 
     Sprite AssignBlockType(List<Sprite> blockTypes, int index, GameObject go)
@@ -233,7 +302,9 @@ public class WorldGenerator : MonoBehaviour {
 
 	void WrapWorld()
 	{
-		if(Vector3.Distance(lastPos, Globals.playerObj.transform.position) > wrapUpdateDist)
+        float wrapDist = radius * scale;
+        float wrapUpdateDist = 5;
+        if (Vector3.Distance(lastPos, Globals.playerObj.transform.position) > wrapUpdateDist)
 		{
 			bool left = true;
 			List<GameObject> onDeck = new List<GameObject>();

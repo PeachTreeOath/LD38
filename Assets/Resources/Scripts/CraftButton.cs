@@ -27,13 +27,13 @@ public class CraftButton : MonoBehaviour {
 		if(shopPanel.group.alpha == 1 &&
 			(Input.GetKeyDown(numKeyCodeRow) || Input.GetKeyDown(numKeyCodePad)))
 		{
-			ShopManager.Instance.PurchaseItem(itemName, this);
+			ShopManager.Instance.PurchaseItem(itemName, this, true);
 		}
 	}
 
     public void OnClick()
     {
-        ShopManager.Instance.PurchaseItem(itemName, this);
+		ShopManager.Instance.PurchaseItem(itemName, this, true);
     }
 
     public void SetOrbs(int numOrbs)

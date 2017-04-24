@@ -84,6 +84,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scrollSpeed: 0.5
   zIndex: 3
+  lockY: 0
 --- !u!212 &212566588079685038
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -116,7 +117,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: d19e206ea6728fa4db3c0210bf86abdf, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 8655dbf1f1ca8e54fbfde5c06e3d8efd, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -156,7 +157,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: d19e206ea6728fa4db3c0210bf86abdf, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 8655dbf1f1ca8e54fbfde5c06e3d8efd, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
