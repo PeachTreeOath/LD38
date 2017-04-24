@@ -180,6 +180,11 @@ Prefab:
       propertyPath: lockY
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114645012348831770, guid: f0e76222ffcbe314992e8bd19751ffe4,
+        type: 2}
+      propertyPath: zIndex
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f0e76222ffcbe314992e8bd19751ffe4, type: 2}
   m_IsPrefabParent: 0
@@ -384,6 +389,11 @@ Prefab:
         type: 2}
       propertyPath: lockY
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114213553520499492, guid: a81930dfe6d943a47be32c7b19a6bf74,
+        type: 2}
+      propertyPath: zIndex
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a81930dfe6d943a47be32c7b19a6bf74, type: 2}
