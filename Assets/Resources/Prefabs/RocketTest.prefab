@@ -335,7 +335,7 @@ MonoBehaviour:
   accel: 0.1
   maxAccel: 0.3
   torqueForce: 25
-  minY: -5
+  minY: -30
   flyable: 0
   launching: 0
   flying: 0
