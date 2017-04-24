@@ -13,6 +13,7 @@ public class GameManager : Singleton<GameManager> {
     {
         if(health <= 0)
         {
+            AudioManager.Instance.PlaySound("You_Died_Son", .3f);
             GameOver();
         }
     }

@@ -301,7 +301,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   planetName: World 1
   WorldType: 0
-  depth: 30
+  depth: 9
   radius: 28
   holeDensity: 0.01
   holeWidth: 0.01
