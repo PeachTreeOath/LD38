@@ -61,14 +61,20 @@ public class ShopManager : NonPersistentSingleton<ShopManager>
         levelMap.Add(engineString, 0);
         levelMap.Add(shuttleString, 0);
         levelMap.Add(boostersString, 0);
-		levelMap.Add(speedString, Globals.speedStat);
-		levelMap.Add(jumpString, Globals.jumpStat);
-		levelMap.Add(armorString, Globals.armorStat);
-		levelMap.Add(radarString, Globals.radarStat);
-		levelMap.Add(magnetString, Globals.magnetStat);
-		levelMap.Add(resourceString, Globals.resourceStat);
+        levelMap.Add(speedString, Globals.speedStat);
+        levelMap.Add(jumpString, Globals.jumpStat);
+        levelMap.Add(armorString, Globals.armorStat);
+        levelMap.Add(radarString, Globals.radarStat);
+        levelMap.Add(magnetString, Globals.magnetStat);
+        levelMap.Add(resourceString, Globals.resourceStat);
 
         shipCosts[0] = shipPartCost;
+        // Init prices
+        CraftButton[] buttons = GameObject.FindObjectsOfType<CraftButton>();
+        foreach (CraftButton button in buttons)
+        {
+            SetButtonCost(button, costMap[button.itemName][0]);
+        }
     }
 
     public void SetShipPartCost(int cost)
@@ -78,7 +84,10 @@ public class ShopManager : NonPersistentSingleton<ShopManager>
         CraftButton[] buttons = GameObject.FindObjectsOfType<CraftButton>();
         foreach (CraftButton button in buttons)
         {
-            SetButtonCost(button, cost);
+            if (button.itemName.Equals(engineString) || button.itemName.Equals(shuttleString) || button.itemName.Equals(boostersString))
+            {
+                SetButtonCost(button, cost);
+            }
         }
     }
 
@@ -106,7 +115,7 @@ public class ShopManager : NonPersistentSingleton<ShopManager>
         costText.text = "x  -";
     }
 
-	public void PurchaseItem(string itemName, CraftButton buttonCaller, bool hasCost)
+    public void PurchaseItem(string itemName, CraftButton buttonCaller, bool hasCost)
     {
         int level = levelMap[itemName];
 
@@ -117,11 +126,11 @@ public class ShopManager : NonPersistentSingleton<ShopManager>
 
         if (itemName.Equals(engineString))
         {
-			if (!hasCost || debugOn || PlayerInventoryManager.Instance.PlayerResources >= shipPartCost)
+            if (!hasCost || debugOn || PlayerInventoryManager.Instance.PlayerResources >= shipPartCost)
             {
                 hasEngine = true;
-				rocket.BuildEngine(defaultMat);
-				if (!hasCost || !debugOn)
+                rocket.BuildEngine(defaultMat);
+                if (!hasCost || !debugOn)
                     PlayerInventoryManager.Instance.PlayerResources -= shipPartCost;
                 buttonCaller.SetOrbs(1);
             }
@@ -129,11 +138,11 @@ public class ShopManager : NonPersistentSingleton<ShopManager>
         }
         else if (itemName.Equals(shuttleString))
         {
-			if (!hasCost || debugOn || PlayerInventoryManager.Instance.PlayerResources >= shipPartCost)
+            if (!hasCost || debugOn || PlayerInventoryManager.Instance.PlayerResources >= shipPartCost)
             {
                 hasShuttle = true;
-				rocket.BuildShuttle(defaultMat);
-				if (!hasCost || !debugOn)
+                rocket.BuildShuttle(defaultMat);
+                if (!hasCost || !debugOn)
                     PlayerInventoryManager.Instance.PlayerResources -= shipPartCost;
                 buttonCaller.SetOrbs(1);
             }
@@ -141,11 +150,11 @@ public class ShopManager : NonPersistentSingleton<ShopManager>
         }
         else if (itemName.Equals(boostersString))
         {
-			if (!hasCost || debugOn || PlayerInventoryManager.Instance.PlayerResources >= shipPartCost)
+            if (!hasCost || debugOn || PlayerInventoryManager.Instance.PlayerResources >= shipPartCost)
             {
                 hasBoosters = true;
-				rocket.BuildBoosters(defaultMat);
-				if (!hasCost || !debugOn)
+                rocket.BuildBoosters(defaultMat);
+                if (!hasCost || !debugOn)
                     PlayerInventoryManager.Instance.PlayerResources -= shipPartCost;
                 buttonCaller.SetOrbs(1);
             }
@@ -153,10 +162,10 @@ public class ShopManager : NonPersistentSingleton<ShopManager>
         }
 
         int cost = costMap[itemName][level];
-		if (!hasCost || debugOn)
+        if (!hasCost || debugOn)
         {
-			if(hasCost)
-            	levelMap[itemName]++;
+            if (hasCost)
+                levelMap[itemName]++;
             int newLevel = levelMap[itemName];
             buttonCaller.SetOrbs(newLevel);
             player.SetStat(itemName, newLevel);
