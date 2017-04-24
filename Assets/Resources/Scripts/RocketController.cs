@@ -125,15 +125,16 @@ public class RocketController : MonoBehaviour
     
 	void LateUpdate()
 	{
-		if(lastTile != null &&
-			worldGen.worldTiles.Count > 0 )
+        if (Mathf.Abs(gameObject.transform.position.x - Globals.playerObj.transform.position.x) > worldGen.radius * worldGen.scale * 0.6) {
+            gameObject.GetComponent<Rigidbody2D>().simulated = false;
+        } else {
+            gameObject.GetComponent<Rigidbody2D>().simulated = true;
+        }
+        if (Mathf.Abs(gameObject.transform.position.x - Globals.playerObj.transform.position.x) > worldGen.radius * worldGen.scale)
 		{
-            if (Mathf.Abs(gameObject.transform.position.x - Globals.playerObj.transform.position.x) > worldGen.radius * worldGen.scale)
-			{
-				gameObject.transform.position = new Vector3(Globals.playerObj.transform.position.x + (Globals.playerObj.transform.position.x - gameObject.transform.position.x),
-                    gameObject.transform.position.y,
-                    gameObject.transform.position.z);
-			}
+			gameObject.transform.position = new Vector3(Globals.playerObj.transform.position.x + (Globals.playerObj.transform.position.x - gameObject.transform.position.x),
+                gameObject.transform.position.y,
+                gameObject.transform.position.z);
 		}
 	}
 
