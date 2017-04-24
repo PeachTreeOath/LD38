@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 212668459756692250}
   - component: {fileID: 61827540655538236}
   - component: {fileID: 114423920938015844}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: Dirt
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -137,6 +137,8 @@ MonoBehaviour:
   background: {fileID: 0}
   cloudOverlay: {fileID: 1817166608260722, guid: f0e76222ffcbe314992e8bd19751ffe4,
     type: 2}
+  cloudBackOverlay: {fileID: 0}
+  cloudBackTint: 0.9
   EarthBlockTypes:
   - {fileID: 21300000, guid: be5b10acbc19410478c46ae2d08b3e4b, type: 3}
   - {fileID: 21300000, guid: a73916f0c2828644d99a36fce7579c92, type: 3}
@@ -173,7 +175,10 @@ MonoBehaviour:
   - {fileID: 21300000, guid: def355a0f35339d46b3e55b3bc9ac119, type: 3}
   - {fileID: 21300000, guid: 0a4136e566043d6469d7788345bc5c87, type: 3}
   worldTiles: []
+  bottomTiles: []
   worldEntities: []
+  finalLeftMostPos: {x: 0, y: 0, z: 0}
+  finalRightMostPos: {x: 0, y: 0, z: 0}
 --- !u!212 &212668459756692250
 SpriteRenderer:
   m_ObjectHideFlags: 1
