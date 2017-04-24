@@ -73,6 +73,7 @@ Material:
     - _SrcBlend: 1
     - _UVSec: 0
     - _VignettePower: 1.65
+    - _YOffestMultiplier: 3
     - _ZWrite: 1
     - _vR: 0.75
     - _vX: 0.8
