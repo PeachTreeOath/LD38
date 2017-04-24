@@ -367,7 +367,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   runSpeed: 3
-  carryingSpeedFactor: 0.5
+  carryingSpeedFactor: 0.8
   jumpForce: 7
   carryingJumpForce: 6
   hitForce: 3
