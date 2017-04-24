@@ -128,6 +128,7 @@ public class RocketController : MonoBehaviour
 		if(lastTile != null &&
 			worldGen.worldTiles.Count > 0 )
 		{
+            if (Mathf.Abs(gameObject.transform.position.x - Globals.playerObj.transform.position.x) > worldGen.radius * worldGen.scale * 0.6) {
                 gameObject.GetComponent<Rigidbody2D>().simulated = false;
             } else {
                 gameObject.GetComponent<Rigidbody2D>().simulated = true;
