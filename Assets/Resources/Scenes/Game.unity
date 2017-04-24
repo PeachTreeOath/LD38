@@ -956,6 +956,10 @@ Prefab:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1607717865388584, guid: 908b290969b5c284086a9ca7a756e77c, type: 2}
+      propertyPath: m_TagString
+      value: Rocket
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 908b290969b5c284086a9ca7a756e77c, type: 2}
   m_IsPrefabParent: 0

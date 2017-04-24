@@ -19,7 +19,7 @@ public class ShopManager : NonPersistentSingleton<ShopManager>
     public int[] radarCosts = { 30, 50, 150 };
     public int[] magnetCosts = { 50, 300, 750 };
     public int[] resourceCosts = { 50, 300, 1000 };
-    public int shipPartCost = 100; // TODO: Set this differently per level
+    public int shipPartCost = 100;
 
     public const string engineString = "Engine";
     public const string shuttleString = "Shuttle";

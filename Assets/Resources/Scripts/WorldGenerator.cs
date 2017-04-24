@@ -138,7 +138,7 @@ public class WorldGenerator : MonoBehaviour {
         worldTiles = new List<GameObject>();
 		bottomTiles = new List<GameObject>();
 		//worldTiles.Add(GameObject.Find("Backpack"));
-        worldEntities.Add(GameObject.Find("RocketTest"));
+		worldTiles.Add(GameObject.Find("RocketTest"));
 
         for (int y = 0; y < depth; y++)
         {
@@ -326,7 +326,8 @@ public class WorldGenerator : MonoBehaviour {
 				{
 					//positive dist tile is right else it's left
 					float dist = worldTiles[i].transform.position.x - Globals.playerObj.transform.position.x;
-					if(Mathf.Abs(dist) > wrapDist)
+					if(Mathf.Abs(dist) > wrapDist || 
+						(worldTiles[i].tag.Equals("Rocket") && Mathf.Abs(dist) > wrapDist-.5f))
 					{
 						if((pController.GetFacing() == PlayerController.FacingEnum.LEFT && dist > 0))
 						{
