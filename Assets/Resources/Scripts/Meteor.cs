@@ -117,7 +117,7 @@ public class Meteor : MonoBehaviour
                 PlayerInventoryManager.Instance.SpawnedNewPickup();
 
                 Vector2 randomDirection = new Vector2(Random.Range(-1f, 1f), Random.Range(-1f, 1f));
-                rb.AddForce(randomDirection * moveSpeed, ForceMode2D.Impulse);
+                rb.AddForce(randomDirection * 4, ForceMode2D.Impulse);
             }
         }
     }
