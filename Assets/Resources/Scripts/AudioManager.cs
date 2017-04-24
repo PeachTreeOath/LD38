@@ -57,20 +57,20 @@ public class AudioManager : Singleton<AudioManager>
     public void PlayMusic(string name, float volume)
     {
         musicChannel.clip = soundMap[name];
-		musicChannel.volume = volume * VolumeListener.volumeLevel;
+		musicChannel.volume = VolumeListener.volumeLevel;
         musicChannel.Play();
     }
 
     public void PlayMusicWithIntro(string introName, string loopName, float volume)
     {
-		PlayMusic(introName, volume * VolumeListener.volumeLevel);
+		PlayMusic(introName, VolumeListener.volumeLevel);
         StartCoroutine(PlayMusicDelayed(loopName, volume, musicChannel.clip.length));
     }
 
     private IEnumerator PlayMusicDelayed(string name, float volume, float delayTime)
     {
         yield return new WaitForSeconds(delayTime);
-		PlayMusic(name, volume * VolumeListener.volumeLevel);
+		PlayMusic(name, VolumeListener.volumeLevel);
     }
 
     public void PlaySound(string name)
