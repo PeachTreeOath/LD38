@@ -70,7 +70,7 @@ public class PlayerController : MonoBehaviour
     {
         Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("Player"), LayerMask.NameToLayer("Pickup"));
         Globals.playerObj = gameObject;
-		Globals.startY = gameObject.transform.position.y;
+        Globals.startY = gameObject.transform.position.y;
         shop = ShopManager.Instance;
 
         NearBackpack(false);
@@ -102,14 +102,14 @@ public class PlayerController : MonoBehaviour
 
         float hSpeed;
 
-		float curRunSpeed = runSpeed + ((Globals.speedStat+1)*(Globals.speedStat*.5f)); 
+        float curRunSpeed = runSpeed + (1.5f * (Globals.speedStat * .5f));
         if (wearingBackpack)
         {
-			hSpeed = Input.GetAxisRaw("Horizontal") * curRunSpeed * carryingSpeedFactor * Time.deltaTime;
+            hSpeed = Input.GetAxisRaw("Horizontal") * curRunSpeed * carryingSpeedFactor * Time.deltaTime;
         }
         else
         {
-			hSpeed = Input.GetAxisRaw("Horizontal") * curRunSpeed * Time.deltaTime;
+            hSpeed = Input.GetAxisRaw("Horizontal") * curRunSpeed * Time.deltaTime;
         }
 
         if (hSpeed > 0)
@@ -180,28 +180,28 @@ public class PlayerController : MonoBehaviour
         switch (itemName)
         {
             case ShopManager.speedString:
-				Globals.speedStat = newLevel;
+                Globals.speedStat = newLevel;
                 break;
             case ShopManager.jumpString:
-				Globals.jumpStat = newLevel;
-				allowedJumps = Globals.jumpStat + 1;
+                Globals.jumpStat = newLevel;
+                allowedJumps = Globals.jumpStat + 1;
                 break;
             case ShopManager.armorString:
-				Globals.armorStat = newLevel;
+                Globals.armorStat = newLevel;
                 currentHealth += 2;
                 heartCanvas.SetHealth(currentHealth);
                 break;
             case ShopManager.radarString:
-				Globals.radarStat = newLevel;
-				meteorSpawner.radarLevel = Globals.radarStat;
+                Globals.radarStat = newLevel;
+                meteorSpawner.radarLevel = Globals.radarStat;
                 break;
             case ShopManager.magnetString:
-				Globals.magnetStat = newLevel;
+                Globals.magnetStat = newLevel;
                 vacuumCollider.radius = newLevel * 1f;
                 break;
             case ShopManager.resourceString:
-				Globals.resourceStat = newLevel;
-				switch (Globals.resourceStat)
+                Globals.resourceStat = newLevel;
+                switch (Globals.resourceStat)
                 {
                     case 1:
                         PlayerInventoryManager.Instance.scoreMultiplier = 1.25f;
