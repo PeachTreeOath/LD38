@@ -49,6 +49,11 @@ public class AudioManager : Singleton<AudioManager>
 		musicChannel.volume = VolumeListener.volumeLevel;
 	}
 
+    public float GetMusicVolume()
+    {
+        return musicChannel.volume;
+    }
+
     public void PlayMusic(string name, float volume)
     {
         musicChannel.clip = soundMap[name];
