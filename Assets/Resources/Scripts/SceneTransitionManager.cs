@@ -39,8 +39,9 @@ public class SceneTransitionManager : Singleton<SceneTransitionManager>
 
     public void ResetGame()
     {
-		Globals.resources = PlayerInventoryManager.Instance.PlayerResources;
-		PlayerInventoryManager.Instance.ResetGame();
+        //Globals.resources = PlayerInventoryManager.Instance.PlayerResources;
+        Globals.resources = 0;
+        PlayerInventoryManager.Instance.ResetGame();
 		Application.LoadLevel(Application.loadedLevel);
     }
 
