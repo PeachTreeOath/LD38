@@ -58,7 +58,7 @@ public class MeteorRadar : MonoBehaviour
         if (radarLevel > 2 && Meteor != null)
         {
             RaycastHit2D[] hits = Physics2D.RaycastAll(Meteor.transform.position, Meteor.GetComponent<Meteor>().moveDir);
-            Vector2 position = new Vector2(0, 0);
+            Vector2 position = new Vector2(0, -100);
             foreach (RaycastHit2D hit in hits)
             {
                 if (hit.collider != null && hit.collider.tag == "Ground")
