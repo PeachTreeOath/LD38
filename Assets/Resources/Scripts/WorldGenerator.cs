@@ -94,6 +94,7 @@ public class WorldGenerator : MonoBehaviour {
 			}
 		}
 
+		PlayerInventoryManager.Instance.PlayerResources = Globals.resources;
 		for(int i = 0; i < Globals.speedStat; i++)
 		{
 			ShopManager.Instance.PurchaseItem(ShopManager.speedString, GameObject.Find("UpgradeIcon4").GetComponent<CraftButton>(), false);

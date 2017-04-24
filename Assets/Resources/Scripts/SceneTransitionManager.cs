@@ -27,6 +27,7 @@ public class SceneTransitionManager : Singleton<SceneTransitionManager>
     public void StartGame()
     {
         string nextSceneName = "Game";
+		Globals.resources = 0;
 		Application.LoadLevel(nextSceneName);
     }
 
@@ -38,6 +39,7 @@ public class SceneTransitionManager : Singleton<SceneTransitionManager>
 
     public void ResetGame()
     {
+		Globals.resources = PlayerInventoryManager.Instance.PlayerResources;
 		PlayerInventoryManager.Instance.ResetGame();
 		Application.LoadLevel(Application.loadedLevel);
     }

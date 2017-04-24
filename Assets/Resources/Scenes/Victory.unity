@@ -465,7 +465,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 671827699}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 52f2b64afac6d48498f4532fc07f26d0, type: 3}
+  m_Script: {fileID: 11500000, guid: b930403372dc64d4f9f487fe9c1787b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   scrollSpeed: -0.1
@@ -800,7 +800,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: 504032730
+  randomSeed: 885690460
   InitialModule:
     serializedVersion: 3
     enabled: 1

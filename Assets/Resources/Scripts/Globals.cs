@@ -23,4 +23,6 @@ public class Globals : MonoBehaviour {
 	public static int resourceStat;
 
 	public static float startY;
+
+	public static float resources;
 }

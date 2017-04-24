@@ -26,7 +26,7 @@ public class MetalCanvas : MonoBehaviour {
 	void Update () {
         UpdateScaleAnaimation();
 
-        if (previousMetalTotal != PlayerInventoryManager.Instance.PlayerResources)
+        //if (previousMetalTotal != PlayerInventoryManager.Instance.PlayerResources)
             UpdateMetalCount(PlayerInventoryManager.Instance.PlayerResources);
     }
 
