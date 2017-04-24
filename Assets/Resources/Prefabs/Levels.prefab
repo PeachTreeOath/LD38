@@ -218,6 +218,7 @@ MonoBehaviour:
   torqueRange: 25
   spawnerAngleRange: 45
   maxBlastRadius: 2.5
+  shipPartCost: 250
 --- !u!114 &114242360127423618
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -246,6 +247,7 @@ MonoBehaviour:
   torqueRange: 50
   spawnerAngleRange: 45
   maxBlastRadius: 4
+  shipPartCost: 1000
 --- !u!114 &114555604996992490
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -274,6 +276,7 @@ MonoBehaviour:
   torqueRange: 35
   spawnerAngleRange: 45
   maxBlastRadius: 3
+  shipPartCost: 500
 --- !u!114 &114861907179196604
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -313,6 +316,7 @@ MonoBehaviour:
   torqueRange: 15
   spawnerAngleRange: 45
   maxBlastRadius: 2
+  shipPartCost: 100
 --- !u!114 &114957487916343614
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -341,3 +345,4 @@ MonoBehaviour:
   torqueRange: 70
   spawnerAngleRange: 40
   maxBlastRadius: 7
+  shipPartCost: 2500

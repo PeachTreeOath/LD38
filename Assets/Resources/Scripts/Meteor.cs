@@ -61,7 +61,7 @@ public class Meteor : MonoBehaviour
     {
         if (other.tag.Equals("Meteor"))
         {
-            if (blastRadius / other.GetComponent<Meteor>().blastRadius > 1.25f) // Bigger meteors dont explode on impact
+            if (blastRadius > other.GetComponent<Meteor>().blastRadius) // Bigger meteors dont explode on impact
             {
                 return;
             }
