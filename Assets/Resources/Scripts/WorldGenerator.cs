@@ -351,7 +351,7 @@ public class WorldGenerator : MonoBehaviour {
 
 			if(onDeck.Count == 0)
 			{
-				Debug.LogError("This shouldn't be 0!!!");
+				//Debug.LogError("This shouldn't be 0!!!");
 			}
 			else
 			{
