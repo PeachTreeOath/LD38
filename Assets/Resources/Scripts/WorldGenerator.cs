@@ -348,44 +348,59 @@ public class WorldGenerator : MonoBehaviour {
 				}
 			}
 
-			GameObject oldParent = onDeck[0].transform.parent.gameObject;
-			GameObject temp = new GameObject();
-			GameObject leftMost = GetLeftMost(onDeck);
-			GameObject rightMost = GetRightMost(onDeck);
-
-			float xPos = leftMost.transform.position.x + (rightMost.transform.position.x - leftMost.transform.position.x)/2f;
-			temp.transform.position = new Vector3( xPos, 0, leftMost.transform.position.z );
-			for(int i = 0; i < onDeck.Count; i++)
+			if(onDeck.Count == 0)
 			{
-				onDeck[i].transform.parent = temp.transform;
+				Debug.LogError("This shouldn't be 0!!!");
 			}
+			else
+			{
+				GameObject oldParent = null;
+				for(int i = 0; i < onDeck.Count; i++)
+				{
+					if(onDeck[i].transform.parent != null)
+					{
+						oldParent = onDeck[i].transform.parent.gameObject;
+						break;
+					}
+				}
+				GameObject temp = new GameObject();
+				GameObject leftMost = GetLeftMost(onDeck);
+				GameObject rightMost = GetRightMost(onDeck);
 
-			if(!left)
-			{
-				GameObject worldRightMost = GetRightMost(worldTiles);
-				finalRightMostPos = worldRightMost.transform.position;
-				GameObject onDeckLeftMost = GetLeftMost(onDeck);
-				float onDeckRadius = temp.transform.position.x - onDeckLeftMost.transform.position.x;
-				float rightDist = worldRightMost.transform.position.x - temp.transform.position.x;
-				temp.transform.position += Vector3.right * ((rightDist + onDeckRadius) + .5f);
-			}else
-			{
-				GameObject worldLeftMost = GetLeftMost(worldTiles);
-				finalLeftMostPos = worldLeftMost.transform.position;
-				GameObject onDeckRightMost = GetRightMost(onDeck);
-				float onDeckRadius = onDeckRightMost.transform.position.x - temp.transform.position.x;
-				float leftDist = temp.transform.position.x - worldLeftMost.transform.position.x;
-				temp.transform.position += Vector3.left * ((leftDist + onDeckRadius) + .5f) ;
+				float xPos = leftMost.transform.position.x + (rightMost.transform.position.x - leftMost.transform.position.x)/2f;
+				temp.transform.position = new Vector3( xPos, 0, leftMost.transform.position.z );
+				for(int i = 0; i < onDeck.Count; i++)
+				{
+					onDeck[i].transform.parent = temp.transform;
+				}
+
+				if(!left)
+				{
+					GameObject worldRightMost = GetRightMost(worldTiles);
+					finalRightMostPos = worldRightMost.transform.position;
+					GameObject onDeckLeftMost = GetLeftMost(onDeck);
+					float onDeckRadius = temp.transform.position.x - onDeckLeftMost.transform.position.x;
+					float rightDist = worldRightMost.transform.position.x - temp.transform.position.x;
+					temp.transform.position += Vector3.right * ((rightDist + onDeckRadius) + .5f);
+				}else
+				{
+					GameObject worldLeftMost = GetLeftMost(worldTiles);
+					finalLeftMostPos = worldLeftMost.transform.position;
+					GameObject onDeckRightMost = GetRightMost(onDeck);
+					float onDeckRadius = onDeckRightMost.transform.position.x - temp.transform.position.x;
+					float leftDist = temp.transform.position.x - worldLeftMost.transform.position.x;
+					temp.transform.position += Vector3.left * ((leftDist + onDeckRadius) + .5f) ;
+				}
+
+				for(int i = 0; i < onDeck.Count; i++)
+				{
+					onDeck[i].transform.parent = oldParent.transform;
+				}
+
+				Destroy(temp);
+
+				lastPos = Globals.playerObj.transform.position;
 			}
-
-			for(int i = 0; i < onDeck.Count; i++)
-			{
-				onDeck[i].transform.parent = oldParent.transform;
-			}
-
-			Destroy(temp);
-
-			lastPos = Globals.playerObj.transform.position;
 		}
 	}
 
