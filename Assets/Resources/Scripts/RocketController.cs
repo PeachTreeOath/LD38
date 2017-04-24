@@ -214,19 +214,25 @@ public class RocketController : MonoBehaviour
         }
     }
 
-    public void BuildEngine()
+	public void BuildEngine(Material defaultMat)
     {
         transform.Find("RocketTop").GetComponent<SpriteRenderer>().enabled = true;
+		GameObject.Find("EngineSilhouette").GetComponent<Image>().material = defaultMat;
+		Globals.ship1 = true;
     }
 
-    public void BuildShuttle()
+	public void BuildShuttle(Material defaultMat)
     {
         transform.Find("RocketMid").GetComponent<SpriteRenderer>().enabled = true;
+		GameObject.Find("ShuttleSilhouette").GetComponent<Image>().material = defaultMat;
+		Globals.ship2 = true;
     }
 
-    public void BuildBoosters()
+	public void BuildBoosters(Material defaultMat)
     {
         transform.Find("RocketBot").GetComponent<SpriteRenderer>().enabled = true;
+		GameObject.Find("BoostersSilhouette").GetComponent<Image>().material = defaultMat;
+		Globals.ship3 = true;
     }
 
     public bool CheckIfAllPartsBuilt()

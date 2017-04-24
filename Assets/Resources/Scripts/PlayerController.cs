@@ -22,14 +22,6 @@ public class PlayerController : MonoBehaviour
     public GameObject rocket;
     public RocketController rocketController;
 
-
-    private int radarStat;
-    private int speedStat;
-    private int armorStat;
-    private int jumpStat;
-    private int magnetStat;
-    private int resourceStat;
-
     private Rigidbody2D body;
     private int allowedJumps;
     private int usedJumps;
@@ -109,13 +101,14 @@ public class PlayerController : MonoBehaviour
 
         float hSpeed;
 
+		float curRunSpeed = runSpeed + ((Globals.speedStat+1)*(Globals.speedStat*.5f)); 
         if (wearingBackpack)
         {
-            hSpeed = Input.GetAxisRaw("Horizontal") * runSpeed * carryingSpeedFactor * Time.deltaTime;
+			hSpeed = Input.GetAxisRaw("Horizontal") * curRunSpeed * carryingSpeedFactor * Time.deltaTime;
         }
         else
         {
-            hSpeed = Input.GetAxisRaw("Horizontal") * runSpeed * Time.deltaTime;
+			hSpeed = Input.GetAxisRaw("Horizontal") * curRunSpeed * Time.deltaTime;
         }
 
         if (hSpeed > 0)
@@ -186,29 +179,28 @@ public class PlayerController : MonoBehaviour
         switch (itemName)
         {
             case ShopManager.speedString:
-                speedStat = newLevel;
-                runSpeed = origRunSpeed + speedStat * 1f;
+				Globals.speedStat = newLevel;
                 break;
             case ShopManager.jumpString:
-                jumpStat = newLevel;
-                allowedJumps = jumpStat + 1;
+				Globals.jumpStat = newLevel;
+				allowedJumps = Globals.jumpStat + 1;
                 break;
             case ShopManager.armorString:
-                armorStat = newLevel;
+				Globals.armorStat = newLevel;
                 currentHealth += 2;
                 heartCanvas.SetHealth(currentHealth);
                 break;
             case ShopManager.radarString:
-                radarStat = newLevel;
-                meteorSpawner.radarLevel = radarStat;
+				Globals.radarStat = newLevel;
+				meteorSpawner.radarLevel = Globals.radarStat;
                 break;
             case ShopManager.magnetString:
-                magnetStat = newLevel;
+				Globals.magnetStat = newLevel;
                 vacuumCollider.radius = newLevel * 1f;
                 break;
             case ShopManager.resourceString:
-                resourceStat = newLevel;
-                switch (resourceStat)
+				Globals.resourceStat = newLevel;
+				switch (Globals.resourceStat)
                 {
                     case 1:
                         PlayerInventoryManager.Instance.scoreMultiplier = 1.25f;
