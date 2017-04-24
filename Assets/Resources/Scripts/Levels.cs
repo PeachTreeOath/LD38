@@ -73,5 +73,9 @@ public class Levels : MonoBehaviour
         {
             AudioManager.Instance.PlayMusicWithIntro("Planet3_Intro", "Planet3_Loop", .50f);
         }
+        else if (level.planetName.Equals("World 5"))
+        {
+            AudioManager.Instance.PlayMusicWithIntro("PlanetX_Intro", "PlanetX_Loop", .50f);
+        }
     }
 }
