@@ -13,12 +13,12 @@ public class ShopManager : NonPersistentSingleton<ShopManager>
     private RocketController rocket;
 
     public int[] shipCosts = new int[1];
-    public int[] speedCosts = { 20, 40, 100 };
-    public int[] jumpCosts = { 10, 30, 70 };
-    public int[] armorCosts = { 75, 125, 250 };
-    public int[] radarCosts = { 30, 50, 150 };
-    public int[] magnetCosts = { 50, 300, 750 };
-    public int[] resourceCosts = { 50, 300, 1000 };
+    public int[] speedCosts = { 10, 15, 30 };
+    public int[] jumpCosts = { 10, 15, 30 };
+    public int[] armorCosts = { 15, 30, 45 };
+    public int[] radarCosts = { 15, 50, 150 };
+    public int[] magnetCosts = { 15, 50, 150 };
+    public int[] resourceCosts = { 15, 50, 150 };
     public int shipPartCost = 100;
 
     public const string engineString = "Engine";

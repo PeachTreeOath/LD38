@@ -204,7 +204,7 @@ MonoBehaviour:
   planetName: World 2
   WorldType: 1
   depth: 30
-  radius: 60
+  radius: 35
   holeDensity: 0.01
   holeWidth: 0.2
   holeHeight: 0.97
@@ -218,7 +218,7 @@ MonoBehaviour:
   torqueRange: 25
   spawnerAngleRange: 45
   maxBlastRadius: 2.5
-  shipPartCost: 250
+  shipPartCost: 100
 --- !u!114 &114242360127423618
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -233,7 +233,7 @@ MonoBehaviour:
   planetName: World 4
   WorldType: 3
   depth: 25
-  radius: 50
+  radius: 40
   holeDensity: 0.01
   holeWidth: 0.6
   holeHeight: 0.97
@@ -241,13 +241,13 @@ MonoBehaviour:
   stonePercent: 0.3
   dirtPercent: 0.35
   grassPercent: 0.35
-  speedMin: 3
-  speedMax: 8
+  speedMin: 2
+  speedMax: 5
   secondsPerMeteor: 0.2
   torqueRange: 50
   spawnerAngleRange: 45
-  maxBlastRadius: 4
-  shipPartCost: 700
+  maxBlastRadius: 3
+  shipPartCost: 150
 --- !u!114 &114555604996992490
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -276,7 +276,7 @@ MonoBehaviour:
   torqueRange: 35
   spawnerAngleRange: 45
   maxBlastRadius: 2
-  shipPartCost: 400
+  shipPartCost: 150
 --- !u!114 &114861907179196604
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -301,22 +301,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   planetName: World 1
   WorldType: 0
-  depth: 9
+  depth: 20
   radius: 28
   holeDensity: 0.01
   holeWidth: 0.01
   holeHeight: 0.97
-  lavaPercent: 0.7
-  stonePercent: 0.9
-  dirtPercent: 0.9
-  grassPercent: 0.9
+  lavaPercent: 0.5
+  stonePercent: 0.4
+  dirtPercent: 0.1
+  grassPercent: 1
   speedMin: 0.1
   speedMax: 0.5
   secondsPerMeteor: 0.8
   torqueRange: 15
   spawnerAngleRange: 45
   maxBlastRadius: 2
-  shipPartCost: 100
+  shipPartCost: 50
 --- !u!114 &114957487916343614
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -330,13 +330,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   planetName: World 5
   WorldType: 4
-  depth: 15
-  radius: 100
+  depth: 30
+  radius: 35
   holeDensity: 0.5
   holeWidth: 0.2
   holeHeight: 2
-  lavaPercent: 0.9
-  stonePercent: 0.9
+  lavaPercent: 0.5
+  stonePercent: 0.8
   dirtPercent: 0.35
   grassPercent: 0.35
   speedMin: 5
@@ -345,4 +345,4 @@ MonoBehaviour:
   torqueRange: 70
   spawnerAngleRange: 40
   maxBlastRadius: 7
-  shipPartCost: 1000
+  shipPartCost: 250
