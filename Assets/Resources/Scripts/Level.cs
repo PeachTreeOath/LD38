@@ -26,4 +26,6 @@ public class Level : MonoBehaviour {
     public float spawnerAngleRange = 45;
     public float maxBlastRadius = 3;
 
+    [Header("Level Gen")]
+    public int shipPartCost = 100;
 }

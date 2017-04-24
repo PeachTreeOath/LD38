@@ -21,4 +21,6 @@ public class Globals : MonoBehaviour {
 	public static int jumpStat;
 	public static int magnetStat;
 	public static int resourceStat;
+
+	public static float startY;
 }

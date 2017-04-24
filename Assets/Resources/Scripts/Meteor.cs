@@ -37,7 +37,9 @@ public class Meteor : MonoBehaviour
             radar.radarLevel = radarLevel;
         }
 
-        transform.localScale = new Vector3(blastRadius, blastRadius, 1.0f);
+        //transform.localScale = new Vector3(blastRadius, blastRadius, 1.0f);
+        transform.localScale = new Vector3(Mathf.Clamp(blastRadius,1.0f, 3.0f),
+            Mathf.Clamp(blastRadius, 1.0f, 3.0f), 1.0f);
     }
 
     void FixedUpdate()
@@ -61,12 +63,11 @@ public class Meteor : MonoBehaviour
     {
         if (other.tag.Equals("Meteor"))
         {
-            if (blastRadius / other.GetComponent<Meteor>().blastRadius > 1.25f) // Bigger meteors dont explode on impact
+            if (blastRadius > other.GetComponent<Meteor>().blastRadius) // Bigger meteors dont explode on impact
             {
                 return;
             }
         }
-
         if (other.tag.Equals("Ground"))
         {
             other.GetComponent<Block>().TakeDamage();

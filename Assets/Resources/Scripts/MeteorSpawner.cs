@@ -57,8 +57,6 @@ public class MeteorSpawner : MonoBehaviour {
 		
 		// Set the blast size and radius
         m.blastRadius = Random.Range(0, maxBlastSize);
-        m.transform.localScale = new Vector3(Mathf.Clamp(0.5f,3.0f,m.blastRadius),
-            Mathf.Clamp(0.5f, 3.0f, m.blastRadius), 1.0f);
 
         // Set Speed and Torque
 		m.moveSpeed = Random.Range(speedMin, speedMax);
