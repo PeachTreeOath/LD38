@@ -47,6 +47,8 @@ public class WorldGenerator : MonoBehaviour {
     // Use this for initialization
     void Start()
     {
+		PersistUpgrades();
+		
         Globals.Levels.GetComponent<Levels>().GetCurrentLevel();
         dirt.transform.localScale = new Vector3(dirt.transform.localScale.x * scale,
             dirt.transform.localScale.y * scale, 1.0f);
@@ -59,6 +61,62 @@ public class WorldGenerator : MonoBehaviour {
 		pController = Globals.playerObj.GetComponent<PlayerController>();
         
     }
+
+	void PersistUpgrades()
+	{
+		//Only reset ship upgrades on new level
+		if(Globals.lastLevel != Globals.currentLevel)
+		{
+			Globals.lastLevel = Globals.currentLevel;
+			Globals.ship1 = false;
+			Globals.ship2 = false;
+			Globals.ship3 = false;
+		}else
+		{
+			if(Globals.ship1)
+			{
+				ShopManager.Instance.PurchaseItem(ShopManager.engineString, GameObject.Find("UpgradeIcon1").GetComponent<CraftButton>(), false);
+			}
+			if(Globals.ship2)
+			{
+				ShopManager.Instance.PurchaseItem(ShopManager.shuttleString, GameObject.Find("UpgradeIcon2").GetComponent<CraftButton>(), false);
+			}
+			if(Globals.ship3)
+			{
+				ShopManager.Instance.PurchaseItem(ShopManager.boostersString, GameObject.Find("UpgradeIcon3").GetComponent<CraftButton>(), false);
+			}
+		}
+
+		for(int i = 0; i < Globals.speedStat; i++)
+		{
+			ShopManager.Instance.PurchaseItem(ShopManager.speedString, GameObject.Find("UpgradeIcon4").GetComponent<CraftButton>(), false);
+		}
+
+		for(int i = 0; i < Globals.jumpStat; i++)
+		{
+			ShopManager.Instance.PurchaseItem(ShopManager.jumpString, GameObject.Find("UpgradeIcon5").GetComponent<CraftButton>(), false);
+		}
+
+		for(int i = 0; i < Globals.armorStat; i++)
+		{
+			ShopManager.Instance.PurchaseItem(ShopManager.armorString, GameObject.Find("UpgradeIcon6").GetComponent<CraftButton>(), false);
+		}
+
+		for(int i = 0; i < Globals.radarStat; i++)
+		{
+			ShopManager.Instance.PurchaseItem(ShopManager.radarString, GameObject.Find("UpgradeIcon7").GetComponent<CraftButton>(), false);
+		}
+
+		for(int i = 0; i < Globals.magnetStat; i++)
+		{
+			ShopManager.Instance.PurchaseItem(ShopManager.magnetString, GameObject.Find("UpgradeIcon8").GetComponent<CraftButton>(), false);
+		}
+
+		for(int i = 0; i < Globals.resourceStat; i++)
+		{
+			ShopManager.Instance.PurchaseItem(ShopManager.resourceString, GameObject.Find("UpgradeIcon9").GetComponent<CraftButton>(), false);
+		}
+	}
 
     // Update is called once per frame
     void Update()
