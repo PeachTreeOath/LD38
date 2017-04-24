@@ -128,7 +128,7 @@ public class RocketController : MonoBehaviour
 		if(lastTile != null &&
 			worldGen.worldTiles.Count > 0 )
 		{
-            if (Mathf.Abs(gameObject.transform.position.x - Globals.playerObj.transform.position.x) > worldGen.wrapDist)
+            if (Mathf.Abs(gameObject.transform.position.x - Globals.playerObj.transform.position.x) > worldGen.radius * worldGen.scale)
 			{
 				gameObject.transform.position = new Vector3(Globals.playerObj.transform.position.x + (Globals.playerObj.transform.position.x - gameObject.transform.position.x),
                     gameObject.transform.position.y,
