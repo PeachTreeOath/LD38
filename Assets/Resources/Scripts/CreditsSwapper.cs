@@ -27,6 +27,7 @@ public class CreditsSwapper : MonoBehaviour {
 			ps.GetComponent<Renderer>().material = mat;
 			ps.startDelay = i*.45f;
 			ps.startSpeed = Mathf.Max(2.5f, i * .35f);
+			ps.startRotation = Mathf.Max(2, i * .34f);
 		}
 	}
 }
