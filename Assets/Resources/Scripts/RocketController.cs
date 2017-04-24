@@ -85,6 +85,7 @@ public class RocketController : MonoBehaviour
                 {
                     Destroy(launchParticles);
                 }
+				gameObject.GetComponent<Rigidbody2D>().mass = 2;
                 AudioManager.Instance.PlaySound("Spaceship", .3f);
                 flying = true;
                 flytimer = Time.time;

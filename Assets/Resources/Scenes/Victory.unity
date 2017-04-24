@@ -688,6 +688,7 @@ GameObject:
   - component: {fileID: 1799091782}
   - component: {fileID: 1799091781}
   - component: {fileID: 1799091780}
+  - component: {fileID: 1799091783}
   m_Layer: 0
   m_Name: Particle System
   m_TagString: Untagged
@@ -801,7 +802,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: 885690460
+  randomSeed: -522828971
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -3763,6 +3764,17 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 29.29, y: 90.00001, z: -90.00001}
+--- !u!114 &1799091783
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1799091779}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6506f0886fda7794d853b9143127bda7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1879627234
 GameObject:
   m_ObjectHideFlags: 0
