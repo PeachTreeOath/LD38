@@ -29,6 +29,8 @@ public class WorldGenerator : MonoBehaviour {
     public GameObject dirt;
     public GameObject background;
     public GameObject cloudOverlay;
+    public GameObject cloudBackOverlay;
+    public float cloudBackTint;
     public List<Sprite> EarthBlockTypes;
     public List<Sprite> MarsBlockTypes;
     public List<Sprite> PlutoBlockTypes;
@@ -52,6 +54,7 @@ public class WorldGenerator : MonoBehaviour {
             dirt.transform.localScale.y * scale, 1.0f);
         // background = GameObject.Find("Background");
         cloudOverlay = GameObject.Find("CloudOverlay");
+        cloudBackOverlay = GameObject.Find("CloudBackOverlay");
 
         GenerateWorld();
 		lastPos = Globals.playerObj.transform.position;
@@ -195,32 +198,39 @@ public class WorldGenerator : MonoBehaviour {
 
         Sprite backgroundSprite = new Sprite();
         Sprite cloudSprite = new Sprite();
+        Sprite cloudBackSprite = new Sprite();
         switch (Type)
         {
             case PlanetType.Earth:
                 backgroundSprite = EarthBlockTypes[4];
                 cloudSprite = EarthBlockTypes[5];
+                cloudBackSprite = EarthBlockTypes[5];
                 break;
             case PlanetType.Mars:
                 backgroundSprite = MarsBlockTypes[4];
                 cloudSprite = MarsBlockTypes[5];
+                cloudBackSprite = MarsBlockTypes[5];
                 break;
             case PlanetType.Jupiter:
                 backgroundSprite = JupitorBlockTypes[4];
                 cloudSprite = JupitorBlockTypes[5];
+                cloudBackSprite = JupitorBlockTypes[5];
                 break;
             case PlanetType.Pluto:
                 backgroundSprite = PlutoBlockTypes[4];
                 cloudSprite = PlutoBlockTypes[5];
+                cloudBackSprite = PlutoBlockTypes[5];
                 break;
             case PlanetType.PlanetX:
                 backgroundSprite = PlanetXBlockTypes[4];
                 cloudSprite = PlanetXBlockTypes[5];
+                cloudBackSprite = PlanetXBlockTypes[5];
                 break;
 
             default:
                 backgroundSprite = EarthBlockTypes[4];
                 cloudSprite = EarthBlockTypes[5];
+                cloudBackSprite = EarthBlockTypes[5];
                 break;
         }
         //Background Sky
@@ -229,6 +239,12 @@ public class WorldGenerator : MonoBehaviour {
         //Clouds
         cloudOverlay.GetComponent<SpriteRenderer>().sprite = cloudSprite;
         cloudOverlay.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = cloudSprite;
+
+        cloudBackOverlay.GetComponent<SpriteRenderer>().sprite = cloudSprite;
+        cloudBackOverlay.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = cloudSprite;
+        cloudBackOverlay.GetComponent<SpriteRenderer>().color = new Color(cloudBackTint, cloudBackTint, cloudBackTint);
+        cloudBackOverlay.transform.GetChild(0).GetComponent<SpriteRenderer>().color = new Color(cloudBackTint, cloudBackTint, cloudBackTint);
+
     }
 
     Sprite AssignBlockType(List<Sprite> blockTypes, int index, GameObject go)
