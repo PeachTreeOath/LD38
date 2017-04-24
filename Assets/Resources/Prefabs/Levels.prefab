@@ -212,8 +212,8 @@ MonoBehaviour:
   stonePercent: 0.3
   dirtPercent: 0.35
   grassPercent: 0.35
-  speedMin: 0.2
-  speedMax: 0.7
+  speedMin: 0.5
+  speedMax: 1.5
   secondsPerMeteor: 0.6
   torqueRange: 25
   spawnerAngleRange: 45
@@ -243,7 +243,7 @@ MonoBehaviour:
   speedMin: 3
   speedMax: 8
   secondsPerMeteor: 0.2
-  torqueRange: 25
+  torqueRange: 50
   spawnerAngleRange: 45
   maxBlastRadius: 4
 --- !u!114 &114555604996992490
@@ -268,10 +268,10 @@ MonoBehaviour:
   stonePercent: 0.5
   dirtPercent: 0
   grassPercent: 0
-  speedMin: 3
-  speedMax: 8
+  speedMin: 1
+  speedMax: 3
   secondsPerMeteor: 0.4
-  torqueRange: 25
+  torqueRange: 35
   spawnerAngleRange: 45
   maxBlastRadius: 3
 --- !u!114 &114861907179196604
@@ -310,7 +310,7 @@ MonoBehaviour:
   speedMin: 0.1
   speedMax: 0.5
   secondsPerMeteor: 0.8
-  torqueRange: 20
+  torqueRange: 15
   spawnerAngleRange: 45
   maxBlastRadius: 2
 --- !u!114 &114957487916343614
@@ -336,8 +336,8 @@ MonoBehaviour:
   dirtPercent: 0.35
   grassPercent: 0.35
   speedMin: 5
-  speedMax: 10
+  speedMax: 12
   secondsPerMeteor: 0.1
-  torqueRange: 25
-  spawnerAngleRange: 45
-  maxBlastRadius: 10
+  torqueRange: 70
+  spawnerAngleRange: 40
+  maxBlastRadius: 7
