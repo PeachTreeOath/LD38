@@ -70,6 +70,7 @@ public class PlayerController : MonoBehaviour
     {
         Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("Player"), LayerMask.NameToLayer("Pickup"));
         Globals.playerObj = gameObject;
+		Globals.startY = gameObject.transform.position.y;
         shop = ShopManager.Instance;
 
         NearBackpack(false);

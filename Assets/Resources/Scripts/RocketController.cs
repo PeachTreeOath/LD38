@@ -148,14 +148,14 @@ public class RocketController : MonoBehaviour
 				gameObject.transform.position.x > rightMost.transform.position.x ||
 				gameObject.transform.position.y < minY)
 			{
-				Debug.Log(Time.time + " reset rocket");
 				if(gameObject.transform.position.x < leftMost.transform.position.x)
 				{
-					gameObject.transform.position = leftMost.transform.position + Vector3.up * 50;
+					gameObject.transform.position = leftMost.transform.position;
 				}else
 				{
-					gameObject.transform.position = rightMost.transform.position + Vector3.up * 50;
+					gameObject.transform.position = rightMost.transform.position;
 				}
+				gameObject.transform.position = new Vector3(gameObject.transform.position.x, Globals.startY + 1, gameObject.transform.position.z);
 				gameObject.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
 				gameObject.GetComponent<Rigidbody2D>().angularVelocity = 0;
 			}
